@@ -128,7 +128,6 @@ GEM
     minitest (5.9.0)
     multi_json (1.12.1)
     multipart-post (2.0.0)
-    mysql (2.9.1)
     mysql2 (0.3.21)
     nested_form (0.3.2)
     nokogiri (1.6.7.2)
@@ -280,7 +279,6 @@ DEPENDENCIES
   html2haml
   jbuilder (~> 2.0)
   jquery-rails
-  mysql
   mysql2
   pry-rails
   puma
