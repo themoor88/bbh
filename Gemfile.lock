@@ -279,7 +279,7 @@ DEPENDENCIES
   html2haml
   jbuilder (~> 2.0)
   jquery-rails
-  mysql2 (~> 0.3.18)
+  mysql2
   pry-rails
   puma
   quiet_assets
