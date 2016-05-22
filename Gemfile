@@ -17,6 +17,7 @@ gem 'sendgrid'
 gem 'simple_form'
 
 gem 'aasm'
+gem 'annotate', '~> 2.6.10'
 gem 'autoprefixer-rails'
 gem 'bootbox-rails'
 gem 'classy_enum'
