@@ -12,10 +12,10 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: baehl_business_hub_development
+  database: <%= Figaro.env.database_name %>
   pool: 5
-  username: root
-  password: sarahalidoost
+  username: <%= Figaro.env.database_username %>
+  password: <%= Figaro.env.database_password %>
   host: localhost
 
 # Warning: The database defined as "test" will be erased and
@@ -25,18 +25,18 @@ test:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: baehl_business_hub_test
+  database: <%= Figaro.env.database_name %>
   pool: 5
-  username: root
-  password: sarahalidoost
+  username: <%= Figaro.env.database_username %>
+  password: <%= Figaro.env.database_password %>
   host: localhost
 
-production:
-  adapter: mysql2
-  encoding: utf8
-  reconnect: false
-  database: baehl_business_hub_production
-  pool: 5
-  username: root
-  password: sarahalidoost
-  host: localhost
+# production:
+#   adapter: mysql2
+#   encoding: utf8
+#   reconnect: false
+#   database: baehl_business_hub_production
+#   pool: 5
+#   username: root
+#   password: sarahalidoost
+#   host: localhost
