@@ -13,6 +13,8 @@ linters:
     max_depth: 6
   SelectorDepth:
     max_depth: 6
+  PlaceholderInExtend:
+    enabled: false
 
   Indentation:
     severity: warning
