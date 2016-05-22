@@ -1,0 +1,44 @@
+AllCops:
+  Include:
+    - '**/Rakefile'
+    - '**/config.ru'
+  Exclude:
+    - 'db/**/*'
+    - 'script/**/*'
+    - 'config/**/*'
+    - 'bin/**/*'
+    - !ruby/regexp /old_and_unused\.rb$/
+
+  TargetRubyVersion: 2.3
+
+Rails:
+  Enabled: true
+
+Style/Encoding:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Metrics/LineLength:
+  Enabled: false
+
+Rails/HasAndBelongsToMany:
+  Enabled: false
+
+Metrics/AbcSize:
+  # Assignment, branches, conditions. See: http://c2.com/cgi/wiki?AbcMetric
+  Max: 20
+
+Metrics/MethodLength:
+  CountComments: false  # count full line comments?
+  Max: 25
+
+Metrics/ModuleLength:
+  Max: 125
+
+Metrics/ClassLength:
+  Enabled: false
