@@ -11,4 +11,4 @@
   = @campaign.expires_at
 
 - unless @existing_proposed_solution.present?
-  %button.btn.btn-primary.apply-now Apply Now
+  %button.btn.btn-primary.apply-now{ data: { 'campaign-id': @campaign.id } } Apply Now
