@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160522211618) do
+ActiveRecord::Schema.define(version: 20160523041210) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -32,21 +32,29 @@ ActiveRecord::Schema.define(version: 20160522211618) do
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
 
   create_table "campaigns", force: :cascade do |t|
-    t.string   "name",        limit: 255
-    t.string   "description", limit: 255
-    t.string   "state",       limit: 255
+    t.integer  "tech_seeker_id", limit: 4
+    t.string   "name",           limit: 255
+    t.text     "description",    limit: 65535
+    t.string   "state",          limit: 255
     t.datetime "expires_at"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
+  add_index "campaigns", ["tech_seeker_id"], name: "index_campaigns_on_tech_seeker_id", using: :btree
+
   create_table "proposed_solutions", force: :cascade do |t|
-    t.string   "name",        limit: 255
-    t.string   "description", limit: 255
-    t.string   "state",       limit: 255
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.integer  "tech_provider_id", limit: 4
+    t.integer  "campaign_id",      limit: 4
+    t.string   "name",             limit: 255
+    t.text     "description",      limit: 65535
+    t.string   "state",            limit: 255
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
+
+  add_index "proposed_solutions", ["campaign_id"], name: "index_proposed_solutions_on_campaign_id", using: :btree
+  add_index "proposed_solutions", ["tech_provider_id"], name: "index_proposed_solutions_on_tech_provider_id", using: :btree
 
   create_table "tech_providers", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -107,4 +115,7 @@ ActiveRecord::Schema.define(version: 20160522211618) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "campaigns", "tech_seekers"
+  add_foreign_key "proposed_solutions", "campaigns"
+  add_foreign_key "proposed_solutions", "tech_providers"
 end
