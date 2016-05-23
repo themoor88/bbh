@@ -7,8 +7,8 @@
     .panel-body
       %p
         = proposed_solution.description
-        = link_to 'Show', proposed_solution
+        = link_to 'Show', dashboard_proposed_solution_path(proposed_solution)
         = link_to 'Edit', edit_dashboard_proposed_solution_path(proposed_solution)
         = link_to 'Destroy', dashboard_proposed_solution_path(proposed_solution), method: :delete, data: { confirm: 'Are you sure?' }
 
-= link_to 'New Proposed Solution', new_proposed_solution_path
+= link_to 'New Proposed Solution', new_dashboard_proposed_solution_path

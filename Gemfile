@@ -28,6 +28,7 @@ gem 'rails_admin'
 gem "select2-rails"
 gem 'sendgrid-ruby'
 gem 'whenever', :require => false
+gem 'faker'
 
 group :development do
   gem 'web-console', '~> 2.0'
@@ -39,7 +40,6 @@ group :development do
   gem 'quiet_assets'
   gem 'html2haml'
   gem 'rails_layout'
-  gem 'faker'
   gem 'rubocop', '~> 0.40.0', require: false
   gem 'haml_lint', require: false
   gem 'scss_lint', require: false

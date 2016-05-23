@@ -26,7 +26,7 @@ class Dashboard::ProposedSolutionsController < ApplicationController
 
     respond_to do |format|
       if @proposed_solution.save
-        format.html { redirect_to @proposed_solution, notice: 'Proposed solution was successfully created.' }
+        format.html { redirect_to dashboard_proposed_solutions_path, notice: 'Proposed solution was successfully created.' }
         format.json { render :show, status: :created, location: @proposed_solution }
       else
         format.html { render :new }
@@ -39,7 +39,7 @@ class Dashboard::ProposedSolutionsController < ApplicationController
   def update
     respond_to do |format|
       if @proposed_solution.update(proposed_solution_params)
-        format.html { redirect_to @proposed_solution, notice: 'Proposed solution was successfully updated.' }
+        format.html { redirect_to dashboard_proposed_solutions_path, notice: 'Proposed solution was successfully updated.' }
         format.json { render :show, status: :ok, location: @proposed_solution }
       else
         format.html { render :edit }
@@ -52,7 +52,7 @@ class Dashboard::ProposedSolutionsController < ApplicationController
   def destroy
     @proposed_solution.destroy
     respond_to do |format|
-      format.html { redirect_to proposed_solutions_url, notice: 'Proposed solution was successfully destroyed.' }
+      format.html { redirect_to dashboard_proposed_solutions_url, notice: 'Proposed solution was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
