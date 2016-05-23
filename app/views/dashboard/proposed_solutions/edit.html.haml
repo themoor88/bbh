@@ -10,6 +10,6 @@
   .form-actions
     = f.button :submit
 
-= link_to 'Show', @proposed_solution
+= link_to 'Show', dashboard_proposed_solution_path(@proposed_solution)
 \|
 = link_to 'Back', dashboard_proposed_solutions_path
