@@ -21,6 +21,7 @@ class Dashboard::ProposedSolutionsController < ApplicationController
   end
 
   private
+
   # Never trust parameters from the scary internet, only allow the white list through.
   def proposed_solution_params
     params.require(:proposed_solution).permit(:name, :description)

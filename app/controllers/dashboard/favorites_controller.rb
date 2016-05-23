@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Dashboard::FavoritesController < ApplicationController
   before_action :set_favorite, only: [:destroy]
 
@@ -31,6 +32,7 @@ class Dashboard::FavoritesController < ApplicationController
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_favorite
     @favorite = Like.find(params[:id])
