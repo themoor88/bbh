@@ -1,0 +1,19 @@
+%h1 Listing dashboard_campaigns
+
+%table
+  %thead
+    %tr
+      %th
+      %th
+      %th
+
+  %tbody
+    - @dashboard_campaigns.each do |dashboard_campaign|
+      %tr
+        %td= link_to 'Show', dashboard_campaign
+        %td= link_to 'Edit', edit_dashboard_campaign_path(dashboard_campaign)
+        %td= link_to 'Destroy', dashboard_campaign, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Campaign', new_dashboard_campaign_path
