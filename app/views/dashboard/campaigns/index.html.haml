@@ -1,0 +1,15 @@
+%h1 Listing My Campaigns
+
+- @campaigns.each do |campaign|
+  .panel.panel-default
+    .panel-heading
+      = campaign.name
+    .panel-body
+      %p
+        = campaign.description
+        = campaign.expires_at
+        = link_to 'Show', campaign
+        = link_to 'Edit', edit_dashboard_campaign_path(campaign)
+        = link_to 'Destroy', dashboard_campaign_path(campaign), method: :delete, data: { confirm: 'Are you sure?' }
+
+= link_to 'New Campaign', new_dashboard_campaign_path

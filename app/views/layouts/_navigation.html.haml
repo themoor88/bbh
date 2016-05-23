@@ -2,12 +2,24 @@
 %nav.navbar.navbar-default.navbar-fixed-top
   .container
     .navbar-header
-      %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+      %button.navbar-toggle{ 'data-target' => '.navbar-collapse', 'data-toggle' => 'collapse', type: 'button' }
         %span.sr-only Toggle navigation
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
       = link_to 'Home', root_path, class: 'navbar-brand'
+      = link_to 'All Campaigns', campaigns_path, class: 'navbar-brand'
+      - if tech_provider_signed_in?
+        = link_to 'My Proposed Solutions', dashboard_proposed_solutions_path, class: 'navbar-brand'
+        = link_to 'My Profile', edit_tech_provider_registration_path, class: 'navbar-brand'
+        = link_to 'Sign Out', destroy_tech_provider_session_path, method: :delete, class: 'navbar-brand'
+      - elsif tech_seeker_signed_in?
+        = link_to 'My Campaigns', dashboard_campaigns_path, class: 'navbar-brand'
+        = link_to 'My Profile', edit_tech_seeker_registration_path, class: 'navbar-brand'
+        = link_to 'Sign Out', destroy_tech_seeker_session_path, method: :delete, class: 'navbar-brand'
+      - else
+        = link_to 'Tech Provider', new_tech_provider_session_path, class: 'navbar-brand'
+        = link_to 'Tech Seeker', new_tech_seeker_session_path, class: 'navbar-brand'
     .collapse.navbar-collapse
       %ul.nav.navbar-nav
         = render 'layouts/navigation_links'

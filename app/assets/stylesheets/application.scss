@@ -1,0 +1,17 @@
+// NOTE: ASSETS We do not use require tree or require . to import scss files
+// Instead we use SASS @imports to pull them in manually for more control over ordering
+
+// External assets
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+@import 'font-awesome';
+@import 'select2';
+@import 'select2-bootstrap';
+
+// Internal assets including variables, colours and bootstrap overrides
+// Global styles
+@import 'base/base';
+
+// Page specific
+@import '1st_load_framework';
+@import 'business-frontpage';
