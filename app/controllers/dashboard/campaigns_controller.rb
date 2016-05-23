@@ -1,9 +1,10 @@
+# frozen_string_literal: true
 class Dashboard::CampaignsController < ApplicationController
   before_action :set_campaign, only: [:show, :edit, :update, :destroy]
 
   # GET /dashboard/campaigns
   def index
-    @campaigns = Campaign.all
+    @campaigns = current_tech_seeker.campaigns
   end
 
   # GET /dashboard/campaigns/1
@@ -12,7 +13,7 @@ class Dashboard::CampaignsController < ApplicationController
 
   # GET /dashboard/campaigns/new
   def new
-    @campaign = Campaign.new
+    @campaign = current_tech_seeker.campaigns.new
   end
 
   # GET /dashboard/campaigns/1/edit
@@ -21,7 +22,7 @@ class Dashboard::CampaignsController < ApplicationController
 
   # POST /dashboard/campaigns
   def create
-    @campaign = Campaign.new(campaign_params)
+    @campaign = current_tech_seeker.campaigns.new(campaign_params)
 
     respond_to do |format|
       if @campaign.save
@@ -57,13 +58,14 @@ class Dashboard::CampaignsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_campaign
-      @campaign = Campaign.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def campaign_params
-      params.fetch(:campaign, {})
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_campaign
+    @campaign = current_tech_seeker.campaigns.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def campaign_params
+    params.require(:campaign).permit(:name, :description, :expires_at)
+  end
 end

@@ -1,9 +1,10 @@
+# frozen_string_literal: true
 class Dashboard::ProposedSolutionsController < ApplicationController
   before_action :set_proposed_solution, only: [:show, :edit, :update, :destroy]
 
   # GET /dashboard/proposed_solutions
   def index
-    @proposed_solutions = ProposedSolution.all
+    @proposed_solutions = current_tech_provider.proposed_solutions
   end
 
   # GET /dashboard/proposed_solutions/1
@@ -12,7 +13,7 @@ class Dashboard::ProposedSolutionsController < ApplicationController
 
   # GET /dashboard/proposed_solutions/new
   def new
-    @proposed_solution = ProposedSolution.new
+    @proposed_solution = current_tech_provider.proposed_solutions.new
   end
 
   # GET /dashboard/proposed_solutions/1/edit
@@ -21,7 +22,7 @@ class Dashboard::ProposedSolutionsController < ApplicationController
 
   # POST /dashboard/proposed_solutions
   def create
-    @proposed_solution = ProposedSolution.new(proposed_solution_params)
+    @proposed_solution = current_tech_provider.proposed_solutions.new(proposed_solution_params)
 
     respond_to do |format|
       if @proposed_solution.save
@@ -57,13 +58,14 @@ class Dashboard::ProposedSolutionsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_proposed_solution
-      @proposed_solution = ProposedSolution.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def proposed_solution_params
-      params.fetch(:proposed_solution, {})
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_proposed_solution
+    @proposed_solution = current_tech_provider.proposed_solutions.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def proposed_solution_params
+    params.require(:proposed_solution).permit(:name, :description)
+  end
 end
