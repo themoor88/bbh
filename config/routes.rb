@@ -13,20 +13,30 @@ Rails.application.routes.draw do
     sessions: 'tech_seekers/devise/sessions'
   }
 
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'       # needs to be AFTER "devise_for :admins" otherwise the admin routes will be messed up
+  # needs to be AFTER "devise_for :admins" otherwise the admin routes will be messed up
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  root to: 'visitors#index'
-  resources :campaigns, only: [:index, :show, :new]
+  root 'home#index'
 
   authenticate :tech_provider do
+    resources :campaigns, only: [:index, :show]
     namespace :dashboard do
-      resources :proposed_solutions
+      resources :favorites, only: [:index, :create, :destroy]
+      resources :proposed_solutions, only: [:new, :create]
     end
   end
 
   authenticate :tech_seeker do
     namespace :dashboard do
-      resources :campaigns
+      resources :campaigns, only: [:index, :show]
     end
+  end
+
+  authenticated :tech_provider do
+    root 'campaigns#index', as: :authenticated_tech_provider_root
+  end
+
+  authenticated :tech_seeker do
+    root 'dashboard/campaigns#index', as: :authenticated_tech_seeker_root
   end
 end

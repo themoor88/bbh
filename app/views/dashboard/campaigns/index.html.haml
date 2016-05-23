@@ -8,8 +8,4 @@
       %p
         = campaign.description
         = campaign.expires_at
-        = link_to 'Show', campaign_path(campaign)
-        = link_to 'Edit', edit_dashboard_campaign_path(campaign)
-        = link_to 'Destroy', dashboard_campaign_path(campaign), method: :delete, data: { confirm: 'Are you sure?' }
-
-= link_to 'New Campaign', new_dashboard_campaign_path
+        = link_to 'Show', dashboard_campaign_path(campaign)

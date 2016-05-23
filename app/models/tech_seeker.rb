@@ -5,6 +5,7 @@
 #
 #  id                     :integer          not null, primary key
 #  email                  :string(255)      default(""), not null
+#  active                 :boolean          default(FALSE)
 #  encrypted_password     :string(255)      default(""), not null
 #  reset_password_token   :string(255)
 #  reset_password_sent_at :datetime
@@ -25,13 +26,13 @@
 
 # frozen_string_literal: true
 class TechSeeker < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  #------------------------------------------------------------------------------
+  # Devise modules
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
+
   #------------------------------------------------------------------------------
   # Associations
-  has_many :campaigns, dependent: :destroy
+  has_many :campaigns
 
   #------------------------------------------------------------------------------
   # Scopes
@@ -53,6 +54,17 @@ class TechSeeker < ActiveRecord::Base
 
   #------------------------------------------------------------------------------
   # Instance methods
+  def active_for_authentication?
+    super && active?
+  end
+
+  def inactive_message
+    if !active?
+      'Sorry this account is not active yet.'
+    else
+      super
+    end
+  end
 
   #------------------------------------------------------------------------------
   # Rails Admin Config

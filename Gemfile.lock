@@ -102,7 +102,6 @@ GEM
       rake (>= 10, < 12)
       rubocop (>= 0.36.0)
       sysexits (~> 1.1)
-    high_voltage (3.0.0)
     html2haml (2.0.0)
       erubis (~> 2.7.0)
       haml (~> 4.0.0)
@@ -288,7 +287,6 @@ DEPENDENCIES
   font-awesome-rails
   haml-rails
   haml_lint
-  high_voltage
   html2haml
   jbuilder (~> 2.0)
   jquery-rails
