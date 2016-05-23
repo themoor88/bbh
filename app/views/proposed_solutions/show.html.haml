@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @proposed_solution.name
+%p
+  %b Description:
+  = @proposed_solution.description
+%p
+  %b State:
+  = @proposed_solution.state
+
+= link_to 'Edit', edit_proposed_solution_path(@proposed_solution)
+\|
+= link_to 'Back', proposed_solutions_path

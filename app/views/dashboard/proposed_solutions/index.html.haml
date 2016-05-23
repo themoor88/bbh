@@ -1,0 +1,19 @@
+%h1 Listing dashboard_proposed_solutions
+
+%table
+  %thead
+    %tr
+      %th
+      %th
+      %th
+
+  %tbody
+    - @dashboard_proposed_solutions.each do |dashboard_proposed_solution|
+      %tr
+        %td= link_to 'Show', dashboard_proposed_solution
+        %td= link_to 'Edit', edit_dashboard_proposed_solution_path(dashboard_proposed_solution)
+        %td= link_to 'Destroy', dashboard_proposed_solution, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Proposed solution', new_dashboard_proposed_solution_path
