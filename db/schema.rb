@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160523165240) do
+ActiveRecord::Schema.define(version: 20160523203813) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -62,36 +62,38 @@ ActiveRecord::Schema.define(version: 20160523165240) do
   add_index "proposed_solutions", ["tech_provider_id"], name: "index_proposed_solutions_on_tech_provider_id", using: :btree
 
   create_table "tech_providers", force: :cascade do |t|
-    t.string   "email",                  limit: 255, default: "", null: false
-    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "email",                  limit: 255, default: "",    null: false
+    t.boolean  "active",                             default: false
+    t.string   "encrypted_password",     limit: 255, default: "",    null: false
     t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
+    t.integer  "sign_in_count",          limit: 4,   default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip",     limit: 255
     t.string   "last_sign_in_ip",        limit: 255
-    t.datetime "created_at",                                      null: false
-    t.datetime "updated_at",                                      null: false
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
   end
 
   add_index "tech_providers", ["email"], name: "index_tech_providers_on_email", unique: true, using: :btree
   add_index "tech_providers", ["reset_password_token"], name: "index_tech_providers_on_reset_password_token", unique: true, using: :btree
 
   create_table "tech_seekers", force: :cascade do |t|
-    t.string   "email",                  limit: 255, default: "", null: false
-    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "email",                  limit: 255, default: "",    null: false
+    t.boolean  "active",                             default: false
+    t.string   "encrypted_password",     limit: 255, default: "",    null: false
     t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
+    t.integer  "sign_in_count",          limit: 4,   default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip",     limit: 255
     t.string   "last_sign_in_ip",        limit: 255
-    t.datetime "created_at",                                      null: false
-    t.datetime "updated_at",                                      null: false
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
   end
 
   add_index "tech_seekers", ["email"], name: "index_tech_seekers_on_email", unique: true, using: :btree

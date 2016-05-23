@@ -13,6 +13,8 @@ class ApplicationController < ActionController::Base
       dashboard_campaigns_path
     elsif resource.is_a? TechProvider
       campaigns_path
+    elsif resource.is_a? Admin
+      rails_admin.dashboard_path
     else
       super
     end

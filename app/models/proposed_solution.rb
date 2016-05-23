@@ -33,6 +33,7 @@ class ProposedSolution < ActiveRecord::Base
 
   #------------------------------------------------------------------------------
   # Callbacks
+  # after_create :send_email_to_admin
 
   #------------------------------------------------------------------------------
   # Enumerations
