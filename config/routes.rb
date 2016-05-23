@@ -16,7 +16,6 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'       # needs to be AFTER "devise_for :admins" otherwise the admin routes will be messed up
 
   root to: 'visitors#index'
-  resources :proposed_solutions, only: [:index, :show]
   resources :campaigns, only: [:index, :show, :new]
 
   authenticate :tech_provider do
