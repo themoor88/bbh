@@ -7,12 +7,7 @@
   %b Description:
   = @campaign.description
 %p
-  %b State:
-  = @campaign.state
-%p
   %b Expires at:
   = @campaign.expires_at
 
-= link_to 'Edit', edit_campaign_path(@campaign)
-\|
 = link_to 'Back', campaigns_path

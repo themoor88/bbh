@@ -1,19 +1,14 @@
-%h1 Listing dashboard_proposed_solutions
+%h1 Listing My Proposed Solutions
 
-%table
-  %thead
-    %tr
-      %th
-      %th
-      %th
+- @proposed_solutions.each do |proposed_solution|
+  .panel.panel-default
+    .panel-heading
+      = proposed_solution.name
+    .panel-body
+      %p
+        = proposed_solution.description
+        = link_to 'Show', proposed_solution
+        = link_to 'Edit', edit_dashboard_proposed_solution_path(proposed_solution)
+        = link_to 'Destroy', dashboard_proposed_solution_path(proposed_solution), method: :delete, data: { confirm: 'Are you sure?' }
 
-  %tbody
-    - @dashboard_proposed_solutions.each do |dashboard_proposed_solution|
-      %tr
-        %td= link_to 'Show', dashboard_proposed_solution
-        %td= link_to 'Edit', edit_dashboard_proposed_solution_path(dashboard_proposed_solution)
-        %td= link_to 'Destroy', dashboard_proposed_solution, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Proposed solution', new_dashboard_proposed_solution_path
+= link_to 'New Proposed Solution', new_proposed_solution_path

@@ -1,5 +1,13 @@
-%h1 New dashboard_proposed_solution
+%h1 New Proposed Solution
 
-= render 'form'
+= simple_form_for(@proposed_solution, url: dashbord_proposed_solutions_path) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :description
+
+  .form-actions
+    = f.button :submit
 
 = link_to 'Back', dashboard_proposed_solutions_path

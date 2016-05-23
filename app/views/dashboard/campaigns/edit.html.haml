@@ -1,7 +1,16 @@
-%h1 Editing dashboard_campaign
+%h1 Editing Campaign
 
-= render 'form'
+= simple_form_for(@campaign, url: dashboard_campaign_path) do |f|
+  = f.error_notification
 
-= link_to 'Show', @dashboard_campaign
+  .form-inputs
+    = f.input :name
+    = f.input :description
+    = f.input :expires_at
+
+  .form-actions
+    = f.button :submit
+
+= link_to 'Show', @campaign
 \|
 = link_to 'Back', dashboard_campaigns_path

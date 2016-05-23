@@ -1,7 +1,15 @@
-%h1 Editing dashboard_proposed_solution
+%h1 Editing Proposed Solution
 
-= render 'form'
+= simple_form_for(@proposed_solution, url: dashboard_proposed_solution_path) do |f|
+  = f.error_notification
 
-= link_to 'Show', @dashboard_proposed_solution
+  .form-inputs
+    = f.input :name
+    = f.input :description
+
+  .form-actions
+    = f.button :submit
+
+= link_to 'Show', @proposed_solution
 \|
 = link_to 'Back', dashboard_proposed_solutions_path
