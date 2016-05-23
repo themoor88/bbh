@@ -9,6 +9,7 @@ class CampaignsController < ApplicationController
 
   # GET /campaigns/1
   def show
+    @existing_proposed_solution = current_tech_provider.proposed_solutions.where(campaign: @campaign)
   end
 
   private

@@ -9,3 +9,6 @@
 %p
   %b Expires at:
   = @campaign.expires_at
+
+- unless @existing_proposed_solution.present?
+  %button.btn.btn-primary.apply-now Apply Now
