@@ -22,7 +22,7 @@ class Campaign < ActiveRecord::Base
   #------------------------------------------------------------------------------
   # Associations
   belongs_to :tech_seeker
-  has_many :proposed_solutions, dependent: :destroy
+  has_many :proposed_solutions
 
   #------------------------------------------------------------------------------
   # Scopes
