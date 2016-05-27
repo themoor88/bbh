@@ -1,0 +1,2 @@
+class TechProviderMailer < ApplicationMailer
+end

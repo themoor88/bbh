@@ -1,0 +1,2 @@
+class TechSeekerMailer < ApplicationMailer
+end
