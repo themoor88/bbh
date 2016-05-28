@@ -1,13 +1,13 @@
 # frozen_string_literal: true
-class Dashboard::FavoritesController < ApplicationController
+class FavoritesController < ApplicationController
   before_action :set_favorite, only: [:destroy]
 
-  # GET /dashboard/favorites
+  # GET /favorites
   def index
     @favorites = Like.all
   end
 
-  # POST /dashboard/favorites
+  # POST /favorites
   def create
     @favorite = Like.new(favorite_params)
 
@@ -20,7 +20,7 @@ class Dashboard::FavoritesController < ApplicationController
     end
   end
 
-  # DELETE /dashboard/favorites/1
+  # DELETE /favorites/1
   def destroy
     @favorite.destroy
     respond_to do |format|
@@ -29,11 +29,6 @@ class Dashboard::FavoritesController < ApplicationController
   end
 
   private
-
-  # Use callbacks to share common setup or constraints between actions.
-  def set_favorite
-    @favorite = Like.find(params[:id])
-  end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def favorite_params

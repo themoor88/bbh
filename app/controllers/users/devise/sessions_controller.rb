@@ -1,5 +1,4 @@
-# frozen_string_literal: true
-class TechSeekers::Devise::SessionsController < Devise::SessionsController
+class Users::Devise::SessionsController < Devise::SessionsController
   include Accessible
   before_action :check_user, only: [:new]
   # before_action :configure_sign_in_params, only: [:create]

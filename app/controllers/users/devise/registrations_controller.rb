@@ -1,5 +1,4 @@
-# frozen_string_literal: true
-class TechProviders::Devise::RegistrationsController < Devise::RegistrationsController
+class Users::Devise::RegistrationsController < Devise::RegistrationsController
   include Accessible
   before_action :check_user, only: [:new]
   # before_action :configure_sign_up_params, only: [:create]

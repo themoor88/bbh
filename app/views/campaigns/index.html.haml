@@ -1,11 +1,14 @@
-%h1 Listing campaigns
+%h1 Listing My Campaigns
 
 - @campaigns.each do |campaign|
   .panel.panel-default
     .panel-heading
-      = campaign.name
+      = campaign.title
     .panel-body
       %p
-        = campaign.description
-        = campaign.expires_at
+        = campaign.sub_title
+        = campaign.sector
+        = campaign.country
+        = campaign.targeted_time_to_market
+        = campaign.expected_trl
         = link_to 'Show', campaign_path(campaign)

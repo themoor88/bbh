@@ -10,7 +10,7 @@ $(function() {
     function addProposedSolution(campaignId) {
       if (!sendingData) {
         $.ajax({
-          url: '/dashboard/proposed_solutions/new',
+          url: '/proposed_solutions/new',
           type: 'GET',
           dataType: 'HTML',
           data: { campaign_id: campaignId }
