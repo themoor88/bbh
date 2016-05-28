@@ -3,26 +3,33 @@
 #
 # Table name: campaigns
 #
-#  id             :integer          not null, primary key
-#  tech_seeker_id :integer
-#  name           :string(255)
-#  description    :text(65535)
-#  state          :string(255)
-#  expires_at     :datetime
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
+#  id                      :integer          not null, primary key
+#  user_id                 :integer
+#  title                   :string(255)
+#  sub_title               :text(65535)
+#  sector                  :string(255)
+#  country                 :string(255)
+#  targeted_time_to_market :string(255)
+#  expected_trl            :string(255)
+#  state                   :string(255)
+#  created_at              :datetime         not null
+#  updated_at              :datetime         not null
 #
 # Indexes
 #
-#  index_campaigns_on_tech_seeker_id  (tech_seeker_id)
+#  index_campaigns_on_user_id  (user_id)
 #
 
-# frozen_string_literal: true
 class Campaign < ActiveRecord::Base
+  include ClassyEnum::ActiveRecord
   #------------------------------------------------------------------------------
   # Associations
-  belongs_to :tech_seeker
+  belongs_to :user
   has_many :proposed_solutions
+
+  #------------------------------------------------------------------------------
+  # Enumerations
+  classy_enum_attr :sector
 
   #------------------------------------------------------------------------------
   # Scopes
@@ -32,6 +39,7 @@ class Campaign < ActiveRecord::Base
 
   #------------------------------------------------------------------------------
   # Callbacks
+  # after_create :send_email_to_admin
 
   #------------------------------------------------------------------------------
   # Enumerations
@@ -47,6 +55,13 @@ class Campaign < ActiveRecord::Base
 
   #------------------------------------------------------------------------------
   # Rails Admin Config
+  rails_admin do
+    configure :sector, :enum do
+      enum do
+        Sector.select_options
+      end
+    end
+  end
 
   #------------------------------------------------------------------------------
   # private

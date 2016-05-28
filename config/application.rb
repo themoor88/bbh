@@ -31,5 +31,8 @@ module BaehlBusinessHub
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # Add classy enum path
+    config.autoload_paths = %W(#{config.root}/app/enums)
   end
 end

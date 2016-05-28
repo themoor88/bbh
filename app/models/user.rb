@@ -1,11 +1,20 @@
 # frozen_string_literal: true
 # == Schema Information
 #
-# Table name: tech_seekers
+# Table name: users
 #
 #  id                     :integer          not null, primary key
+#  role                   :string(255)
 #  email                  :string(255)      default(""), not null
-#  active                 :boolean          default(FALSE)
+#  first_name             :string(255)
+#  last_name              :string(255)
+#  position               :string(255)
+#  company                :string(255)
+#  company_type           :string(255)
+#  telephone              :string(255)
+#  mobile                 :string(255)
+#  address                :string(255)
+#  country                :string(255)
 #  encrypted_password     :string(255)      default(""), not null
 #  reset_password_token   :string(255)
 #  reset_password_sent_at :datetime
@@ -20,12 +29,12 @@
 #
 # Indexes
 #
-#  index_tech_seekers_on_email                 (email) UNIQUE
-#  index_tech_seekers_on_reset_password_token  (reset_password_token) UNIQUE
+#  index_users_on_email                 (email) UNIQUE
+#  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 
-# frozen_string_literal: true
-class TechSeeker < ActiveRecord::Base
+class User < ActiveRecord::Base
+  include ClassyEnum::ActiveRecord
   #------------------------------------------------------------------------------
   # Devise modules
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
@@ -33,6 +42,11 @@ class TechSeeker < ActiveRecord::Base
   #------------------------------------------------------------------------------
   # Associations
   has_many :campaigns
+  has_many :proposed_solutions
+
+  #------------------------------------------------------------------------------
+  # Enumerations
+  classy_enum_attr :role, allow_nil: false, allow_blank: false
 
   #------------------------------------------------------------------------------
   # Scopes
@@ -54,21 +68,16 @@ class TechSeeker < ActiveRecord::Base
 
   #------------------------------------------------------------------------------
   # Instance methods
-  def active_for_authentication?
-    super && active?
-  end
-
-  def inactive_message
-    if !active?
-      'Sorry this account is not active yet.'
-    else
-      super
-    end
-  end
 
   #------------------------------------------------------------------------------
   # Rails Admin Config
-
+  rails_admin do
+    configure :country, :enum do
+      enum do
+        # country_select('user', 'country')
+      end
+    end
+  end
   #------------------------------------------------------------------------------
   # private
 end

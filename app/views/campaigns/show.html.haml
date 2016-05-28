@@ -2,13 +2,17 @@
 
 %p
   %b Name:
-  = @campaign.name
+  = @campaign.title
 %p
-  %b Description:
-  = @campaign.description
+  %b Sub- Title:
+  = @campaign.sub_title
 %p
-  %b Expires at:
-  = @campaign.expires_at
+  %b Other fields:
+  = @campaign.sub_title
+  = @campaign.sector
+  = @campaign.country
+  = @campaign.targeted_time_to_market
+  = @campaign.expected_trl
 
-- unless @existing_proposed_solution.present?
-  %button.btn.btn-primary.apply-now{ data: { 'campaign-id': @campaign.id } } Apply Now
+- if current_user.role == :tech_provider
+  .button.btn.btn-primary.apply-now{ data: { 'campaign-id': @campaign.id } } Apply Now

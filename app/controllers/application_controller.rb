@@ -9,10 +9,6 @@ class ApplicationController < ActionController::Base
     redirect_location = stored_location_for(resource)
     if redirect_location.present?
       redirect_location
-    elsif resource.is_a? TechSeeker
-      dashboard_campaigns_path
-    elsif resource.is_a? TechProvider
-      campaigns_path
     elsif resource.is_a? Admin
       rails_admin.dashboard_path
     else

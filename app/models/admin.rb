@@ -27,7 +27,7 @@
 class Admin < ActiveRecord::Base
   #------------------------------------------------------------------------------
   # Devise modules
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
 
   #------------------------------------------------------------------------------
   # Associations
