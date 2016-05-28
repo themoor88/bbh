@@ -1,9 +1,27 @@
-// html {
-//   box-sizing: border-box;
-// }
+* {
+  margin: 0;
+  padding: 0;
+}
 
-// *,
-// *::before,
-// *::after {
-//   box-sizing: inherit;
-// }
+html,
+body {
+  height: 100%;
+}
+
+.wrapper {
+  display: flex;
+  min-height: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  flex: 1;
+
+  .container {
+    flex: 1;
+  }
+}
