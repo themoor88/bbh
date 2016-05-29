@@ -1,0 +1,88 @@
+nav.navbar {
+  width: 100%;
+  border-radius: 0;
+  margin: 0;
+  border: 0;
+  z-index: 1;
+
+  &.primary {
+    min-height: 51px;
+    background-color: $grey;
+    border-top: 3px solid $green;
+
+    .contact-us,
+    .social-icons {
+      padding: 15px;
+    }
+
+    .social-icons {
+      color: $orange;
+    }
+  }
+
+  &.secondary {
+    min-height: 111px;
+    background-color: $white;
+    padding: 0 50px;
+
+    .navbar-links {
+      display: flex;
+
+      .navbar-link {
+        padding: 30px;
+      }
+
+      .profile-dropdown {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        width: 185px;
+        height: 164px;
+        right: 75px;
+        top: 105px;
+        background-color: $white;
+        box-shadow: 1px 7px 15px 2px $translucent-grey;
+
+        .dropdown-link {
+          &:hover,
+          &:active,
+          &:focus,
+          &:active:hover,
+          &:active:focus,
+          &:active.focus,
+          &.active:hover,
+          &.active:focus,
+          &.active.focus {
+            background-color: $grey;
+          };
+        }
+      }
+    }
+  }
+
+  &.tertiary {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: $white;
+    z-index: 0;
+
+    .home {
+      display: flex;
+      align-items: center;
+
+      .home-link {
+        margin: 5px;
+      }
+    }
+
+    p {
+      padding: 20px;
+      margin: 0;
+    }
+  }
+
+  .navbar-logo {
+    width: 200px;
+    margin: 30px;
+  }
+}

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 class CampaignsController < ApplicationController
-
   # GET /campaigns
   def index
     if current_user.role == :tech_provider
@@ -18,9 +17,7 @@ class CampaignsController < ApplicationController
       @campaign = current_user.campaigns.find(params[:id])
     end
   rescue ActiveRecord::RecordNotFound
-    flash[:error] = "Something went wrong. Please try again."
+    flash[:error] = 'Something went wrong. Please try again.'
     redirect_to campaigns_path
   end
-
-  private
 end

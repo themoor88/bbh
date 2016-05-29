@@ -15,7 +15,7 @@ Admin.create! email: 'chantal_admin@example.com', password: 'password', password
 n_campaigns_per_user = 5
 
 n_campaigns_per_user.times do
-  Campaign.create! user: User.first, sector: :cosmetic
+  Campaign.create! user: User.fourth, sub_title: Faker::Hipster.word, sector: :cosmetic, country: 'Canada'
 end
 
 # n_campaigns_per_user.times do

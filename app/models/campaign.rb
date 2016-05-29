@@ -36,6 +36,7 @@ class Campaign < ActiveRecord::Base
 
   #------------------------------------------------------------------------------
   # Validations
+  # validates :title, :sub_title, :sector, :country, presence: true
 
   #------------------------------------------------------------------------------
   # Callbacks

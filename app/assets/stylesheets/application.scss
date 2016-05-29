@@ -11,7 +11,9 @@
 // Internal assets including variables, colours and bootstrap overrides
 // Global styles
 @import 'base/base';
+@import 'navigation';
+@import 'footer';
 
 // Page specific
-@import '1st_load_framework';
-@import 'business-frontpage';
+@import 'home';
+@import 'campaigns';
