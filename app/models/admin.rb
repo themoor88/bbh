@@ -25,8 +25,37 @@
 
 # frozen_string_literal: true
 class Admin < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  #------------------------------------------------------------------------------
+  # Devise modules
+  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
+
+  #------------------------------------------------------------------------------
+  # Associations
+
+  #------------------------------------------------------------------------------
+  # Scopes
+
+  #------------------------------------------------------------------------------
+  # Validations
+
+  #------------------------------------------------------------------------------
+  # Callbacks
+
+  #------------------------------------------------------------------------------
+  # Enumerations
+
+  #------------------------------------------------------------------------------
+  # AASM definitions
+
+  #------------------------------------------------------------------------------
+  # Class methods
+
+  #------------------------------------------------------------------------------
+  # Instance methods
+
+  #------------------------------------------------------------------------------
+  # Rails Admin Config
+
+  #------------------------------------------------------------------------------
+  # private
 end

@@ -1,25 +1,45 @@
--# navigation styled for Bootstrap 3.0
-%nav.navbar.navbar-default.navbar-fixed-top
-  .container
-    .navbar-header
-      %button.navbar-toggle{ 'data-target' => '.navbar-collapse', 'data-toggle' => 'collapse', type: 'button' }
-        %span.sr-only Toggle navigation
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-      = link_to 'Home', root_path, class: 'navbar-brand'
-      = link_to 'All Campaigns', campaigns_path, class: 'navbar-brand'
-      - if tech_provider_signed_in?
-        = link_to 'My Proposed Solutions', dashboard_proposed_solutions_path, class: 'navbar-brand'
-        = link_to 'My Profile', edit_tech_provider_registration_path, class: 'navbar-brand'
-        = link_to 'Sign Out', destroy_tech_provider_session_path, method: :delete, class: 'navbar-brand'
-      - elsif tech_seeker_signed_in?
-        = link_to 'My Campaigns', dashboard_campaigns_path, class: 'navbar-brand'
-        = link_to 'My Profile', edit_tech_seeker_registration_path, class: 'navbar-brand'
-        = link_to 'Sign Out', destroy_tech_seeker_session_path, method: :delete, class: 'navbar-brand'
-      - else
-        = link_to 'Tech Provider', new_tech_provider_session_path, class: 'navbar-brand'
-        = link_to 'Tech Seeker', new_tech_seeker_session_path, class: 'navbar-brand'
-    .collapse.navbar-collapse
-      %ul.nav.navbar-nav
-        = render 'layouts/navigation_links'
+- unless user_signed_in?
+  %nav.navbar.primary
+    %p.contact-us.pull-left Contact Us Today! +33 (0)144.10.41.43
+    .social-icons.pull-right
+      = fa_icon 'twitter-square', class: 'fa-2x'
+      = fa_icon 'linkedin-square', class: 'fa-2x'
+
+%nav.navbar.secondary
+  = link_to root_path, class: 'navbar-logo pull-left' do
+    = image_tag('logo.png', class: 'img-responsive')
+
+  .navbar-links.pull-right
+    - if user_signed_in?
+      = link_to '#', class: 'navbar-link text-center' do
+        = fa_icon 'phone', class: 'fa-3x'
+        %p +33 (0) 144.44.44.44
+      = link_to favorites_path, class: 'navbar-link text-center' do
+        = fa_icon 'heart', class: 'fa-3x'
+        %p My Favorites
+      = link_to '#', class: 'navbar-link text-center my-profile' do
+        = fa_icon 'bars', class: 'fa-3x'
+        %p My Account
+      .profile-dropdown.hidden
+        = link_to 'My Profile', edit_user_registration_path, class: 'navbar-link dropdown-link'
+        = link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'navbar-link dropdown-link'
+    - else
+      = link_to 'Home', root_path, class: 'navbar-link'
+      = link_to 'Baehl Innovation', 'http://baehl-innovation.com', class: 'navbar-link'
+      = link_to 'Who', 'http://baehl-innovation.com/who-we-are', class: 'navbar-link'
+      = link_to 'What', 'http://baehl-innovation.com/bbh', class: 'navbar-link'
+      = link_to 'Where', 'http://baehl-innovation.com/where-we-work', class: 'navbar-link'
+      = link_to 'Contact', 'http://baehl-innovation.com/contact', class: 'navbar-link'
+
+- if user_signed_in?
+  %nav.navbar.tertiary
+    %p.home.pull-left
+      = link_to 'Home', root_path, class: 'home-link'
+      = link_to '#' do
+        = fa_icon 'info-circle', class: 'fa-2x'
+    %p.back-to-listings.pull-right
+      = fa_icon 'fast-backward'
+      = link_to 'Back to All Campaign Listings', root_path
+      - if @proposed_solution.present?
+        = fa_icon 'step-backward'
+        = link_to 'Back to Campaign', campaign_path(@campaign)

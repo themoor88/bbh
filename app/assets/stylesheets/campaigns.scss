@@ -1,0 +1,43 @@
+body.campaigns {
+  &.index {
+    .campaign-grid {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+
+      .campaign-item {
+        flex-basis: 50%;
+
+        @media #{$sm-down} {
+          flex-basis: 100%;
+        }
+      }
+    }
+
+    .campaign-panel {
+      margin: 30px;
+
+      .panel-heading {
+        max-height: 220px;
+      }
+
+      .panel-body {
+        position: relative;
+
+        .countdown {
+          position: absolute;
+          margin: 10px;
+          bottom: 0;
+          left: 0;
+        }
+
+        .single-campaign-link {
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          margin: 5px;
+        }
+      }
+    }
+  }
+}

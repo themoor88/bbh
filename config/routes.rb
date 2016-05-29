@@ -1,32 +1,27 @@
 Rails.application.routes.draw do
+  devise_for :users, controllers: {
+    registrations: 'users/devise/registrations',
+    sessions: 'users/devise/sessions'
+  }
+
   devise_for :admins, skip: [:registrations], controllers: {
     sessions: 'admins/devise/sessions'
   }
 
-  devise_for :tech_providers, controllers: {
-    registrations: 'tech_providers/devise/registrations',
-    sessions: 'tech_providers/devise/sessions'
-  }
+  # needs to be AFTER "devise_for :admins" otherwise the admin routes will be messed up
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  devise_for :tech_seekers, controllers: {
-    registrations: 'tech_seekers/devise/registrations',
-    sessions: 'tech_seekers/devise/sessions'
-  }
 
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'       # needs to be AFTER "devise_for :admins" otherwise the admin routes will be messed up
-
-  root to: 'visitors#index'
-  resources :campaigns, only: [:index, :show, :new]
-
-  authenticate :tech_provider do
-    namespace :dashboard do
-      resources :proposed_solutions
+  authenticate :user do
+    resources :campaigns, only: [:index, :show] do
+      resources :proposed_solutions, only: [:new, :create]
     end
+    resources :favorites, only: [:index, :create, :destroy]
   end
 
-  authenticate :tech_seeker do
-    namespace :dashboard do
-      resources :campaigns
-    end
+  authenticated :user do
+    root to: 'campaigns#index', as: :authenticated_root
   end
+
+  root 'home#index'
 end

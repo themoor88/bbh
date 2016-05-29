@@ -1,14 +1,70 @@
-.authform
-  = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { role: 'form' }) do |f|
-    %h3 Sign up
-    = devise_error_messages!
-    .form-group
-      = f.label :email
-      = f.email_field :email, class: 'form-control'
-    .form-group
-      = f.label :password
-      = f.password_field :password, class: 'form-control'
-    .form-group
-      = f.label :password_confirmation
-      = f.password_field :password_confirmation, class: 'form-control'
-    = f.submit 'Sign up', class: 'button right'
+.row
+  .col-md-12
+    .panel.panel-default
+      .panel-heading.text-center
+        %h2 Baehl Business Hub Membership Form
+      .panel-body
+        = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+          = f.error_notification
+          .row
+            .col-sm-offset-2.col-sm-4
+              %p First Name
+            .col-sm-4
+              = f.input :first_name, label: false
+          .row
+            .col-sm-offset-2.col-sm-4
+              %p Last Name
+            .col-sm-4
+              = f.input :last_name, label: false
+          .row
+            .col-sm-offset-2.col-sm-4
+              %p Position
+            .col-sm-4
+              = f.input :position, label: false
+          .row
+            .col-sm-offset-2.col-sm-4
+              %p Company
+            .col-sm-4
+              = f.input :company, label: false
+          .row
+            .col-sm-offset-2.col-sm-4
+              %p Business Telephone
+            .col-sm-4
+              = f.input :telephone, label: false
+          .row
+            .col-sm-offset-2.col-sm-4
+              %p Mobile Phone (optional)
+            .col-sm-4
+              = f.input :mobile, label: false
+          .row
+            .col-sm-offset-2.col-sm-4
+              %p Business Email
+            .col-sm-4
+              = f.input :email, label: false
+          .row
+            .col-sm-offset-2.col-sm-4
+              %p Country
+            .col-sm-4
+              = f.input :country, label: false
+          .row
+            .col-sm-offset-2.col-sm-8
+              %br
+              %h2 More About Your Business:
+              %br
+          .row
+            .col-sm-offset-2.col-sm-4
+              %p Company Type
+            .col-sm-4
+              = f.input :role, label: false, collection: Role.select_options, include_blank: 'Select One', input_html: { class: 'select2' }
+          .row
+            .col-sm-offset-2.col-sm-4
+              %p Choose a Password
+            .col-sm-4
+              = f.input :password, label: false, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length)
+          .row
+            .col-sm-offset-2.col-sm-4
+              %p Confirm Password
+            .col-sm-4
+              = f.input :password_confirmation, label: false
+          .text-center
+            = f.button :submit, 'Sign up', class: 'btn btn-primary'

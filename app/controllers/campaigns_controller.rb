@@ -1,25 +1,23 @@
 # frozen_string_literal: true
 class CampaignsController < ApplicationController
-  before_action :set_campaign, only: [:show, :edit, :update, :destroy]
-
   # GET /campaigns
   def index
-    @campaigns = Campaign.all
+    if current_user.role == :tech_provider
+      @campaigns = Campaign.all
+    elsif current_user.role == :tech_seeker
+      @campaigns = current_user.campaigns
+    end
   end
 
   # GET /campaigns/1
   def show
-  end
-
-  private
-
-  # Use callbacks to share common setup or constraints between actions.
-  def set_campaign
-    @campaign = Campaign.find(params[:id])
-  end
-
-  # Never trust parameters from the scary internet, only allow the white list through.
-  def campaign_params
-    params.require(:campaign).permit(:name, :description, :state, :expires_at)
+    if current_user.role == :tech_provider
+      @campaign = Campaign.find(params[:id])
+    elsif current_user.role == :tech_seeker
+      @campaign = current_user.campaigns.find(params[:id])
+    end
+  rescue ActiveRecord::RecordNotFound
+    flash[:error] = 'Something went wrong. Please try again.'
+    redirect_to campaigns_path
   end
 end

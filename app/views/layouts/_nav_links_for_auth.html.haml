@@ -1,8 +1,14 @@
-- if user_signed_in?
-  %li= link_to 'Edit account', edit_user_registration_path
-  %li= link_to 'Sign out', destroy_user_session_path, method: 'delete'
+- if user_signed_in? && current_user.role == :tech_provider
+  = link_to 'All Campaigns', campaigns_path, class: 'navbar-brand'
+  = link_to 'My Favorites', favorites_path, class: 'navbar-brand'
+  = link_to 'My Profile', edit_user_registration_path, class: 'navbar-brand'
+  = link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'navbar-brand'
+- elsif user_signed_in? && current_user.role == :tech_seeker
+  = link_to 'My Campaigns', campaigns_path, class: 'navbar-brand'
+  = link_to 'My Favorites', favorites_path, class: 'navbar-brand'
+  = link_to 'My Profile', edit_user_registration_path, class: 'navbar-brand'
+  = link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'navbar-brand'
 - else
-  %li= link_to 'Sign in', new_user_session_path
-  %li= link_to 'Sign up', new_user_registration_path
-- if user_signed_in?
-  %li= link_to 'Users', users_path
+  = link_to 'Home', root_path, class: 'navbar-brand'
+  = link_to 'Sign Up', new_user_registration_path, class: 'navbar-brand'
+  = link_to 'Log In', new_user_session_path, class: 'navbar-brand'

@@ -1,13 +1,36 @@
-%p#notice= notice
+.row
+  .col-md-offset-1.col-md-10
+    .panel.panel-default
+      .panel-heading
+        %h2{ style: 'display: inline-block;' }
+          = @campaign.sub_title
+        .countdown.pull-right.text-center
+          = fa_icon 'clock-o', class: 'fa-3x'
+          %p Countdown
+      .panel-body
+        = image_tag('http://placehold.it/1500x200', class: 'img-responsive')
+        %h2 <u>Our Company</u>
+        %p= Faker::Lorem.paragraph
+        %h2 <u>Our Needs</u>
+        %p= Faker::Lorem.paragraph
+        .opportunity-specifications
+          %h2 <u>Opportunity Specifications</u>
+        .row
+          .col-md-4
+            %p Sector:
+            %p Country:
+            %p Targeted Time To Market:
+            %p Expected TRL:
 
-%p
-  %b Name:
-  = @campaign.name
-%p
-  %b Description:
-  = @campaign.description
-%p
-  %b Expires at:
-  = @campaign.expires_at
-
-= link_to 'Back', campaigns_path
+          .col-md-4
+            %p= @campaign.sector.to_s.titleize
+            %p= @campaign.country
+            %p= @campaign.targeted_time_to_market
+            %p= @campaign.expected_trl
+        %br
+        = link_to '#', class: 'pull-left' do
+          = fa_icon 'heart-o'
+          %p{ style: 'display: inline-block;' } Add To Favorites
+        - if current_user.role == :tech_provider
+          .text-center
+            = link_to 'Apply Now', new_campaign_proposed_solution_path(@campaign), class: 'btn btn-primary'
