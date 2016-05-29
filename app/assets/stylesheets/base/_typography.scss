@@ -1,9 +1,9 @@
-// body {
-//   color: $base-font-color;
-//   font-family: $base-font-family;
-//   font-size: $base-font-size;
-//   line-height: $base-line-height;
-// }
+body {
+  color: $dark-grey;
+  font-size: 16px;
+  // font-family: $base-font-family;
+  // line-height: $base-line-height;
+}
 
 // h1,
 // h2,
@@ -21,17 +21,17 @@
 //   margin: 0 0 $small-spacing;
 // }
 
-// a {
-//   color: $action-color;
-//   text-decoration: none;
-//   transition: color $base-duration $base-timing;
+a {
+  color: $dark-grey;
+  text-decoration: none;
 
-//   &:active,
-//   &:focus,
-//   &:hover {
-//     color: shade($action-color, 25%);
-//   }
-// }
+  &:active,
+  &:focus,
+  &:hover {
+    color: shade($dark-grey, 25%);
+    text-decoration: none;
+  }
+}
 
 // hr {
 //   border-bottom: $base-border;

@@ -8,6 +8,10 @@ body {
   height: 100%;
 }
 
+body {
+  background-color: $base-background-color;
+}
+
 .wrapper {
   display: flex;
   min-height: 100%;

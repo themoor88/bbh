@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Users::Devise::SessionsController < Devise::SessionsController
   include Accessible
   before_action :check_user, only: [:new]

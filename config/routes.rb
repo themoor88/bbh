@@ -11,11 +11,17 @@ Rails.application.routes.draw do
   # needs to be AFTER "devise_for :admins" otherwise the admin routes will be messed up
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  root 'home#index'
 
   authenticate :user do
-    resources :campaigns, only: [:index, :show]
+    resources :campaigns, only: [:index, :show] do
+      resources :proposed_solutions, only: [:new, :create]
+    end
     resources :favorites, only: [:index, :create, :destroy]
-    resources :proposed_solutions, only: [:new, :create]
   end
+
+  authenticated :user do
+    root to: 'campaigns#index', as: :authenticated_root
+  end
+
+  root 'home#index'
 end

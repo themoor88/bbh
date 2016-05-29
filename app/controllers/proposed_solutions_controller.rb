@@ -3,15 +3,15 @@ class ProposedSolutionsController < ApplicationController
   # GET /proposed_solutions/new
   def new
     if current_user.role == :tech_provider
-      @proposed_solution = current_user.proposed_solutions.new
       @campaign = Campaign.find(params[:campaign_id])
-      render layout: false
+      @proposed_solution = current_user.proposed_solutions.new(campaign: @campaign)
     elsif current_user.role == :tech_seeker
-      flash[:error] = "Something went wrong. Please try again."
+      flash[:error] = 'Something went wrong. Please try again.'
       redirect_to campaigns_path
     end
   end
 
+  # rubocop:disable Metrics/AbcSize
   # POST /proposed_solutions
   def create
     if current_user.role == :tech_provider
@@ -26,10 +26,11 @@ class ProposedSolutionsController < ApplicationController
         end
       end
     elsif current_user.role == :tech_seeker
-      flash[:error] = "Something went wrong. Please try again."
+      flash[:error] = 'Something went wrong. Please try again.'
       redirect_to campaigns_path
     end
   end
+  # rubocop:enable Metrics/AbcSize
 
   private
 

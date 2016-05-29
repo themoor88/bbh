@@ -11,6 +11,8 @@ class ApplicationController < ActionController::Base
       redirect_location
     elsif resource.is_a? Admin
       rails_admin.dashboard_path
+    elsif resource.is_a? User
+      campaigns_path
     else
       super
     end
