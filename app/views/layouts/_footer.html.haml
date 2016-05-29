@@ -1,0 +1,35 @@
+.footer
+  .row.footer-content
+    .col-md-3.col-xs-12.text-left.text-with-underline.sm-anchor-text.space-fix-2
+      .tcp-links
+        = link_to 'Terms & Conditions', '#', target: '_blank', class: 'info-link'
+        = link_to 'Privacy', '#', target: '_blank', class: 'info-link'
+    .col-md-6.footer-items-container.text-no-underline.lg-anchor-text
+      .col-md-4.col-xs-12.footer-items-col
+        %p= link_to 'Link 1', '#'
+        %p= link_to 'Link 2', '#'
+        %p= link_to 'Link 3', '#'
+      .col-md-4.col-xs-12.footer-items-col
+        %p= link_to 'Link 4', '#'
+        %p= link_to 'Link 5', '#'
+        %p= link_to 'Link 6', '#'
+      .col-md-4.col-xs-12.footer-items-col
+        %p= link_to 'Link 7', '#'
+        %p= link_to 'Link 8', '#'
+        %p= link_to 'Link 9', '#'
+    .col-md-3.col-xs-12.footer-social-media
+      %p.lg-anchor-text Follow Us
+      %p.social-media-icons-container.text-no-underline
+        %span
+          = link_to '#' do
+            %i.fa.fa-facebook-square
+        %span
+          = link_to '#' do
+            %i.fa.fa-linkedin-square
+        %span
+          = link_to '#' do
+            %i.fa.fa-instagram
+        %span
+          = link_to '#' do
+            %i.fa.fa-twitter
+      %p.sm-anchor-text Copyright &copy; #{Time.zone.now.year} Baehl Business Hub

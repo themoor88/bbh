@@ -4,12 +4,7 @@ RailsAdmin.config do |config|
 
   ## == Devise ==
   config.authenticate_with do
-    if (current_tech_provider || current_tech_seeker) && !current_admin
-      flash[:error] = 'This area is restricted to administrators only.'
-      redirect_to main_app.root_path
-    else
-      warden.authenticate! scope: :admin
-    end
+    warden.authenticate! scope: :admin
   end
   config.current_user_method(&:current_admin)
 

@@ -19,10 +19,16 @@
 // $small-spacing: $base-spacing / 2;
 // $base-z-index: 0;
 
-// // Colors
+// Colors
 $white: #fff;
 $black: #000;
-$grey: #eee;
+$grey: #f5f5f5;
+$dark-grey: #3b4251;
+$translucent-grey: rgba(0, 0, 0, 0.2);
+$green: #549f97;
+$orange: #f0c447;
+$yellow: #f7e2a5;
+
 // $blue: #1565c0;
 // $dark-gray: #333;
 // $medium-gray: #999;
@@ -36,8 +42,8 @@ $grey: #eee;
 // $base-border-color: $light-gray;
 // $base-border: 1px solid $base-border-color;
 
-// // Background Colors
-// $base-background-color: #fff;
+// Background Colors
+$base-background-color: $grey;
 // $secondary-background-color: tint($base-border-color, 75%);
 
 // // Forms

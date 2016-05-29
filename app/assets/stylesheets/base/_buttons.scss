@@ -1,3 +1,39 @@
+.btn {
+  border: 0;
+  border-radius: 100px;
+  padding: 7px 40px;
+  font-size: 16px;
+  font-weight: 500;
+
+  &:hover,
+  &:active,
+  &:focus,
+  &:active:hover,
+  &:active:focus,
+  &:active.focus,
+  &.active:hover,
+  &.active:focus,
+  &.active.focus {
+    outline: 0;
+  }
+}
+
+.btn-primary {
+  background-color: $orange;
+
+  &:hover,
+  &:active,
+  &:focus,
+  &:active:hover,
+  &:active:focus,
+  &:active.focus,
+  &.active:hover,
+  &.active:focus,
+  &.active.focus {
+    background-color: darken($orange, 10%);
+  }
+}
+
 // #{$all-buttons} {
 //   appearance: none;
 //   background-color: $action-color;
