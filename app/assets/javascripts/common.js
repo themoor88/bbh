@@ -272,7 +272,7 @@ $(function() {
   // TODO window on click after drop down opens
 
   // Home info modal
-  $('i.fa-info-circle').on('click', function(e) {
+  $('i.fa-info-circle, .phone-icon-link').on('click', function(e) {
     e.preventDefault();
     bootbox.dialog({
       title: 'Contact Us',
