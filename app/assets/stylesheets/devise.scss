@@ -1,0 +1,12 @@
+body {
+  &.users-devise-registrations,
+  &.users-devise-sessions,
+  &.devise-passwords {
+    &.new,
+    &.create {
+      .navbar-links {
+        margin: 30px;
+      }
+    }
+  }
+}
