@@ -1,12 +1,12 @@
 #------------------------------------------------------------------------------
 # Create tech provider user
-User.create! email: 'chantal_provider@example.com', password: 'password', password_confirmation: 'password', role: :tech_provider
-User.create! email: 'chantal_provider2@example.com', password: 'password', password_confirmation: 'password', role: :tech_provider
+User.create! email: 'chantal_provider@example.com', password: 'password', password_confirmation: 'password', role: :tech_provider, active: true
+User.create! email: 'chantal_provider2@example.com', password: 'password', password_confirmation: 'password', role: :tech_provider, active: true
 
 #------------------------------------------------------------------------------
 # Create tech seeker user
-User.create! email: 'chantal_seeker@example.com', password: 'password', password_confirmation: 'password', role: :tech_seeker
-User.create! email: 'chantal_seeker2@example.com', password: 'password', password_confirmation: 'password', role: :tech_seeker
+User.create! email: 'chantal_seeker@example.com', password: 'password', password_confirmation: 'password', role: :tech_seeker, active: true
+User.create! email: 'chantal_seeker2@example.com', password: 'password', password_confirmation: 'password', role: :tech_seeker, active: true
 
 #------------------------------------------------------------------------------
 # Create admin user
