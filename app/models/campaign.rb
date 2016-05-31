@@ -12,6 +12,7 @@
 #  targeted_time_to_market :string(255)
 #  expected_trl            :string(255)
 #  state                   :string(255)
+#  expires_at              :datetime
 #  created_at              :datetime         not null
 #  updated_at              :datetime         not null
 #
@@ -30,9 +31,11 @@ class Campaign < ActiveRecord::Base
   #------------------------------------------------------------------------------
   # Enumerations
   classy_enum_attr :sector
+  classy_enum_attr :state, allow_blank: false, allow_nil: false, default: :pending
 
   #------------------------------------------------------------------------------
   # Scopes
+  scope :active, -> { where(state: 'active') }
 
   #------------------------------------------------------------------------------
   # Validations
@@ -60,6 +63,12 @@ class Campaign < ActiveRecord::Base
     configure :sector, :enum do
       enum do
         Sector.select_options
+      end
+    end
+
+    configure :state, :enum do
+      enum do
+        State.select_options
       end
     end
   end

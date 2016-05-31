@@ -11,7 +11,7 @@
 
   .navbar-links.pull-right
     - if user_signed_in?
-      = link_to '#', class: 'navbar-link text-center' do
+      = link_to '#', class: 'navbar-link text-center phone-icon-link' do
         = fa_icon 'phone', class: 'fa-3x'
         %p +33 (0) 144.44.44.44
       = link_to favorites_path, class: 'navbar-link text-center' do

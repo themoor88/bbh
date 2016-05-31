@@ -5,7 +5,9 @@
 #
 #  id                     :integer          not null, primary key
 #  role                   :string(255)
+#  active                 :boolean          default(FALSE)
 #  email                  :string(255)      default(""), not null
+#  title                  :string(255)
 #  first_name             :string(255)
 #  last_name              :string(255)
 #  position               :string(255)
@@ -15,6 +17,8 @@
 #  mobile                 :string(255)
 #  address                :string(255)
 #  country                :string(255)
+#  number_of_employees    :string(255)
+#  company_website        :string(255)
 #  encrypted_password     :string(255)      default(""), not null
 #  reset_password_token   :string(255)
 #  reset_password_sent_at :datetime
@@ -46,7 +50,9 @@ class User < ActiveRecord::Base
 
   #------------------------------------------------------------------------------
   # Enumerations
+  classy_enum_attr :title, allow_nil: true, allow_blank: true
   classy_enum_attr :role, allow_nil: false, allow_blank: false
+  classy_enum_attr :company_type, allow_nil: true, allow_blank: true
 
   #------------------------------------------------------------------------------
   # Scopes
@@ -65,19 +71,32 @@ class User < ActiveRecord::Base
 
   #------------------------------------------------------------------------------
   # Class methods
+  def self.select_options_for_number_of_employees
+    ['1-10', '11-50', '51-100', '100-500', '500-1000', '1000-5000', '5000-10 000', '10 000-50 000', '50 000+']
+  end
 
   #------------------------------------------------------------------------------
   # Instance methods
+  def active_for_authentication?
+    super && active?
+  end
 
   #------------------------------------------------------------------------------
   # Rails Admin Config
   rails_admin do
-    configure :country, :enum do
+    configure :title, :enum do
       enum do
-        # country_select('user', 'country')
+        Title.select_options
+      end
+    end
+
+    configure :role, :enum do
+      enum do
+        Role.select_options
       end
     end
   end
+
   #------------------------------------------------------------------------------
   # private
 end

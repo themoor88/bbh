@@ -24,6 +24,7 @@ nav.navbar {
     min-height: 111px;
     background-color: $white;
     padding: 0 50px;
+    margin-bottom: 15px;
 
     .navbar-links {
       display: flex;
@@ -61,8 +62,6 @@ nav.navbar {
   }
 
   &.tertiary {
-    margin-top: 10px;
-    margin-bottom: 10px;
     background-color: $white;
     z-index: 0;
 
