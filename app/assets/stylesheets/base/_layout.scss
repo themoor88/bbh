@@ -25,7 +25,8 @@ main {
   flex-wrap: nowrap;
   flex: 1;
 
-  .container {
+  .content {
     flex: 1;
+    padding: 15px;
   }
 }

@@ -12,5 +12,6 @@
       %main{ role: 'main' }
         = render 'layouts/messages'
         = render 'layouts/navigation'
-        = yield
+        .content
+          = yield
         = render 'layouts/footer'
