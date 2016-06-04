@@ -1,12 +1,16 @@
 body.home {
   &.index {
-    // scss-lint:disable UrlFormat
     .video-header {
       height: 400px;
-      background: url('http://placehold.it/1920x400') center center no-repeat scroll;
-      background-size: cover;
+
+      .homepage-video {
+        position: absolute;
+        width: 100%;
+        left: 50%;
+        z-index: -100;
+        transform: translate(-50%, -20%);
+      }
     }
-    // scss-lint:enable UrlFormat
 
     .navbar-links {
       margin: 30px;
