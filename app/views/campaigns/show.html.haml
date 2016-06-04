@@ -29,12 +29,12 @@
             %p= @campaign.expected_trl
         %br
         %span.like-unlike-container
-          = link_to '#', class: 'add-to-favorites', style: (current_user.likes.where(campaign_id: @campaign.id).present? ? 'display:none;' : '').to_s, data: { campaign_id: campaign.id, url: add_to_favorites_path } do
-            = fa_icon 'heart-o'
+          = link_to '#', class: 'add-to-favorites', style: (current_user.likes.where(campaign_id: @campaign.id).present? ? 'display:none;' : '').to_s, data: { campaign_id: @campaign.id, url: add_to_favorites_path } do
+            = fa_icon 'heart'
             %p{ style: 'display: inline-block;' } Add To Favorites
 
-          = link_to '#', class: 'remove-from-favorites', style: (current_user.likes.where(campaign_id: @campaign.id).present? ? '' : 'display:none;').to_s, data: { campaign_id: campaign.id, url: remove_from_favorites_path } do
-            = fa_icon 'heart-o'
+          = link_to '#', class: 'remove-from-favorites', style: (current_user.likes.where(campaign_id: @campaign.id).present? ? '' : 'display:none;').to_s, data: { campaign_id: @campaign.id, url: remove_from_favorites_path } do
+            = fa_icon 'heart'
             %p{ style: 'display: inline-block;' } Remove From Favorites
 
         - if current_user.role == :tech_provider

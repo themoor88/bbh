@@ -73,6 +73,11 @@ $(function () {
             btnUnlike.fadeOut('fast', function(){
               btnLike.fadeIn('fast', null);
             });
+
+            if ($('body.favorites').length) {
+              btnLike.closest('.campaign-item').fadeOut('fast');
+            }
+
             toastrNotification('success', 'Removed from favorites');
           } else {
             toastrNotification('error', 'There was an error processing your request');
