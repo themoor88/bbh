@@ -12,7 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require select2
 //= require bootstrap-sprockets
+//= require select2
+//= require toastr_rails
 //= require bootbox
 //= require_tree .
