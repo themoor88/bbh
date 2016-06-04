@@ -40,8 +40,9 @@
       = link_to '#' do
         = fa_icon 'info-circle', class: 'fa-2x'
     %p.back-to-listings.pull-right
-      = fa_icon 'fast-backward'
-      = link_to 'Back to All Campaign Listings', root_path
+      - unless "#{controller_name} #{action_name}" == 'campaigns index'
+        = fa_icon 'fast-backward'
+        = link_to 'Back to All Campaign Listings', root_path
       - if @proposed_solution.present?
         = fa_icon 'step-backward'
         = link_to 'Back to Campaign', campaign_path(@campaign)

@@ -3,9 +3,9 @@ class CampaignsController < ApplicationController
   # GET /campaigns
   def index
     if current_user.role == :tech_provider
-      @campaigns = Campaign.all
+      @campaigns = Campaign.active
     elsif current_user.role == :tech_seeker
-      @campaigns = current_user.campaigns
+      @campaigns = current_user.campaigns.active
     end
   end
 

@@ -1,0 +1,37 @@
+.campaign-grid
+  - collection.each do |campaign|
+    = link_to campaign_path(campaign) do
+      .campaign-item
+        .panel.panel-default.campaign-panel
+          .panel-heading
+            = image_tag('http://placehold.it/700x200', class: 'img-responsive')
+          .panel-body
+            .row
+              .col-md-6
+                %p Sector
+              .col-md-6
+                %p= campaign.sector.to_s.titleize
+            .row
+              .col-md-6
+                %p Country
+              .col-md-6
+                %p= campaign.country.to_s.titleize
+            .row
+              .col-md-6
+                %p Company Description
+              .col-md-6
+                %p= campaign.company_description
+            .row
+              %strong.col-md-3.text-left.strong
+                .countdown.text-center
+                  = fa_icon 'clock-o', class: 'fa-3x'
+                  %p= time_ago_in_words(campaign.expires_at) + " remaining"
+          .panel-footer
+            .like-unlike-container
+              = link_to '#', class: 'add-to-favorites', style: (current_user.likes.where(campaign_id: campaign.id).present? ? 'display:none;' : '').to_s, data: { campaign_id: campaign.id, url: add_to_favorites_path } do
+                = fa_icon 'heart-o'
+                %p{ style: 'display: inline-block;' } Add To Favorites
+
+              = link_to '#', class: 'remove-from-favorites', style: (current_user.likes.where(campaign_id: campaign.id).present? ? '' : 'display:none;').to_s, data: { campaign_id: campaign.id, url: remove_from_favorites_path } do
+                = fa_icon 'heart-o'
+                %p{ style: 'display: inline-block;' } Remove From Favorites

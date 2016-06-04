@@ -47,6 +47,7 @@ class User < ActiveRecord::Base
   # Associations
   has_many :campaigns
   has_many :proposed_solutions
+  has_many :likes
 
   #------------------------------------------------------------------------------
   # Enumerations

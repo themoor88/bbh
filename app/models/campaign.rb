@@ -6,7 +6,8 @@
 #  id                      :integer          not null, primary key
 #  user_id                 :integer
 #  title                   :string(255)
-#  sub_title               :text(65535)
+#  company_description     :text(65535)
+#  company_needs           :text(65535)
 #  sector                  :string(255)
 #  country                 :string(255)
 #  targeted_time_to_market :string(255)
@@ -27,6 +28,7 @@ class Campaign < ActiveRecord::Base
   # Associations
   belongs_to :user
   has_many :proposed_solutions
+  has_many :likes
 
   #------------------------------------------------------------------------------
   # Enumerations
@@ -35,11 +37,13 @@ class Campaign < ActiveRecord::Base
 
   #------------------------------------------------------------------------------
   # Scopes
+  scope :pending, -> { where(state: 'pending') }
   scope :active, -> { where(state: 'active') }
+  scope :deleted, -> { where(state: 'deleted') }
+  scope :expired, -> { where(state: 'expired') }
 
   #------------------------------------------------------------------------------
   # Validations
-  # validates :title, :sub_title, :sector, :country, presence: true
 
   #------------------------------------------------------------------------------
   # Callbacks
