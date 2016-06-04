@@ -1,9 +1,11 @@
 - unless user_signed_in?
   %nav.navbar.primary
-    %p.contact-us.pull-left Contact Us Today! +33 (0)144.10.41.43
+    %p.contact-us.pull-left Contact Us Today! +33 (0)1 44 10 41 43
     .social-icons.pull-right
-      = fa_icon 'twitter-square', class: 'fa-2x'
-      = fa_icon 'linkedin-square', class: 'fa-2x'
+      = link_to 'https://twitter.com/baehlinnovation' do
+        = fa_icon 'twitter-square', class: 'fa-2x'
+      = link_to 'https://www.linkedin.com/company/baehl-innovation' do
+        = fa_icon 'linkedin-square', class: 'fa-2x'
 
 %nav.navbar.secondary
   = link_to root_path, class: 'navbar-logo pull-left' do
