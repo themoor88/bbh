@@ -15,9 +15,9 @@ Admin.create! email: 'chantal_admin@example.com', password: 'password', password
 n_campaigns_per_user = 5
 
 n_campaigns_per_user.times do
-  Campaign.create! title: 'Title', user: User.fourth, sector: :cosmetic, country: 'Canada', expires_at: Time.zone.now + rand(0..100).ceil.days
+  Campaign.create! title: 'Title', user: User.fourth, sector: :cosmetic, country: 'Canada', expires_at: Time.zone.now + rand(0..100).ceil.days, state: 'active'
 end
 
-# n_campaigns_per_user.times do
-#   Campaign.create! user: TechSeeker.second, name: Faker::App.name, description: Faker::Lorem.paragraph
-# end
+n_campaigns_per_user.times do
+  SliderItem.create! title: Faker::App.name, active: true
+end

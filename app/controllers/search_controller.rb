@@ -2,7 +2,6 @@
 class SearchController < ApplicationController
   # rubocop:disable Metrics/AbcSize
   def find_campaigns
-    debugger
     if current_user.role == :tech_provider
       @campaigns = Campaign.active
     elsif current_user.role == :tech_seeker

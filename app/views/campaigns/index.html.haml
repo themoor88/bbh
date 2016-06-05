@@ -1,2 +1,14 @@
+.swiper-container
+  .swiper-wrapper
+    - @slider_items.each do |slider_item|
+      .swiper-slide
+        = link_to slider_item.link do
+          %h2.slider-title= slider_item.title
+          = image_tag('http://placehold.it/958x397', class: 'img-responsive')
+
+  .swiper-pagination
+  .swiper-button-next
+  .swiper-button-prev
+
 .campaign-grid
   = render 'shared/campaigns_grid_list', collection: @campaigns

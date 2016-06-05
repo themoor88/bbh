@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160605045557) do
+ActiveRecord::Schema.define(version: 20160605233300) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -76,6 +76,14 @@ ActiveRecord::Schema.define(version: 20160605045557) do
 
   add_index "proposed_solutions", ["campaign_id"], name: "index_proposed_solutions_on_campaign_id", using: :btree
   add_index "proposed_solutions", ["user_id"], name: "index_proposed_solutions_on_user_id", using: :btree
+
+  create_table "slider_items", force: :cascade do |t|
+    t.string   "title",      limit: 255
+    t.string   "link",       limit: 255
+    t.boolean  "active"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "role",                   limit: 255

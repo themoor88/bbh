@@ -1,5 +1,19 @@
 $(function () {
   if ($('body.campaigns').length) {
+    // Initiate the slider
+    var swiper = new Swiper('.swiper-container', {
+      pagination: '.swiper-pagination',
+      nextButton: '.swiper-button-next',
+      prevButton: '.swiper-button-prev',
+      paginationClickable: true,
+      spaceBetween: 30,
+      centeredSlides: true,
+      speed: 1000,
+      autoplay: 2500,
+      loop: true,
+      autoplayDisableOnInteraction: true
+    });
+
     $('.country-search, .order-search, .sector-search').on('change', function() {
       var sendingData = false;
       var url = $(this).data('url');

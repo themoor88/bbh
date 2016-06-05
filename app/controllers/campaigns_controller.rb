@@ -2,6 +2,7 @@
 class CampaignsController < ApplicationController
   # GET /campaigns
   def index
+    @slider_items = SliderItem.active
     if current_user.role == :tech_provider
       @campaigns = Campaign.active
     elsif current_user.role == :tech_seeker
