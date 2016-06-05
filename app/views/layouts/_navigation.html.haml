@@ -12,37 +12,7 @@
     = image_tag('logo.png', class: 'img-responsive')
 
   .navbar-links.pull-right
-    - if user_signed_in?
-      = link_to '#', class: 'navbar-link text-center phone-icon-link' do
-        = fa_icon 'phone', class: 'fa-3x'
-        %p +33 (0) 144.44.44.44
-      = link_to favorites_path, class: 'navbar-link text-center' do
-        = fa_icon 'heart', class: 'fa-3x'
-        %p My Favorites
-      = link_to '#', class: 'navbar-link text-center my-profile' do
-        = fa_icon 'bars', class: 'fa-3x'
-        %p My Account
-      .profile-dropdown.hidden
-        = link_to 'My Profile', edit_user_registration_path, class: 'navbar-link dropdown-link'
-        = link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'navbar-link dropdown-link'
-    - else
-      = link_to 'Home', root_path, class: 'navbar-link'
-      = link_to 'Baehl Innovation', 'http://baehl-innovation.com', class: 'navbar-link'
-      = link_to 'Who', 'http://baehl-innovation.com/who-we-are', class: 'navbar-link'
-      = link_to 'What', 'http://baehl-innovation.com/bbh', class: 'navbar-link'
-      = link_to 'Where', 'http://baehl-innovation.com/where-we-work', class: 'navbar-link'
-      = link_to 'Contact', 'http://baehl-innovation.com/contact', class: 'navbar-link'
+    = render 'layouts/nav_links_for_auth'
 
 - if user_signed_in?
-  %nav.navbar.tertiary
-    %p.home.pull-left
-      = link_to 'Home', root_path, class: 'home-link'
-      = link_to '#' do
-        = fa_icon 'info-circle', class: 'fa-2x'
-    %p.back-to-listings.pull-right
-      - unless "#{controller_name} #{action_name}" == 'campaigns index'
-        = fa_icon 'fast-backward'
-        = link_to 'Back to All Campaign Listings', root_path
-      - if @proposed_solution.present?
-        = fa_icon 'step-backward'
-        = link_to 'Back to Campaign', campaign_path(@proposed_solution.campaign)
+  = render 'layouts/tertiary_navigation'

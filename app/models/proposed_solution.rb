@@ -50,15 +50,15 @@ class ProposedSolution < ActiveRecord::Base
   # Class methods
   def self.trl_options
     ['TRL 0: Idea',
-      'TRL 1: Basic research',
-      'TRL 2: Technology formulation',
-      'TRL 3: Applied research',
-      'TRL 4: Small scale prototype',
-      'TRL 5: Large scale prototype',
-      'TRL 6: Prototype system',
-      'TRL 7: Demonstration system',
-      'TRL 8: First of a kind commercial system',
-      'TRL 9: Full commercial application']
+     'TRL 1: Basic research',
+     'TRL 2: Technology formulation',
+     'TRL 3: Applied research',
+     'TRL 4: Small scale prototype',
+     'TRL 5: Large scale prototype',
+     'TRL 6: Prototype system',
+     'TRL 7: Demonstration system',
+     'TRL 8: First of a kind commercial system',
+     'TRL 9: Full commercial application']
   end
 
   #------------------------------------------------------------------------------

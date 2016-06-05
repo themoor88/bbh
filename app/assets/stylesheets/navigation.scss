@@ -5,6 +5,11 @@ nav.navbar {
   border: 0;
   z-index: 1;
 
+  .navbar-logo {
+    width: 210px;
+    margin: 30px;
+  }
+
   &.primary {
     min-height: 51px;
     background-color: $grey;
@@ -81,8 +86,4 @@ nav.navbar {
     }
   }
 
-  .navbar-logo {
-    width: 200px;
-    margin: 30px;
-  }
 }

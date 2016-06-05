@@ -65,7 +65,7 @@
             .col-xs-offset-2.col-xs-4
               %p Country:
             .col-xs-4
-              = f.input :country, label: false, include_blank: 'Select One', input_html: { class: 'select2-country-select' }
+              = f.input :country, collection: User.country_options.map { |hash| [hash[:id], hash[:text]] }, label: false, include_blank: 'Select One', input_html: { class: 'select2-country' }
           .row
             .col-xs-offset-2.col-xs-8
               %h2 More About Your Business:

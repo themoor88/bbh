@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   authenticate :user do
     resources :campaigns, only: [:index, :show] do
       resources :proposed_solutions, only: [:new, :create]
+      collection do
+        get '/search' => 'search#find_campaigns', as: 'search'
+      end
     end
     resources :favorites, only: [:index]
     scope '/favorites' do
