@@ -7,12 +7,15 @@
         .row
           .col-md-12.text-center
             %p.number-of You have
-            = select_tag :number, options_for_select(1..5), class: 'select2-ps number-of-proposed-solutions', data: { url: new_campaign_proposed_solution_path(@campaign) }
+            = select_tag :number, options_for_select(1..10, params[:number_of_proposed_solutions]), class: 'select2-ps number-of-proposed-solutions', data: { url: new_campaign_proposed_solution_path(@campaign) }
             %p.number-of potential technologies/solutions available
         - @proposed_solutions.each do |proposed_solution|
           = simple_form_for(proposed_solution, url: campaign_proposed_solutions_path, method: :post) do |f|
             = f.error_notification
             = f.input :campaign_id, as: :hidden, input_html: { value: proposed_solution.campaign.id }
+            .row.proposed-solution-form-title
+              .col-xs-offset-4.col-xs-4.text-center
+                %h2 Proposed Solution
             .row.proposed-solution-form
               .col-xs-offset-2.col-xs-4
                 %p Link:

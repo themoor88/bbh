@@ -1,14 +1,15 @@
-- if user_signed_in? && current_user.role == :tech_provider
-  = link_to 'All Campaigns', campaigns_path, class: 'navbar-brand'
-  = link_to 'My Favorites', favorites_path, class: 'navbar-brand'
-  = link_to 'My Profile', edit_user_registration_path, class: 'navbar-brand'
-  = link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'navbar-brand'
-- elsif user_signed_in? && current_user.role == :tech_seeker
-  = link_to 'My Campaigns', campaigns_path, class: 'navbar-brand'
-  = link_to 'My Favorites', favorites_path, class: 'navbar-brand'
-  = link_to 'My Profile', edit_user_registration_path, class: 'navbar-brand'
-  = link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'navbar-brand'
+- if user_signed_in?
+  = link_to '#', class: 'navbar-link text-center phone-icon-link' do
+    = fa_icon 'phone', class: 'fa-3x'
+    %p +33 (0) 144.44.44.44
+  = link_to favorites_path, class: 'navbar-link text-center' do
+    = fa_icon 'heart', class: 'fa-3x'
+    %p My Favorites
+  = link_to '#', class: 'navbar-link text-center my-profile' do
+    = fa_icon 'bars', class: 'fa-3x'
+    %p My Account
+  .profile-dropdown.hidden
+    = link_to 'My Profile', edit_user_registration_path, class: 'navbar-link dropdown-link'
+    = link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'navbar-link dropdown-link'
 - else
-  = link_to 'Home', root_path, class: 'navbar-brand'
-  = link_to 'Sign Up', new_user_registration_path, class: 'navbar-brand'
-  = link_to 'Log In', new_user_session_path, class: 'navbar-brand'
+  = render 'layouts/navigation_links'
