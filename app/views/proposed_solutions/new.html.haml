@@ -1,13 +1,63 @@
 .row
-  .col-md-offset-4.col-md-4
+  .col-md-12
     .panel.panel-default
-      .panel-heading
-        %h1 Interested? Apply Now
+      .panel-heading.text-center
+        %h2 Interested? Apply Now
       .panel-body
-        = simple_form_for(@proposed_solution, url: campaign_proposed_solutions_path, method: :post) do |f|
-          = f.error_notification
-          = f.input :campaign_id, as: :hidden, input_html: { value: @campaign.id }
-          = f.input :name
-          = f.input :description
-          .text-center
-            = f.button :submit, 'Apply Now', class: 'btn btn-primary'
+        .row
+          .col-md-12.text-center
+            %p.number-of You have
+            = select_tag :number, options_for_select(1..5), class: 'select2-ps number-of-proposed-solutions', data: { url: new_campaign_proposed_solution_path(@campaign) }
+            %p.number-of potential technologies/solutions available
+        - @proposed_solutions.each do |proposed_solution|
+          = simple_form_for(proposed_solution, url: campaign_proposed_solutions_path, method: :post) do |f|
+            = f.error_notification
+            = f.input :campaign_id, as: :hidden, input_html: { value: proposed_solution.campaign.id }
+            .row.proposed-solution-form
+              .col-xs-offset-2.col-xs-4
+                %p Link:
+              .col-xs-4
+                = f.input :link, label: false
+            .row
+              .col-xs-offset-2.col-xs-4
+                %p Attachment:
+              .col-xs-4
+                = f.input :attachment, label: false
+            .row
+              .col-xs-offset-2.col-xs-4
+                %p What is your technology?
+              .col-xs-4
+                = f.input :technology_description, label: false
+            .row
+              .col-xs-offset-2.col-xs-4
+                %p What is it's main application
+              .col-xs-4
+                = f.input :technology_application, label: false
+            .row
+              .col-xs-offset-2.col-xs-4
+                %p Patents (optional):
+              .col-xs-4
+                = f.input :patents, label: false
+            .row
+              .col-xs-offset-2.col-xs-4
+                %p TRL:
+              .col-xs-4
+                = f.input :trl, label: false, include_blank: 'Select one', collection: ProposedSolution.trl_options, input_html: { class: 'select2' }
+            .row
+              .col-xs-offset-2.col-xs-4
+                %p Licence available (optional):
+              .col-xs-4
+                = f.input :licence_available, label: false
+            .row
+              .col-xs-offset-2.col-xs-4
+                %p What institution/start-up is developing the technology? (optional)
+              .col-xs-4
+                = f.input :institution, label: false
+            .row
+              .col-xs-offset-2.col-xs-4
+                %p Your Expectations (optional)
+              .col-xs-4
+                = f.input :expectations, label: false, input_html: { rows: 10 }
+
+.text-center
+  = button_tag 'Apply Now', type: :submit, class: 'btn btn-primary'

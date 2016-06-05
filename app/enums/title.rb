@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Title < ClassyEnum::Base
 end
 

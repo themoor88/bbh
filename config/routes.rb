@@ -11,12 +11,15 @@ Rails.application.routes.draw do
   # needs to be AFTER "devise_for :admins" otherwise the admin routes will be messed up
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-
   authenticate :user do
     resources :campaigns, only: [:index, :show] do
       resources :proposed_solutions, only: [:new, :create]
     end
-    resources :favorites, only: [:index, :create, :destroy]
+    resources :favorites, only: [:index]
+    scope '/favorites' do
+      post '/add-to-favorites' => 'favorites#add_to_favorites'
+      delete '/remove-from-favorites' => 'favorites#remove_from_favorites'
+    end
   end
 
   authenticated :user do

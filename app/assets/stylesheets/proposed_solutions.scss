@@ -1,0 +1,17 @@
+body.proposed-solutions {
+  &.new {
+    .panel-body {
+      p.number-of {
+        display: inline-block;
+      }
+
+      .select2-container--bootstrap {
+        display: inline-block;
+      }
+
+      .proposed-solution-form {
+        margin-top: 15px;
+      }
+    }
+  }
+}

@@ -64,6 +64,21 @@
                   = f.input :mobile, label: false
               .row
                 .col-xs-6
+                  %p Street Address:
+                .col-xs-6
+                  = f.input :address, label: false
+              .row
+                .col-xs-6
+                  %p City:
+                .col-xs-6
+                  = f.input :city, label: false
+              .row
+                .col-xs-6
+                  %p Postal/Zip (optional):
+                .col-xs-6
+                  = f.input :zip_code, label: false
+              .row
+                .col-xs-6
                   %p Country:
                 .col-xs-6
                   = f.input :country, label: false, include_blank: 'Select One', input_html: { class: 'select2-country-select' }

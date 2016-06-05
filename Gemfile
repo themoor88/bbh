@@ -18,7 +18,6 @@ gem 'simple_form'
 gem 'aasm'
 gem 'autoprefixer-rails'
 gem 'bootbox-rails'
-# gem 'cancancan', '~> 1.10'
 gem 'classy_enum'
 gem 'country_select'
 gem 'figaro'
@@ -27,6 +26,7 @@ gem 'font-awesome-rails'
 gem 'rails_admin'
 gem "select2-rails"
 gem 'sendgrid-ruby'
+gem 'toastr_rails'
 gem 'whenever', :require => false
 gem 'faker'
 
