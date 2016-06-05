@@ -34,5 +34,6 @@ module BaehlBusinessHub
 
     # Add classy enum path
     config.autoload_paths = %W(#{config.root}/app/enums)
+    config.assets.paths << "#{Rails.root}/app/assets/videos"
   end
 end

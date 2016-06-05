@@ -4,14 +4,7 @@ $(function () {
       e.preventDefault();
       bootbox.dialog({
         title: 'Check Out These Companies',
-        message: 'We have partnered with a number of companies',
-        buttons: {
-          success: {
-            label: 'Ok',
-            className: 'btn btn-info',
-            callback: function() {}
-          }
-        }
+        message: '<img class="img-responsive" src="/assets/member_network_modal.png" alt="Member Network">'
       });
     });
 
@@ -19,14 +12,7 @@ $(function () {
       e.preventDefault();
       bootbox.dialog({
         title: 'Let Us Explain',
-        message: 'Check out this awesome video',
-        buttons: {
-          success: {
-            label: 'Ok',
-            className: 'btn btn-info',
-            callback: function() {}
-          }
-        }
+        message: '<video autobuffer="autobuffer" autoplay="autoplay" width="100%" height="100%" src="/assets/learn_more_video.mp4"></video>'
       });
     });
   }

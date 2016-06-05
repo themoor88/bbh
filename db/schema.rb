@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160529232346) do
+ActiveRecord::Schema.define(version: 20160605045557) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -34,7 +34,8 @@ ActiveRecord::Schema.define(version: 20160529232346) do
   create_table "campaigns", force: :cascade do |t|
     t.integer  "user_id",                 limit: 4
     t.string   "title",                   limit: 255
-    t.text     "sub_title",               limit: 65535
+    t.text     "company_description",     limit: 65535
+    t.text     "company_needs",           limit: 65535
     t.string   "sector",                  limit: 255
     t.string   "country",                 limit: 255
     t.string   "targeted_time_to_market", limit: 255
@@ -48,18 +49,29 @@ ActiveRecord::Schema.define(version: 20160529232346) do
   add_index "campaigns", ["user_id"], name: "index_campaigns_on_user_id", using: :btree
 
   create_table "likes", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "proposed_solutions", force: :cascade do |t|
     t.integer  "user_id",     limit: 4
     t.integer  "campaign_id", limit: 4
-    t.string   "name",        limit: 255
-    t.string   "description", limit: 255
-    t.string   "state",       limit: 255
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "likes", ["campaign_id"], name: "index_likes_on_campaign_id", using: :btree
+  add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
+
+  create_table "proposed_solutions", force: :cascade do |t|
+    t.integer  "user_id",                limit: 4
+    t.integer  "campaign_id",            limit: 4
+    t.string   "link",                   limit: 255
+    t.string   "attachment",             limit: 255
+    t.text     "technology_description", limit: 65535
+    t.text     "technology_application", limit: 65535
+    t.text     "patents",                limit: 65535
+    t.string   "trl",                    limit: 255
+    t.boolean  "licence_available"
+    t.string   "institution",            limit: 255
+    t.text     "expectations",           limit: 65535
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
   add_index "proposed_solutions", ["campaign_id"], name: "index_proposed_solutions_on_campaign_id", using: :btree
@@ -78,6 +90,8 @@ ActiveRecord::Schema.define(version: 20160529232346) do
     t.string   "telephone",              limit: 255
     t.string   "mobile",                 limit: 255
     t.string   "address",                limit: 255
+    t.string   "zip_code",               limit: 255
+    t.string   "city",                   limit: 255
     t.string   "country",                limit: 255
     t.string   "number_of_employees",    limit: 255
     t.string   "company_website",        limit: 255

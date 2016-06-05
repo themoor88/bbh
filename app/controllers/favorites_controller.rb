@@ -1,37 +1,34 @@
 # frozen_string_literal: true
 class FavoritesController < ApplicationController
-  before_action :set_favorite, only: [:destroy]
-
   # GET /favorites
   def index
-    @favorites = Like.all
+    @favorites = current_user.likes.map(&:campaign)
   end
 
-  # POST /favorites
-  def create
-    @favorite = Like.new(favorite_params)
+  def add_to_favorites
+    campaign = Campaign.find(params[:campaign_id])
+    previous_favorites = current_user.likes.where(campaign_id: campaign.id)
+    favorite = current_user.likes.new(campaign_id: campaign.id)
 
     respond_to do |format|
-      if @favorite.save
-        format.html { redirect_to @favorite, notice: 'Favorite was successfully created.' }
+      if !previous_favorites.present? && favorite.save
+        format.json { render json: { success: true } }
       else
-        format.html { render :new }
+        format.json { render json: { success: false } }
       end
     end
   end
 
-  # DELETE /favorites/1
-  def destroy
-    @favorite.destroy
+  def remove_from_favorites
+    campaign = Campaign.find(params[:campaign_id])
+    favorite = current_user.likes.where(campaign_id: campaign.id).first
+
     respond_to do |format|
-      format.html { redirect_to dashboard_favorites_url, notice: 'Favorite was successfully destroyed.' }
+      if favorite.present? && favorite.destroy
+        format.json { render json: { success: true } }
+      else
+        format.json { render json: { success: false } }
+      end
     end
-  end
-
-  private
-
-  # Never trust parameters from the scary internet, only allow the white list through.
-  def favorite_params
-    params.fetch(:dashboard_favorite, {})
   end
 end

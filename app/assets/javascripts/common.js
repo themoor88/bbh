@@ -269,25 +269,64 @@ $(function() {
     $('.profile-dropdown').toggleClass('hidden');
   });
 
-  // TODO window on click after drop down opens
-
   // Home info modal
   $('i.fa-info-circle, .phone-icon-link').on('click', function(e) {
     e.preventDefault();
     bootbox.dialog({
       title: 'Contact Us',
-      message: "Contact us by: " +
-      "Email: info@baehl-innovation.com " +
-      "Telephone: +33 (0)144.10.41.43 " +
-      "Twitter " +
-      "LinkedIn ",
-      buttons: {
-        success: {
-          label: 'Ok',
-          className: 'btn btn-info',
-          callback: function() {}
-        }
-      }
+      message: "<p>Baehl Innovation</p>" +
+      "<p>26th Floor, Montparnasse Tower</p>" +
+      "<p>33 Avenue du Maine</p>" +
+      "<p>75015 Paris</p>" +
+      "<p>Telephone: +33 (0)1 44 10 41 43</p>" +
+      "<p>Email: info@baehl-innovation.com</p>"
     });
   });
 });
+
+function ajaxToastrError(jqXHR) {
+  var message = 'We could not process your request. Please contact customer support and quote error code ' + jqXHR.status + '.';
+  toastrError(message);
+}
+
+function toastrNotification(type, text) {
+  toastr.options = {
+    "closeButton": false,
+    "debug": false,
+    "newestOnTop": true,
+    "progressBar": false,
+    "positionClass": "toast-top-right",
+    "preventDuplicates": false,
+    "onclick": null,
+    "showDuration": "300",
+    "hideDuration": "1000",
+    "timeOut": "3000",
+    "extendedTimeOut": "1000",
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
+  };
+  toastr[type](text);
+}
+
+function toastrError(text) {
+  toastr.options = {
+    "closeButton": true,
+    "debug": false,
+    "newestOnTop": true,
+    "progressBar": false,
+    "positionClass": "toast-top-right",
+    "preventDuplicates": false,
+    "onclick": null,
+    "showDuration": "300",
+    "hideDuration": "1000",
+    "timeOut": "0",
+    "extendedTimeOut": "0",
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
+  };
+  toastr["error"](text)
+}

@@ -1,0 +1,5 @@
+body.favorites {
+  &.index {
+    @include campaigns-grid-list;
+  }
+}

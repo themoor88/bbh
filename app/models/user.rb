@@ -16,6 +16,8 @@
 #  telephone              :string(255)
 #  mobile                 :string(255)
 #  address                :string(255)
+#  zip_code               :string(255)
+#  city                   :string(255)
 #  country                :string(255)
 #  number_of_employees    :string(255)
 #  company_website        :string(255)
@@ -47,6 +49,7 @@ class User < ActiveRecord::Base
   # Associations
   has_many :campaigns
   has_many :proposed_solutions
+  has_many :likes
 
   #------------------------------------------------------------------------------
   # Enumerations
