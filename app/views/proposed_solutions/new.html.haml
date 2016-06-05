@@ -1,13 +1,14 @@
-.row
-  .col-md-offset-4.col-md-4
-    .panel.panel-default
-      .panel-heading
-        %h1 Interested? Apply Now
-      .panel-body
-        = simple_form_for(@proposed_solution, url: campaign_proposed_solutions_path, method: :post) do |f|
-          = f.error_notification
-          = f.input :campaign_id, as: :hidden, input_html: { value: @campaign.id }
-          = f.input :name
-          = f.input :description
-          .text-center
-            = f.button :submit, 'Apply Now', class: 'btn btn-primary'
+- @proposed_solutions.each do |proposed_solution|
+  .row
+    .col-md-offset-4.col-md-4
+      .panel.panel-default
+        .panel-heading
+          %h1 Interested? Apply Now
+        .panel-body
+          = simple_form_for(proposed_solution, url: campaign_proposed_solutions_path, method: :post) do |f|
+            = f.error_notification
+            = f.input :campaign_id, as: :hidden, input_html: { value: proposed_solution.campaign.id }
+            = f.input :name
+            = f.input :description
+.text-center
+  = button_tag 'Send', type: :submit, class: 'btn btn-primary'

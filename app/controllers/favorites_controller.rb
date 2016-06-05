@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 class FavoritesController < ApplicationController
-
   # GET /favorites
   def index
     @favorites = current_user.likes.map(&:campaign)

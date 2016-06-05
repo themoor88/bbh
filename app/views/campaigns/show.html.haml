@@ -5,8 +5,11 @@
         %h2{ style: 'display: inline-block;' }
           = @campaign.title
         .countdown.text-right
-          = fa_icon 'clock-o', class: 'fa-3x'
-          %p= time_ago_in_words(@campaign.expires_at) + " remaining"
+          - if @campaign.expired?
+            %p Please Note: This campaign has expired.
+          - elsif @campaign.active?
+            = fa_icon 'clock-o', class: 'fa-3x'
+            %p= time_ago_in_words(@campaign.expires_at) + ' remaining'
       .panel-body
         = image_tag('http://placehold.it/1500x200', class: 'img-responsive')
         %h2 <u>Our Company</u>
@@ -37,6 +40,6 @@
             = fa_icon 'heart'
             %p{ style: 'display: inline-block;' } Remove From Favorites
 
-        - if current_user.role == :tech_provider
+        - if current_user.role == :tech_provider && @campaign.active?
           .text-center
             = link_to 'Apply Now', new_campaign_proposed_solution_path(@campaign), class: 'btn btn-primary'

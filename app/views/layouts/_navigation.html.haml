@@ -45,4 +45,4 @@
         = link_to 'Back to All Campaign Listings', root_path
       - if @proposed_solution.present?
         = fa_icon 'step-backward'
-        = link_to 'Back to Campaign', campaign_path(@campaign)
+        = link_to 'Back to Campaign', campaign_path(@proposed_solution.campaign)

@@ -1,4 +1,7 @@
 .campaign-grid
+  - unless collection.present?
+    .text-center
+      %h2 There are no campaigns at the moment
   - collection.each do |campaign|
     = link_to campaign_path(campaign) do
       .campaign-item
@@ -25,7 +28,7 @@
               %strong.col-md-3.text-left.strong
                 .countdown.text-center
                   = fa_icon 'clock-o', class: 'fa-3x'
-                  %p= time_ago_in_words(campaign.expires_at) + " remaining"
+                  %p= time_ago_in_words(campaign.expires_at) + ' remaining'
           .panel-footer
             .like-unlike-container
               = link_to '#', class: 'add-to-favorites', style: (current_user.likes.where(campaign_id: campaign.id).present? ? 'display:none;' : '').to_s, data: { campaign_id: campaign.id, url: add_to_favorites_path } do

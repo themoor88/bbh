@@ -37,10 +37,8 @@ class Campaign < ActiveRecord::Base
 
   #------------------------------------------------------------------------------
   # Scopes
-  scope :pending, -> { where(state: 'pending') }
   scope :active, -> { where(state: 'active') }
-  scope :deleted, -> { where(state: 'deleted') }
-  scope :expired, -> { where(state: 'expired') }
+  scope :not_deleted, -> { where(state: %w(active expired pending)) }
 
   #------------------------------------------------------------------------------
   # Validations
@@ -60,6 +58,13 @@ class Campaign < ActiveRecord::Base
 
   #------------------------------------------------------------------------------
   # Instance methods
+  def active?
+    state == 'active'
+  end
+
+  def expired?
+    state == 'expired'
+  end
 
   #------------------------------------------------------------------------------
   # Rails Admin Config
