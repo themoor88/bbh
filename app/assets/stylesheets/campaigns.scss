@@ -1,10 +1,32 @@
 body.campaigns {
   &.index {
     @include campaigns-grid-list;
+    .swiper-container {
+      margin-top: 20px;
+      width: 958px;
+      height: 397px;
+
+      .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: $white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .slider-title {
+          position: absolute;
+          left: 50%;
+          top: 70%;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
 
     .spinner-container {
       width: 100%;
-      margin-top: 60px;
+      margin-top: 40px;
+      margin-bottom: 20px;
     }
 
     .search-campaigns {

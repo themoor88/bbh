@@ -16,4 +16,5 @@
 //= require select2
 //= require toastr_rails
 //= require bootbox
+//= require swiper.min
 //= require_tree .
