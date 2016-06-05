@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 class ProposedSolutionsController < ApplicationController
+  # rubocop:disable Metrics/AbcSize
   # GET /proposed_solutions/new
   def new
     if current_user.role == :tech_provider
@@ -14,6 +15,7 @@ class ProposedSolutionsController < ApplicationController
       redirect_to campaigns_path
     end
   end
+  # rubocop:enable Metrics/AbcSize
 
   # rubocop:disable Metrics/AbcSize
   # POST /proposed_solutions

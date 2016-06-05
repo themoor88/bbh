@@ -6,9 +6,9 @@
   - if "#{controller_name} #{action_name}" == 'campaigns index'
     .search-campaigns.pull-right
       .search-container
-        = select_tag :country, options_for_select(Campaign.country_options.map{|hash| [hash[:id], hash[:text]]}), include_blank: 'Select Country', class: 'select2-country country-search', data: { url: search_campaigns_path }
+        = select_tag :country, options_for_select(Campaign.country_options.map { |hash| [hash[:id], hash[:text]] }), include_blank: 'Select Country', class: 'select2-country country-search', data: { url: search_campaigns_path }
       .search-container
-        = select_tag :order, options_for_select([['Latest', 'DESC'], ['Ending Soon', 'ASC']]), include_blank: 'Select Order', class: 'select2 order-search', data: { url: search_campaigns_path }
+        = select_tag :order, options_for_select([%w(Latest DESC), %w(Ending Soon ASC)]), include_blank: 'Select Order', class: 'select2 order-search', data: { url: search_campaigns_path }
       .search-container
         = select_tag :sector, options_for_select(Sector.select_options), include_blank: 'Select Sector', class: 'select2 sector-search', data: { url: search_campaigns_path }
   %p.back-to-listings.pull-right

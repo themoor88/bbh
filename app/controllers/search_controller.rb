@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 class SearchController < ApplicationController
+  # rubocop:disable Metrics/AbcSize
   def find_campaigns
+    debugger
     if current_user.role == :tech_provider
       @campaigns = Campaign.active
     elsif current_user.role == :tech_seeker
@@ -8,7 +10,7 @@ class SearchController < ApplicationController
     end
 
     if params[:country].present?
-      @campaigns = @campaigns.where(country: "#{params[:country]}")
+      @campaigns = @campaigns.where(country: params[:country].to_s)
     end
 
     if params[:order].present?
@@ -16,7 +18,8 @@ class SearchController < ApplicationController
     end
 
     if params[:sector].present?
-      @campaigns = @campaigns.where(sector: "#{params[:sector]}")
+      @campaigns = @campaigns.where(sector: params[:sector].to_s)
     end
   end
+  # rubocop:enable Metrics/AbcSize
 end
