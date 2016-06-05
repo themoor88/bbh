@@ -48,6 +48,21 @@
               = f.input :email, label: false
           .row
             .col-xs-offset-2.col-xs-4
+              %p Street Address:
+            .col-xs-4
+              = f.input :address, label: false
+          .row
+            .col-xs-offset-2.col-xs-4
+              %p City:
+            .col-xs-4
+              = f.input :city, label: false
+          .row
+            .col-xs-offset-2.col-xs-4
+              %p Postal/Zip (optional):
+            .col-xs-4
+              = f.input :zip_code, label: false
+          .row
+            .col-xs-offset-2.col-xs-4
               %p Country:
             .col-xs-4
               = f.input :country, label: false, include_blank: 'Select One', input_html: { class: 'select2-country-select' }

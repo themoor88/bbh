@@ -3,14 +3,20 @@
 #
 # Table name: proposed_solutions
 #
-#  id          :integer          not null, primary key
-#  user_id     :integer
-#  campaign_id :integer
-#  name        :string(255)
-#  description :string(255)
-#  state       :string(255)
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  id                     :integer          not null, primary key
+#  user_id                :integer
+#  campaign_id            :integer
+#  link                   :string(255)
+#  attachment             :string(255)
+#  technology_description :text(65535)
+#  technology_application :text(65535)
+#  patents                :text(65535)
+#  trl                    :string(255)
+#  licence_available      :boolean
+#  institution            :string(255)
+#  expectations           :text(65535)
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
 #
 # Indexes
 #
@@ -42,6 +48,18 @@ class ProposedSolution < ActiveRecord::Base
 
   #------------------------------------------------------------------------------
   # Class methods
+  def self.trl_options
+    ['TRL 0: Idea',
+      'TRL 1: Basic research',
+      'TRL 2: Technology formulation',
+      'TRL 3: Applied research',
+      'TRL 4: Small scale prototype',
+      'TRL 5: Large scale prototype',
+      'TRL 6: Prototype system',
+      'TRL 7: Demonstration system',
+      'TRL 8: First of a kind commercial system',
+      'TRL 9: Full commercial application']
+  end
 
   #------------------------------------------------------------------------------
   # Instance methods

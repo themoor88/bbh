@@ -3,8 +3,12 @@ class ProposedSolutionsController < ApplicationController
   # GET /proposed_solutions/new
   def new
     if current_user.role == :tech_provider
+      number_of_proposed_solutions = params[:number_of_proposed_solutions].present? ? params[:number_of_proposed_solutions].to_i : 1
       @campaign = Campaign.find(params[:campaign_id])
-      @proposed_solution = current_user.proposed_solutions.new(campaign: @campaign)
+      @proposed_solutions = []
+      number_of_proposed_solutions.times do
+        @proposed_solutions << current_user.proposed_solutions.new(campaign: @campaign)
+      end
     elsif current_user.role == :tech_seeker
       flash[:error] = 'Something went wrong. Please try again.'
       redirect_to campaigns_path

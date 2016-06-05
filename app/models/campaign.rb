@@ -66,6 +66,10 @@ class Campaign < ActiveRecord::Base
     state == 'expired'
   end
 
+  def pending?
+    state == 'pending'
+  end
+
   #------------------------------------------------------------------------------
   # Rails Admin Config
   rails_admin do

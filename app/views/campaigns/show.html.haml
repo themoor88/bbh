@@ -2,14 +2,21 @@
   .col-md-offset-1.col-md-10
     .panel.panel-default
       .panel-heading
-        %h2{ style: 'display: inline-block;' }
-          = @campaign.title
-        .countdown.text-right
-          - if @campaign.expired?
-            %p Please Note: This campaign has expired.
-          - elsif @campaign.active?
-            = fa_icon 'clock-o', class: 'fa-3x'
-            %p= time_ago_in_words(@campaign.expires_at) + ' remaining'
+        .row
+          .col-md-3
+            %h2
+              = @campaign.title
+          .col-md-3
+          .col-md-2
+          .col-md-4
+            .countdown.text-center
+              - if @campaign.expired?
+                %p Please Note: This campaign has expired.
+              - elsif @campaign.pending?
+                %p Please Note: This campaign is pending.
+              - elsif @campaign.active?
+                = fa_icon 'clock-o', class: 'fa-3x'
+                %p= time_ago_in_words(@campaign.expires_at) + ' remaining'
       .panel-body
         = image_tag('http://placehold.it/1500x200', class: 'img-responsive')
         %h2 <u>Our Company</u>
