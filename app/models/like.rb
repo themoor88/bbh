@@ -30,6 +30,7 @@ class Like < ActiveRecord::Base
   #------------------------------------------------------------------------------
   # Validations
   validates :user_id, :campaign_id, presence: true
+
   #------------------------------------------------------------------------------
   # Callbacks
 
