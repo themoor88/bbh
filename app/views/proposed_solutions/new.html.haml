@@ -9,6 +9,7 @@
             %p.number-of You have
             = select_tag :number, options_for_select(1..10, params[:number_of_proposed_solutions]), class: 'select2-ps number-of-proposed-solutions', data: { url: new_campaign_proposed_solution_path(@campaign) }
             %p.number-of potential technologies/solutions available
+            %p Please provide links to the technologies or proposed solutions, if you already have info about them available online, or, please attach document(s) with the detailed information.
         = simple_form_for(@proposed_solutions, url: campaign_proposed_solutions_path, method: :post) do |f|
           - @proposed_solutions.each do |proposed_solution|
             = simple_fields_for 'proposed_solutions[]', proposed_solution do |p|

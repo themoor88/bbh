@@ -56,7 +56,6 @@ class User < ActiveRecord::Base
   # Enumerations
   classy_enum_attr :title, allow_nil: true, allow_blank: true
   classy_enum_attr :role, allow_nil: false, allow_blank: false
-  classy_enum_attr :company_type, allow_nil: true, allow_blank: true
 
   #------------------------------------------------------------------------------
   # Scopes
@@ -330,6 +329,26 @@ class User < ActiveRecord::Base
 
   def self.select_options_for_number_of_employees
     ['1-10', '11-50', '51-100', '100-500', '500-1000', '1000-5000', '5000-10 000', '10 000-50 000', '50 000+']
+  end
+
+  def self.select_options_for_sectors
+    [
+      'Medical Devices',
+      'Cosmetic',
+      'eHealth',
+      'Pharmaceuticals',
+      'BioPharmaceuticals',
+      'Agri-Food',
+      'Aerospace',
+      'Automotive',
+      'BioProducts',
+      'Chemicals',
+      'Digital & Tech',
+      'Machinery & Equipment',
+      'Energy & Resources',
+      'Telecom',
+      'Other',
+    ]
   end
 
   #------------------------------------------------------------------------------
