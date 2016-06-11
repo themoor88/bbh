@@ -5,9 +5,14 @@
     padding: 15px 8px 40px 0;
     margin: 0;
 
+    p.address {
+      font-size: 14px;
+    }
+
     p.legal-notes,
     .footer-link {
       display: inline-block;
+      font-size: 12px;
     }
   }
 }

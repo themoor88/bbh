@@ -11,10 +11,10 @@
     .col-sm-6
       .panel.panel-default
         .panel-heading.text-center
-          %h2 Title
+          %h2 About the Baehl Business Hub
         .panel-body
           %p
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            The Baehl Business Hub is a tool for labs, developers, public institutions and companies to quickly and easily reach each other. It is a virtual accelerator for those looking to sell, buy, or collaborate on new technologies. It automatically brings key players together in this new gathering place for opportunities. The Baehl Business Hub allows labs, TTOs, and other innovators to efficiently explore the needs of mid-sized startups worldwide, in order to powerfully bridge the gap between innovative technologies and potential clients, attracting market attention and fostering innovation.
 
     .col-sm-6
       = render 'devise/shared/form'
@@ -23,15 +23,15 @@
   .row
     .col-md-4.text-center
       = link_to '#', class: 'member-network', data: { 'toggle': 'modal', 'target': '#member-network-modal' }, style: 'outline: none;' do
-        = image_tag('member_network.png', class: 'img-responsive')
+        = fa_icon 'connectdevelop'
         %p Member Network
     .col-md-4.text-center
       = link_to '#', class: 'learn-more', data: { 'toggle': 'modal', 'target': '#learn-more-modal' }, style: 'outline: none;' do
-        = image_tag('learn_more.png', class: 'img-responsive')
+        = fa_icon 'question-circle'
         %p Learn More
     .col-md-4.text-center
       = link_to new_user_registration_path do
-        = image_tag('sign_up.png', class: 'img-responsive')
+        = fa_icon 'check-circle'
         %p Sign Up
 
 .modal.fade#member-network-modal{ tabindex: '-1', role: 'dialog', 'aria-labelledby': '#modal-label' }

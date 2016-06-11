@@ -1,43 +1,76 @@
 body {
+  font-family: $base-font-family;
   color: $dark-grey;
-  font-size: 16px;
-  // font-family: $base-font-family;
-  // line-height: $base-line-height;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 2.14em;
+  color: $dark-grey;
 }
 
-// h1,
-// h2,
-// h3,
-// h4,
-// h5,
-// h6 {
-//   font-family: $heading-font-family;
-//   font-size: modular-scale(1);
-//   line-height: $heading-line-height;
-//   margin: 0 0 $small-spacing;
-// }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $heading-font-family;
+  font-weight: 800
+}
 
-// p {
-//   margin: 0 0 $small-spacing;
-// }
+h1 {
+  font-size: 34px;
+  line-height: 1.41em;
+  color: $light-grey;
+}
+
+h2 {
+  font-size: 28px;
+  line-height: 1.21em;
+  color: $dark-grey;
+}
+
+h3 {
+  font-size: 18px;
+  line-height: 1.67em;
+  color: $dark-grey;
+}
+
+h4 {
+  font-size: 14px;
+  line-height: 1.43em;
+  color: $dark-grey;
+}
+
+h5 {
+  font-size: 12px;
+  line-height: 1.50em;
+  color: #55a098;
+}
+
+h6 {
+  font-size: 18px;
+  line-height: 0.94em;
+  color: $dark-grey;
+}
 
 a {
   color: $dark-grey;
   text-decoration: none;
 
+  &:hover,
   &:active,
   &:focus,
-  &:hover {
-    color: shade($dark-grey, 25%);
+  &:active:hover,
+  &:active:focus,
+  &:active.focus,
+  &.active:hover,
+  &.active:focus,
+  &.active.focus {
+    color: $green;
     text-decoration: none;
   }
 }
 
-// hr {
-//   border-bottom: $base-border;
-//   border-left: 0;
-//   border-right: 0;
-//   border-top: 0;
-//   margin: $base-spacing 0;
-// }
-
+i.fa {
+  color: $light-grey;
+}

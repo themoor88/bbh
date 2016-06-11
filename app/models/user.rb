@@ -63,6 +63,7 @@ class User < ActiveRecord::Base
 
   #------------------------------------------------------------------------------
   # Validations
+  validates :title, :first_name, :last_name, :role, :position, :company, :telephone, :address, :city, :country, :number_of_employees, :company_website, presence: true
 
   #------------------------------------------------------------------------------
   # Callbacks
@@ -337,20 +338,30 @@ class User < ActiveRecord::Base
     super && active?
   end
 
+  def full_name
+    "#{self.first_name} #{self.last_name}"
+  end
+
   #------------------------------------------------------------------------------
   # Rails Admin Config
   rails_admin do
-    configure :title, :enum do
-      enum do
-        Title.select_options
+    list do
+      field :full_name do
+        label 'Name'
       end
     end
 
-    configure :role, :enum do
-      enum do
-        Role.select_options
-      end
-    end
+    # configure :title, :enum do
+    #   enum do
+    #     Title.select_options
+    #   end
+    # end
+
+    # configure :role, :enum do
+    #   enum do
+    #     Role.select_options
+    #   end
+    # end
   end
 
   #------------------------------------------------------------------------------

@@ -19,17 +19,13 @@ body.home {
     section {
       padding: 20px;
 
-      &.login-and-info {
-        .panel-body {
-          p {
-            font-size: 18px;
-          }
-        }
-      }
-
       &.modal-links {
         margin-top: 15px;
         margin-bottom: 15px;
+
+        i.fa {
+          font-size: 150px;
+        }
 
         img {
           display: inline;

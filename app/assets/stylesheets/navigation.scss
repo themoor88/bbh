@@ -20,6 +20,10 @@ nav.navbar {
       padding: 15px;
     }
 
+    .contact-us {
+      font-size: 12px;
+    }
+
     .social-icons,
     a {
       color: $orange;
@@ -77,6 +81,11 @@ nav.navbar {
 
       .home-link {
         margin: 5px;
+      }
+
+      i.fa {
+        margin-top: 7px;
+        margin-left: 15px;
       }
     }
 
