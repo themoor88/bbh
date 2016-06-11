@@ -47,6 +47,6 @@
             = fa_icon 'heart'
             %p{ style: 'display: inline-block;' } Remove From Favorites
 
-        - if current_user.role == :tech_provider && @campaign.active?
+        - if current_user.role == :tech_provider && @campaign.active? && @proposed_solutions.blank?
           .text-center
             = link_to 'Apply Now', new_campaign_proposed_solution_path(@campaign), class: 'btn btn-primary'

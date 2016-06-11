@@ -35,6 +35,7 @@ class ProposedSolution < ActiveRecord::Base
 
   #------------------------------------------------------------------------------
   # Validations
+  validates :user_id, :campaign_id, :link, :attachment, :technology_description, :technology_application, :trl, presence: true
 
   #------------------------------------------------------------------------------
   # Callbacks

@@ -5,10 +5,10 @@ class ProposedSolutionsController < ApplicationController
   def new
     if current_user.role == :tech_provider
       number_of_proposed_solutions = params[:number_of_proposed_solutions].present? ? params[:number_of_proposed_solutions].to_i : 1
-      @campaign = Campaign.find(params[:campaign_id])
+      @campaign = Campaign.active.find_by(params[:campaign_id])
       @proposed_solutions = []
       number_of_proposed_solutions.times do
-        @proposed_solutions << current_user.proposed_solutions.new(campaign: @campaign)
+        @proposed_solutions << current_user.proposed_solutions.new(campaign_id: @campaign.id)
       end
     elsif current_user.role == :tech_seeker
       flash[:error] = 'Something went wrong. Please try again.'
@@ -21,16 +21,22 @@ class ProposedSolutionsController < ApplicationController
   # POST /proposed_solutions
   def create
     if current_user.role == :tech_provider
-      @proposed_solution = current_user.proposed_solutions.new(proposed_solution_params)
-      @proposed_solution.campaign = Campaign.find(params[:proposed_solution][:campaign_id])
+      @campaign = Campaign.active.find_by(params[:campaign_id])
 
-      respond_to do |format|
-        if @proposed_solution.save
-          format.html { redirect_to campaigns_path, notice: 'Proposed solution was successfully created.' }
-        else
-          format.html { render :new }
+      begin
+        ActiveRecord::Base.transaction do
+          params[:proposed_solutions].each do |proposed_solution|
+            current_user.proposed_solutions.create!(proposed_solution_params(proposed_solution))
+          end
         end
+        respond_to do |format|
+          format.html { redirect_to campaigns_path, notice: 'Proposed solution was successfully created.' }
+        end
+      rescue ActiveRecord::RecordInvalid => e
+        flash[:error] = 'Something went wrong. Please try again and fill in required fields.'
+        redirect_to new_campaign_proposed_solution_path(@campaign)
       end
+
     elsif current_user.role == :tech_seeker
       flash[:error] = 'Something went wrong. Please try again.'
       redirect_to campaigns_path
@@ -40,8 +46,7 @@ class ProposedSolutionsController < ApplicationController
 
   private
 
-  # Never trust parameters from the scary internet, only allow the white list through.
-  def proposed_solution_params
-    params.require(:proposed_solution).permit(:name, :description)
+  def proposed_solution_params(params)
+    params.permit(:campaign_id, :link, :attachment, :technology_description, :technology_application, :patents, :trl, :licence_available, :institution, :expectations)
   end
 end
