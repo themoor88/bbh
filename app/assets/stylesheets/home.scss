@@ -2,6 +2,32 @@ body.home {
   &.index {
     .video-header {
       height: 400px;
+      background-color: $translucent-black;
+      position: relative;
+
+      .video-title {
+        position: absolute;
+        left: 50%;
+        top: 40%;
+        transform: translate(-50%, -50%);
+        font-size: 38px;
+        color: $white;
+        margin: 0;
+      }
+
+      .video-caption {
+        position: absolute;
+        left: 50%;
+        top: 55%;
+        transform: translate(-50%, -50%);
+        font-size: 24px;
+        color: $white;
+        margin: 0;
+
+        @media #{$sm-down} {
+          top: 70%;
+        }
+      }
 
       .homepage-video {
         position: absolute;

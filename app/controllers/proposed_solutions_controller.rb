@@ -32,7 +32,7 @@ class ProposedSolutionsController < ApplicationController
         respond_to do |format|
           format.html { redirect_to campaigns_path, notice: 'Proposed solution was successfully created.' }
         end
-      rescue ActiveRecord::RecordInvalid => e
+      rescue ActiveRecord::RecordInvalid
         flash[:error] = 'Something went wrong. Please try again and fill in required fields.'
         redirect_to new_campaign_proposed_solution_path(@campaign)
       end
