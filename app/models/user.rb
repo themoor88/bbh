@@ -12,7 +12,6 @@
 #  last_name              :string(255)
 #  position               :string(255)
 #  company                :string(255)
-#  company_type           :string(255)
 #  telephone              :string(255)
 #  mobile                 :string(255)
 #  address                :string(255)
