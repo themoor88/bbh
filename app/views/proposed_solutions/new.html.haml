@@ -45,7 +45,9 @@
                   = p.input :patents, label: false
               .row
                 .col-xs-offset-2.col-xs-4
-                  %p TRL:
+                  %p{ style: 'display: inline-block' } TRL:
+                  = link_to '#', style: 'display: inline-block' do
+                    %sup= fa_icon 'info-circle', class: 'fa-2x trl-modal'
                 .col-xs-4
                   = p.input :trl, label: false, include_blank: 'Select one', collection: ProposedSolution.trl_options, input_html: { class: 'select2' }
               .row

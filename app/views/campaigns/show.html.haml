@@ -30,7 +30,9 @@
             %p Sector:
             %p Country:
             %p Targeted Time To Market:
-            %p Expected TRL:
+            %p{ style: 'display: inline-block' } Expected TRL:
+            = link_to '#', style: 'display: inline-block' do
+              %sup= fa_icon 'info-circle', class: 'fa-2x trl-modal'
 
           .col-md-4
             %p= @campaign.sector.to_s.titleize
