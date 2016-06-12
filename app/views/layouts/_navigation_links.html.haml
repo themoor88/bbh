@@ -1,6 +1,16 @@
-= link_to 'Home', root_path, class: 'navbar-link'
-= link_to 'Baehl Innovation', 'http://baehl-innovation.com', class: 'navbar-link'
-= link_to 'Who', 'http://baehl-innovation.com/who-we-are', class: 'navbar-link'
-= link_to 'What', 'http://baehl-innovation.com/bbh', class: 'navbar-link'
-= link_to 'Where', 'http://baehl-innovation.com/where-we-work', class: 'navbar-link'
-= link_to 'Contact', 'http://baehl-innovation.com/contact', class: 'navbar-link'
+= link_to 'Home', root_path, class: 'navbar-link-home dropdown-link hidden-xs hidden-sm'
+= link_to 'Baehl Innovation', 'http://baehl-innovation.com', class: 'navbar-link-home dropdown-link hidden-xs hidden-sm'
+= link_to 'Who', 'http://baehl-innovation.com/who-we-are', class: 'navbar-link-home dropdown-link hidden-xs hidden-sm'
+= link_to 'What', 'http://baehl-innovation.com/bbh', class: 'navbar-link-home dropdown-link hidden-xs hidden-sm'
+= link_to 'Where', 'http://baehl-innovation.com/where-we-work', class: 'navbar-link-home dropdown-link hidden-xs hidden-sm'
+= link_to 'Contact', 'http://baehl-innovation.com/contact', class: 'navbar-link-home dropdown-link hidden-xs hidden-sm'
+
+= link_to '#', class: 'navbar-link-hamburger text-center dropdownmenu visible-xs visible-sm' do
+  = fa_icon 'bars', class: 'fa-3x'
+.regular-dropdown.hidden
+  = link_to 'Home', root_path, class: 'navbar-link-home dropdown-link'
+  = link_to 'Baehl Innovation', 'http://baehl-innovation.com', class: 'navbar-link-home dropdown-link'
+  = link_to 'Who', 'http://baehl-innovation.com/who-we-are', class: 'navbar-link-home dropdown-link'
+  = link_to 'What', 'http://baehl-innovation.com/bbh', class: 'navbar-link-home dropdown-link'
+  = link_to 'Where', 'http://baehl-innovation.com/where-we-work', class: 'navbar-link-home dropdown-link'
+  = link_to 'Contact', 'http://baehl-innovation.com/contact', class: 'navbar-link-home dropdown-link'

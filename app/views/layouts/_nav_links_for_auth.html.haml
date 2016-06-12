@@ -1,14 +1,20 @@
 - if user_signed_in?
-  = link_to '#', class: 'navbar-link text-center phone-icon-link' do
+  = link_to '#', class: 'navbar-link text-center phone-icon-link hidden-xs hidden-sm' do
     = fa_icon 'phone', class: 'fa-3x'
     %p +33 (0) 144.44.44.44
-  = link_to favorites_path, class: 'navbar-link text-center' do
+  = link_to favorites_path, class: 'navbar-link text-center hidden-xs hidden-sm' do
     = fa_icon 'heart', class: 'fa-3x'
     %p My Favorites
-  = link_to '#', class: 'navbar-link text-center my-profile' do
+  = link_to '#', class: 'navbar-link text-center dropdownmenu hidden-xs hidden-sm' do
     = fa_icon 'bars', class: 'fa-3x'
     %p My Account
+  = link_to '#', class: 'navbar-link text-center dropdownmenu visible-xs visible-sm' do
+    = fa_icon 'bars', class: 'fa-3x'
   .profile-dropdown.hidden
+    = link_to '#', class: 'navbar-link text-center phone-icon-link visible-xs visible-sm dropdown-link' do
+      %p Contact
+    = link_to favorites_path, class: 'navbar-link text-center visible-xs visible-sm dropdown-link' do
+      %p My Favorites
     = link_to 'My Profile', edit_user_registration_path, class: 'navbar-link dropdown-link'
     = link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'navbar-link dropdown-link'
 - else

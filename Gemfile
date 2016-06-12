@@ -16,17 +16,19 @@ gem 'sendgrid'
 gem 'simple_form'
 
 gem 'aasm'
+gem 'aws-sdk', '< 2.0'
 gem 'autoprefixer-rails'
 gem 'bootbox-rails'
 gem 'classy_enum'
 gem 'country_select'
 gem 'figaro'
 gem 'font-awesome-rails'
-# gem 'paperclip',
+gem 'paperclip'
 gem 'rails_admin'
 gem "select2-rails"
 gem 'sendgrid-ruby'
 gem 'toastr_rails'
+gem 'wannabe_bool'
 gem 'whenever', :require => false
 gem 'faker'
 

@@ -1,14 +1,28 @@
 .footer
   .row.footer-content
-    .col-md-offset-4.col-md-4.text-center
-      %h2 CONTACT
-      %p Baehl Innovation
-      %p 26th Floor, Montparnasse Tower
-      %p 33 Avenue du Maine
-      %p 75015 Paris
-      %p Telephone: +33 (0)1 44 10 41 43
+    .col-md-3
+      %h3 CONTACT
+      %p.address Baehl Innovation
+      %p.address 26th Floor, Montparnasse Tower
+      %p.address 33 Avenue du Maine
+      %p.address 75015 Paris
+      %p.address Telephone: +33 (0)1 44 10 41 43
 
-  .row.footer-content
-    .col-md-12
-      %p.legal-notes= footer_and_legal_notes
+    .col-md-5
+      %h3 RECENT TWEETS
+      %a.twitter-timeline{ data: { 'tweet-limit': 1 }, href: 'https://twitter.com/themoor88' } Tweets by themoor88
+      %script{ async: true, src: '//platform.twitter.com/widgets.js', charset: 'utf-8' }
+
+    .col-md-4
+      %h3 LEGAL INFORMATION
+      %p Copyright 2015 - 2016 Baehl Innovation
+      %p All Rights Reserved
       = link_to 'Mentions Légales', 'http://baehl-innovation.com/mentions-legales/', class: 'footer-link'
+      .social-icons
+        = link_to 'https://twitter.com/baehlinnovation' do
+          = fa_icon 'twitter-square', class: 'fa-2x'
+        = link_to 'https://www.linkedin.com/company/baehl-innovation' do
+          = fa_icon 'linkedin-square', class: 'fa-2x'
+
+
+

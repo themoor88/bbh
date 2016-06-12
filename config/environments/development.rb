@@ -41,7 +41,7 @@ Rails.application.configure do
   # config.action_mailer.delivery_method = :smtp
   config.action_mailer.raise_delivery_errors = true
   # Send email in development mode?
-  config.action_mailer.perform_deliveries = false
+  config.action_mailer.perform_deliveries = true
 
 
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
@@ -55,4 +55,14 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  config.paperclip_defaults = {
+    storage: :s3,
+    s3_credentials: {
+      bucket: Figaro.env.s3_bucket_name,
+      access_key_id: Figaro.env.aws_access_key_id,
+      secret_access_key: Figaro.env.aws_secret_access_key,
+      s3_region: Figaro.env.aws_region
+    }
+  }
 end

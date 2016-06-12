@@ -17,7 +17,7 @@ class SearchController < ApplicationController
     end
 
     if params[:sector].present?
-      @campaigns = @campaigns.where(sector: params[:sector].to_s)
+      @campaigns = @campaigns.where(sector: params[:sector])
     end
   end
   # rubocop:enable Metrics/AbcSize

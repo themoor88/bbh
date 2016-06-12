@@ -30,7 +30,9 @@
             %p Sector:
             %p Country:
             %p Targeted Time To Market:
-            %p Expected TRL:
+            %p{ style: 'display: inline-block' } Expected TRL:
+            = link_to '#', style: 'display: inline-block' do
+              %sup= fa_icon 'info-circle', class: 'fa-2x trl-modal'
 
           .col-md-4
             %p= @campaign.sector.to_s.titleize
@@ -47,6 +49,6 @@
             = fa_icon 'heart'
             %p{ style: 'display: inline-block;' } Remove From Favorites
 
-        - if current_user.role == :tech_provider && @campaign.active?
+        - if current_user.role == :tech_provider && @campaign.active? && @proposed_solutions.blank?
           .text-center
             = link_to 'Apply Now', new_campaign_proposed_solution_path(@campaign), class: 'btn btn-primary'

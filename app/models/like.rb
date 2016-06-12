@@ -30,6 +30,7 @@ class Like < ActiveRecord::Base
   #------------------------------------------------------------------------------
   # Validations
   validates :user_id, :campaign_id, presence: true
+
   #------------------------------------------------------------------------------
   # Callbacks
 
@@ -47,6 +48,50 @@ class Like < ActiveRecord::Base
 
   #------------------------------------------------------------------------------
   # Rails Admin Config
+  rails_admin do
+    list do
+      field :id
+      field :user do
+        label 'Name'
+      end
+      field :campaign do
+        label 'Title'
+      end
+      field :created_at
+    end
+
+    show do
+      field :id
+      field :user do
+        label 'Name'
+      end
+      field :campaign do
+        label 'Title'
+      end
+      field :created_at
+    end
+
+    edit do
+      field :user do
+        label 'Name'
+      end
+      field :campaign do
+        label 'Title'
+      end
+      field :created_at
+    end
+
+    export do
+      field :id
+      field :user do
+        label 'Name'
+      end
+      field :campaign do
+        label 'Title'
+      end
+      field :created_at
+    end
+  end
 
   #------------------------------------------------------------------------------
   # private

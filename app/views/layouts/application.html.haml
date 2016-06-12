@@ -5,6 +5,8 @@
     %title= content_for?(:title) ? yield(:title) : 'Baehl Business Hub'
     %meta{ name: 'description', content: (content_for?(:description) ? yield(:description) : 'Baehl Business Hub').to_s }
     = stylesheet_link_tag 'application', media: 'all'
+    = stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Open+Sans'
+    = stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Raleway:800'
     = javascript_include_tag 'application'
     = csrf_meta_tags
   %body{ class:  "#{controller_path.tr('_', '-').tr('/', '-')} #{action_name.tr('_', '-')}" }

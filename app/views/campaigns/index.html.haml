@@ -4,7 +4,7 @@
       .swiper-slide
         = link_to slider_item.link do
           %h2.slider-title= slider_item.title
-          = image_tag('http://placehold.it/958x397', class: 'img-responsive')
+          = image_tag(slider_item.slide_image.url(:thumb), class: 'img-responsive')
 
   .swiper-pagination
   .swiper-button-next

@@ -12,7 +12,6 @@
 #  last_name              :string(255)
 #  position               :string(255)
 #  company                :string(255)
-#  company_type           :string(255)
 #  telephone              :string(255)
 #  mobile                 :string(255)
 #  address                :string(255)
@@ -56,13 +55,13 @@ class User < ActiveRecord::Base
   # Enumerations
   classy_enum_attr :title, allow_nil: true, allow_blank: true
   classy_enum_attr :role, allow_nil: false, allow_blank: false
-  classy_enum_attr :company_type, allow_nil: true, allow_blank: true
 
   #------------------------------------------------------------------------------
   # Scopes
 
   #------------------------------------------------------------------------------
   # Validations
+  validates :title, :first_name, :last_name, :role, :position, :company, :telephone, :address, :city, :country, :number_of_employees, :company_website, presence: true
 
   #------------------------------------------------------------------------------
   # Callbacks
@@ -331,25 +330,139 @@ class User < ActiveRecord::Base
     ['1-10', '11-50', '51-100', '100-500', '500-1000', '1000-5000', '5000-10 000', '10 000-50 000', '50 000+']
   end
 
+  def self.select_options_for_sectors
+    [
+      'Medical Devices',
+      'Cosmetic',
+      'eHealth',
+      'Pharmaceuticals',
+      'BioPharmaceuticals',
+      'Agri-Food',
+      'Aerospace',
+      'Automotive',
+      'BioProducts',
+      'Chemicals',
+      'Digital & Tech',
+      'Machinery & Equipment',
+      'Energy & Resources',
+      'Telecom',
+      'Other'
+    ]
+  end
+
   #------------------------------------------------------------------------------
   # Instance methods
   def active_for_authentication?
     super && active?
   end
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
   #------------------------------------------------------------------------------
   # Rails Admin Config
   rails_admin do
+    object_label_method do
+      :full_name
+    end
+
     configure :title, :enum do
       enum do
-        Title.select_options
+        Title.map(&:to_s)
       end
     end
 
     configure :role, :enum do
       enum do
-        Role.select_options
+        Role.map(&:to_s)
       end
+    end
+
+    list do
+      field :id
+      field :full_name do
+        label 'Name'
+      end
+      field :role
+      field :active
+      field :email
+      field :title
+      field :position
+      field :company
+      field :telephone
+      field :mobile
+      field :address
+      field :zip_code
+      field :city
+      field :country
+      field :number_of_employees
+      field :company_website
+      field :created_at
+    end
+
+    show do
+      field :id
+      field :full_name do
+        label 'Name'
+      end
+      field :role
+      field :active
+      field :email
+      field :title
+      field :position
+      field :company
+      field :telephone
+      field :mobile
+      field :address
+      field :zip_code
+      field :city
+      field :country
+      field :number_of_employees
+      field :company_website
+      field :created_at
+    end
+
+    edit do
+      field :first_name
+      field :last_name
+      field :role
+      field :active
+      field :email
+      field :password
+      field :title
+      field :position
+      field :company
+      field :telephone
+      field :mobile
+      field :address
+      field :zip_code
+      field :city
+      field :country
+      field :number_of_employees
+      field :company_website
+    end
+
+    export do
+      field :id
+      field :full_name do
+        label 'Name'
+      end
+      field :role
+      field :active
+      field :email
+      field :title
+      field :position
+      field :company
+      field :telephone
+      field :mobile
+      field :address
+      field :zip_code
+      field :city
+      field :country
+      field :number_of_employees
+      field :company_website
+      field :created_at
     end
   end
 
