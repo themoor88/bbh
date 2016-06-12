@@ -42,10 +42,11 @@ class Campaign < ActiveRecord::Base
 
   #------------------------------------------------------------------------------
   # Validations
+  validates :user_id, presence: true
 
   #------------------------------------------------------------------------------
   # Callbacks
-  # after_create :send_email_to_admin
+  after_update :send_email_to_user_on_active
 
   #------------------------------------------------------------------------------
   # Enumerations
@@ -445,5 +446,11 @@ class Campaign < ActiveRecord::Base
   end
 
   #------------------------------------------------------------------------------
-  # private
+  private
+
+  def send_email_to_user_on_active
+    if state_changed? && active?
+      ApplicationMailer.sendgrid_send(to: user.email, template_id: 'dbfe5470-66a9-4661-b670-d30aadd2673e').deliver
+    end
+  end
 end

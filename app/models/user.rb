@@ -29,11 +29,16 @@
 #  last_sign_in_at        :datetime
 #  current_sign_in_ip     :string(255)
 #  last_sign_in_ip        :string(255)
+#  confirmation_token     :string(255)
+#  confirmed_at           :datetime
+#  confirmation_sent_at   :datetime
+#  unconfirmed_email      :string(255)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
 # Indexes
 #
+#  index_users_on_confirmation_token    (confirmation_token) UNIQUE
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
@@ -43,7 +48,7 @@ class User < ActiveRecord::Base
 
   #------------------------------------------------------------------------------
   # Devise modules
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :registerable, :confirmable, :recoverable, :rememberable, :trackable, :validatable
 
   #------------------------------------------------------------------------------
   # Associations
@@ -65,6 +70,7 @@ class User < ActiveRecord::Base
 
   #------------------------------------------------------------------------------
   # Callbacks
+  after_update :send_email_to_user_on_activation
 
   #------------------------------------------------------------------------------
   # Enumerations
@@ -493,5 +499,11 @@ class User < ActiveRecord::Base
   end
 
   #------------------------------------------------------------------------------
-  # private
+  private
+
+  def send_email_to_user_on_activation
+    if active_changed? && active
+      ApplicationMailer.sendgrid_send(to: email, template_id: 'a15e373b-7ff9-4302-9233-9449da3a22f4').deliver
+    end
+  end
 end
