@@ -265,8 +265,9 @@ $(function() {
   ];
 
   // Navigation dropdown toggle
-  $('.my-profile').on('click', function() {
+  $('.dropdownmenu').on('click', function() {
     $('.profile-dropdown').toggleClass('hidden');
+    $('.regular-dropdown').toggleClass('hidden');
   });
 
   // Home info modal

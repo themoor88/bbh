@@ -10,7 +10,7 @@
             = select_tag :number, options_for_select(1..10, params[:number_of_proposed_solutions]), class: 'select2-ps number-of-proposed-solutions', data: { url: new_campaign_proposed_solution_path(@campaign) }
             %p.number-of potential technologies/solutions available
             %p Please provide links to the technologies or proposed solutions, if you already have info about them available online, or, please attach document(s) with the detailed information.
-        = simple_form_for(@proposed_solutions, url: campaign_proposed_solutions_path, method: :post) do |f|
+        = simple_form_for(@proposed_solutions, url: campaign_proposed_solutions_path, method: :post, html: { multipart: true }) do |f|
           - @proposed_solutions.each do |proposed_solution|
             = simple_fields_for 'proposed_solutions[]', proposed_solution do |p|
               = p.error_notification
@@ -22,22 +22,22 @@
                 .col-xs-offset-2.col-xs-4
                   %p Link:
                 .col-xs-4
-                  = p.input :link, label: false
+                  = p.input :link, required: true, label: false
               .row
                 .col-xs-offset-2.col-xs-4
                   %p Attachment:
                 .col-xs-4
-                  = p.input :attachment, label: false
+                  = p.input :attachment, required: true, label: false
               .row
                 .col-xs-offset-2.col-xs-4
                   %p What is your technology?
                 .col-xs-4
-                  = p.input :technology_description, label: false
+                  = p.input :technology_description, required: true, label: false
               .row
                 .col-xs-offset-2.col-xs-4
                   %p What is it's main application
                 .col-xs-4
-                  = p.input :technology_application, label: false
+                  = p.input :technology_application, required: true, label: false
               .row
                 .col-xs-offset-2.col-xs-4
                   %p Patents (optional):
@@ -49,7 +49,7 @@
                   = link_to '#', style: 'display: inline-block' do
                     %sup= fa_icon 'info-circle', class: 'fa-2x trl-modal'
                 .col-xs-4
-                  = p.input :trl, label: false, include_blank: 'Select one', collection: ProposedSolution.trl_options, input_html: { class: 'select2' }
+                  = p.input :trl, required: true, label: false, include_blank: 'Select one', collection: ProposedSolution.trl_options, input_html: { class: 'select2' }
               .row
                 .col-xs-offset-2.col-xs-4
                   %p Licence available (optional):

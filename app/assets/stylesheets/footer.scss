@@ -5,6 +5,10 @@
     padding: 15px 80px 40px 80px;
     margin: 0;
 
+    @media #{$sm-down} {
+      padding: 0;
+    }
+
     p.address {
       font-size: 14px;
     }
