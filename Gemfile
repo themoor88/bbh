@@ -28,6 +28,7 @@ gem 'rails_admin'
 gem "select2-rails"
 gem 'sendgrid-ruby'
 gem 'toastr_rails'
+gem 'wannabe_bool'
 gem 'whenever', :require => false
 gem 'faker'
 

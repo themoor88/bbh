@@ -376,6 +376,11 @@ class Campaign < ActiveRecord::Base
       field :expected_trl
       field :state
       field :expires_at
+      field :number_of_likes do
+        def value
+          bindings[:object].likes.count
+        end
+      end
       field :created_at
     end
 
@@ -393,6 +398,11 @@ class Campaign < ActiveRecord::Base
       field :expected_trl
       field :state
       field :expires_at
+      field :number_of_likes do
+        def value
+          bindings[:object].likes.count
+        end
+      end
       field :created_at
     end
 
@@ -425,6 +435,11 @@ class Campaign < ActiveRecord::Base
       field :expected_trl
       field :state
       field :expires_at
+      field :number_of_likes do
+        def value
+          bindings[:object].likes.count
+        end
+      end
       field :created_at
     end
   end
