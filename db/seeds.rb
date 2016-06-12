@@ -1,12 +1,82 @@
 #------------------------------------------------------------------------------
 # Create tech provider user
-User.create! first_name: 'Chantal', last_name: 'Grillot', email: 'chantal_provider@example.com', password: 'password', password_confirmation: 'password', role: :tech_provider, active: true
-User.create! first_name: 'Waajid', last_name: 'Kagzi', email: 'chantal_provider2@example.com', password: 'password', password_confirmation: 'password', role: :tech_provider, active: true
+User.create!(
+  title: 'Mr.',
+  position: 'developer',
+  company: 'Cool Beans',
+  telephone: '416-792-7222',
+  address: '33 Cool Street',
+  city: 'Toronto',
+  country: 'Canada',
+  number_of_employees: '1-10',
+  company_website: 'http://www.google.ca',
+  first_name: 'Chantal',
+  last_name: 'Grillot',
+  email: 'chantal_provider@example.com',
+  password: 'password',
+  password_confirmation: 'password',
+  role: :tech_provider,
+  active: true
+)
+
+User.create!(
+  title: 'Dr.',
+  position: 'doctor',
+  company: 'Awesome Sauce',
+  telephone: '416-790-7666',
+  address: '87 box street',
+  city: 'Mississauga',
+  country: 'Canada',
+  number_of_employees: '1-10',
+  company_website: 'http://www.google.ca',
+  first_name: 'Wajid',
+  last_name: 'Kagzi',
+  email: 'chantal_provider2@example.com',
+  password: 'password',
+  password_confirmation: 'password',
+  role: :tech_provider,
+  active: true
+)
 
 #------------------------------------------------------------------------------
 # Create tech seeker user
-User.create! first_name: 'Matthew', last_name: 'Cavdar', email: 'chantal_seeker@example.com', password: 'password', password_confirmation: 'password', role: :tech_seeker, active: true
-User.create! first_name: 'Iron', last_name: 'Man', email: 'chantal_seeker2@example.com', password: 'password', password_confirmation: 'password', role: :tech_seeker, active: true
+User.create!(
+  title: 'Dr.',
+  position: 'doctor',
+  company: 'Awesome Sauce',
+  telephone: '416-790-7666',
+  address: '87 box street',
+  city: 'Mississauga',
+  country: 'Canada',
+  number_of_employees: '1-10',
+  company_website: 'http://www.google.ca',
+  first_name: 'Matthew',
+  last_name: 'Cavdar',
+  email: 'chantal_seeker@example.com',
+  password: 'password',
+  password_confirmation: 'password',
+  role: :tech_seeker,
+  active: true
+)
+
+User.create!(
+  title: 'Mr.',
+  position: 'developer',
+  company: 'Cool Beans',
+  telephone: '416-792-7222',
+  address: '33 Cool Street',
+  city: 'Toronto',
+  country: 'Canada',
+  number_of_employees: '1-10',
+  company_website: 'http://www.google.ca',
+  first_name: 'Iron',
+  last_name: 'Man',
+  email: 'chantal_seeker2@example.com',
+  password: 'password',
+  password_confirmation: 'password',
+  role: :tech_seeker,
+  active: true
+)
 
 #------------------------------------------------------------------------------
 # Create admin user
