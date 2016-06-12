@@ -44,7 +44,7 @@ class ProposedSolution < ActiveRecord::Base
 
   #------------------------------------------------------------------------------
   # Callbacks
-  # after_create :send_email_to_admin
+  after_create :send_email_to_admin
 
   #------------------------------------------------------------------------------
   # Enumerations
@@ -169,5 +169,9 @@ class ProposedSolution < ActiveRecord::Base
   end
 
   #------------------------------------------------------------------------------
-  # private
+  private
+
+  def send_email_to_admin
+    ApplicationMailer.sendgrid_send(to: Admin.all.map(&:email), template_id: '10998a1e-1892-4c39-9023-74d5fe38503b').deliver
+  end
 end
