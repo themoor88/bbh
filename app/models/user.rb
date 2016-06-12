@@ -379,11 +379,15 @@ class User < ActiveRecord::Base
       end
     end
 
+    configure :country, :enum do
+      enum do
+        User.country_options.map { |hash| [hash[:id], hash[:text]] }
+      end
+    end
+
     list do
       field :id
-      field :full_name do
-        label 'Name'
-      end
+      field :full_name
       field :role
       field :active
       field :email
@@ -398,14 +402,18 @@ class User < ActiveRecord::Base
       field :country
       field :number_of_employees
       field :company_website
+      field :reset_password_sent_at
+      field :remember_created_at
+      field :sign_in_count
+      field :current_sign_in_at
+      field :last_sign_in_at
       field :created_at
+      field :updated_at
     end
 
     show do
       field :id
-      field :full_name do
-        label 'Name'
-      end
+      field :full_name
       field :role
       field :active
       field :email
@@ -420,7 +428,13 @@ class User < ActiveRecord::Base
       field :country
       field :number_of_employees
       field :company_website
+      field :reset_password_sent_at
+      field :remember_created_at
+      field :sign_in_count
+      field :current_sign_in_at
+      field :last_sign_in_at
       field :created_at
+      field :updated_at
     end
 
     edit do
@@ -430,6 +444,7 @@ class User < ActiveRecord::Base
       field :active
       field :email
       field :password
+      field :password_confirmation
       field :title
       field :position
       field :company
@@ -441,13 +456,18 @@ class User < ActiveRecord::Base
       field :country
       field :number_of_employees
       field :company_website
+      field :reset_password_sent_at
+      field :remember_created_at
+      field :sign_in_count
+      field :current_sign_in_at
+      field :last_sign_in_at
+      field :created_at
+      field :updated_at
     end
 
     export do
       field :id
-      field :full_name do
-        label 'Name'
-      end
+      field :full_name
       field :role
       field :active
       field :email
@@ -462,7 +482,13 @@ class User < ActiveRecord::Base
       field :country
       field :number_of_employees
       field :company_website
+      field :reset_password_sent_at
+      field :remember_created_at
+      field :sign_in_count
+      field :current_sign_in_at
+      field :last_sign_in_at
       field :created_at
+      field :updated_at
     end
   end
 
