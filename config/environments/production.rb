@@ -81,7 +81,7 @@ Rails.application.configure do
   #   password: Figaro.env.sendgrid_password
   # }
   # # ActionMailer Config
-  # config.action_mailer.default_url_options = { host: 'http://baehl-business-hub.com' }
+  config.action_mailer.default_url_options = { host: 'http://baehl-business-hub-integration.herokuapp.com' }
   # config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
