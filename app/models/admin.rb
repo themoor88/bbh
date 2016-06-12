@@ -55,6 +55,30 @@ class Admin < ActiveRecord::Base
 
   #------------------------------------------------------------------------------
   # Rails Admin Config
+  rails_admin do
+    list do
+      field :id
+      field :email
+      field :created_at
+    end
+
+    show do
+      field :id
+      field :email
+      field :created_at
+    end
+
+    edit do
+      field :email
+      field :password
+    end
+
+    export do
+      field :id
+      field :email
+      field :created_at
+    end
+  end
 
   #------------------------------------------------------------------------------
   # private

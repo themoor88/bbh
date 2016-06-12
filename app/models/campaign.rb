@@ -33,7 +33,6 @@ class Campaign < ActiveRecord::Base
 
   #------------------------------------------------------------------------------
   # Enumerations
-  classy_enum_attr :sector
   classy_enum_attr :state, allow_blank: false, allow_nil: false, default: :pending
 
   #------------------------------------------------------------------------------
@@ -308,6 +307,10 @@ class Campaign < ActiveRecord::Base
   end
   # rubocop:enable MethodLength
 
+  def self.targeted_time_to_market_options
+    ['Less than 6 months', '6 months - 12 months', '12 months to 24 months', '24 months to 36 months', 'Other']
+  end
+
   #------------------------------------------------------------------------------
   # Instance methods
   def active?
@@ -325,9 +328,31 @@ class Campaign < ActiveRecord::Base
   #------------------------------------------------------------------------------
   # Rails Admin Config
   rails_admin do
+    object_label_method do
+      :title
+    end
+
     configure :sector, :enum do
       enum do
-        Sector.select_options
+        User.select_options_for_sectors
+      end
+    end
+
+    configure :country, :enum do
+      enum do
+        Campaign.country_options.map { |hash| [hash[:id], hash[:text]] }
+      end
+    end
+
+    configure :targeted_time_to_market, :enum do
+      enum do
+        Campaign.targeted_time_to_market_options
+      end
+    end
+
+    configure :expected_trl, :enum do
+      enum do
+        ProposedSolution.trl_options
       end
     end
 
@@ -335,6 +360,87 @@ class Campaign < ActiveRecord::Base
       enum do
         State.select_options
       end
+    end
+
+    list do
+      field :id
+      field :user do
+        label 'Name'
+      end
+      field :title
+      field :company_description
+      field :company_needs
+      field :sector
+      field :country
+      field :targeted_time_to_market
+      field :expected_trl
+      field :state
+      field :expires_at
+      field :number_of_likes do
+        def value
+          bindings[:object].likes.count
+        end
+      end
+      field :created_at
+    end
+
+    show do
+      field :id
+      field :user do
+        label 'Name'
+      end
+      field :title
+      field :company_description
+      field :company_needs
+      field :sector
+      field :country
+      field :targeted_time_to_market
+      field :expected_trl
+      field :state
+      field :expires_at
+      field :number_of_likes do
+        def value
+          bindings[:object].likes.count
+        end
+      end
+      field :created_at
+    end
+
+    edit do
+      field :user do
+        label 'Name'
+      end
+      field :title
+      field :company_description
+      field :company_needs
+      field :sector
+      field :country
+      field :targeted_time_to_market
+      field :expected_trl
+      field :state
+      field :expires_at
+    end
+
+    export do
+      field :id
+      field :user do
+        label 'Name'
+      end
+      field :title
+      field :company_description
+      field :company_needs
+      field :sector
+      field :country
+      field :targeted_time_to_market
+      field :expected_trl
+      field :state
+      field :expires_at
+      field :number_of_likes do
+        def value
+          bindings[:object].likes.count
+        end
+      end
+      field :created_at
     end
   end
 

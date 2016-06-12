@@ -1,12 +1,12 @@
 #------------------------------------------------------------------------------
 # Create tech provider user
-User.create! email: 'chantal_provider@example.com', password: 'password', password_confirmation: 'password', role: :tech_provider, active: true
-User.create! email: 'chantal_provider2@example.com', password: 'password', password_confirmation: 'password', role: :tech_provider, active: true
+User.create! first_name: 'Chantal', last_name: 'Grillot', email: 'chantal_provider@example.com', password: 'password', password_confirmation: 'password', role: :tech_provider, active: true
+User.create! first_name: 'Waajid', last_name: 'Kagzi', email: 'chantal_provider2@example.com', password: 'password', password_confirmation: 'password', role: :tech_provider, active: true
 
 #------------------------------------------------------------------------------
 # Create tech seeker user
-User.create! email: 'chantal_seeker@example.com', password: 'password', password_confirmation: 'password', role: :tech_seeker, active: true
-User.create! email: 'chantal_seeker2@example.com', password: 'password', password_confirmation: 'password', role: :tech_seeker, active: true
+User.create! first_name: 'Matthew', last_name: 'Cavdar', email: 'chantal_seeker@example.com', password: 'password', password_confirmation: 'password', role: :tech_seeker, active: true
+User.create! first_name: 'Iron', last_name: 'Man', email: 'chantal_seeker2@example.com', password: 'password', password_confirmation: 'password', role: :tech_seeker, active: true
 
 #------------------------------------------------------------------------------
 # Create admin user

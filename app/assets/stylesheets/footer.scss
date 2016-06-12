@@ -2,12 +2,20 @@
   background-color: $orange;
 
   .footer-content {
-    padding: 15px 8px 40px 0;
+    padding: 15px 80px 40px 80px;
     margin: 0;
 
-    p.legal-notes,
+    @media #{$sm-down} {
+      padding: 0;
+    }
+
+    p.address {
+      font-size: 14px;
+    }
+
     .footer-link {
       display: inline-block;
+      font-size: 12px;
     }
   }
 }

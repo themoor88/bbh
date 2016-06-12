@@ -265,12 +265,13 @@ $(function() {
   ];
 
   // Navigation dropdown toggle
-  $('.my-profile').on('click', function() {
+  $('.dropdownmenu').on('click', function() {
     $('.profile-dropdown').toggleClass('hidden');
+    $('.regular-dropdown').toggleClass('hidden');
   });
 
   // Home info modal
-  $('i.fa-info-circle, .phone-icon-link').on('click', function(e) {
+  $('i.fa-info-circle.contact, .phone-icon-link').on('click', function(e) {
     e.preventDefault();
     bootbox.dialog({
       title: 'Contact Us',
@@ -280,6 +281,23 @@ $(function() {
       "<p>75015 Paris</p>" +
       "<p>Telephone: +33 (0)1 44 10 41 43</p>" +
       "<p>Email: info@baehl-innovation.com</p>"
+    });
+  });
+
+  $('i.fa-info-circle.trl-modal').on('click', function(e) {
+    e.preventDefault();
+    bootbox.dialog({
+      title: 'Technology Readiness Level',
+      message: "<p><strong>TRL 0: Idea</strong>. Unproven concept, no testing has been performed.</p>" +
+      "<p><strong>TRL 1: Basic research</strong>. Principles postulated and observed but no experimental proof available.</p>" +
+      "<p><strong>TRL 2: Technology formulation</strong>. Concept and application have been formulated.</p>" +
+      "<p><strong>TRL 3: Applied research</strong>. First laboratory tests completed; proof of concept.</p>" +
+      "<p><strong>TRL 4: Smal scale prototype</strong> built in a laboratory environment ('ugly' prototype).</p>" +
+      "<p><strong>TRL 5: Large scale prototype</strong> tested in intended environment.</p>" +
+      "<p><strong>TRL 6: Prototype system</strong> tested in intended environment close to expected performance.</p>" +
+      "<p><strong>TRL 7: Demonstration system</strong> operating in operational environment at pre-commercial scale.</p>" +
+      "<p><strong>TRL 8: First of a kind commercial system</strong>. Manufacturing issues solved.</p>" +
+      "<p><strong>TRL 9: Full commercial application</strong>, technology available for consumers.</p>"
     });
   });
 });

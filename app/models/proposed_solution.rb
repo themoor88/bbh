@@ -3,20 +3,24 @@
 #
 # Table name: proposed_solutions
 #
-#  id                     :integer          not null, primary key
-#  user_id                :integer
-#  campaign_id            :integer
-#  link                   :string(255)
-#  attachment             :string(255)
-#  technology_description :text(65535)
-#  technology_application :text(65535)
-#  patents                :text(65535)
-#  trl                    :string(255)
-#  licence_available      :boolean
-#  institution            :string(255)
-#  expectations           :text(65535)
-#  created_at             :datetime         not null
-#  updated_at             :datetime         not null
+#  id                      :integer          not null, primary key
+#  user_id                 :integer
+#  campaign_id             :integer
+#  link                    :string(255)
+#  attachment              :string(255)
+#  technology_description  :text(65535)
+#  technology_application  :text(65535)
+#  patents                 :text(65535)
+#  trl                     :string(255)
+#  licence_available       :boolean
+#  institution             :string(255)
+#  expectations            :text(65535)
+#  created_at              :datetime         not null
+#  updated_at              :datetime         not null
+#  attachment_file_name    :string(255)
+#  attachment_content_type :string(255)
+#  attachment_file_size    :integer
+#  attachment_updated_at   :datetime
 #
 # Indexes
 #
@@ -29,12 +33,14 @@ class ProposedSolution < ActiveRecord::Base
   # Associations
   belongs_to :user
   belongs_to :campaign
+  has_attached_file :attachment
 
   #------------------------------------------------------------------------------
   # Scopes
 
   #------------------------------------------------------------------------------
   # Validations
+  validates_attachment :attachment, content_type: { content_type: %w(application/pdf application/msword application/vnd.openxmlformats-officedocument.wordprocessingml.document) }
 
   #------------------------------------------------------------------------------
   # Callbacks
@@ -66,6 +72,101 @@ class ProposedSolution < ActiveRecord::Base
 
   #------------------------------------------------------------------------------
   # Rails Admin Config
+  rails_admin do
+    list do
+      field :id
+      field :user do
+        label 'Name'
+      end
+      field :campaign do
+        label 'Title'
+      end
+      field :link
+      field :attachment
+      field :technology_description
+      field :technology_application
+      field :patents
+      field :trl, :enum do
+        enum do
+          ProposedSolution.trl_options
+        end
+      end
+      field :licence_available
+      field :institution
+      field :expectations
+      field :created_at
+    end
+
+    show do
+      field :id
+      field :user do
+        label 'Name'
+      end
+      field :campaign do
+        label 'Title'
+      end
+      field :link
+      field :attachment
+      field :technology_description
+      field :technology_application
+      field :patents
+      field :trl, :enum do
+        enum do
+          ProposedSolution.trl_options
+        end
+      end
+      field :licence_available
+      field :institution
+      field :expectations
+      field :created_at
+    end
+
+    edit do
+      field :user do
+        label 'Name'
+      end
+      field :campaign do
+        label 'Title'
+      end
+      field :link
+      field :attachment
+      field :technology_description
+      field :technology_application
+      field :patents
+      field :trl, :enum do
+        enum do
+          ProposedSolution.trl_options
+        end
+      end
+      field :licence_available
+      field :institution
+      field :expectations
+    end
+
+    export do
+      field :id
+      field :user do
+        label 'Name'
+      end
+      field :campaign do
+        label 'Title'
+      end
+      field :link
+      field :attachment
+      field :technology_description
+      field :technology_application
+      field :patents
+      field :trl, :enum do
+        enum do
+          ProposedSolution.trl_options
+        end
+      end
+      field :licence_available
+      field :institution
+      field :expectations
+      field :created_at
+    end
+  end
 
   #------------------------------------------------------------------------------
   # private
