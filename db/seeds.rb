@@ -80,7 +80,7 @@ User.create!(
 
 #------------------------------------------------------------------------------
 # Create admin user
-Admin.create! email: 'chantal_admin@example.com', password: 'password', password_confirmation: 'password'
+Admin.create! email: 'delescure@me.com', password: 'password', password_confirmation: 'password'
 
 n_campaigns_per_user = 5
 
