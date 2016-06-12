@@ -34,7 +34,7 @@ class SliderItem < ActiveRecord::Base
   #------------------------------------------------------------------------------
   # Validations
   # Validate the attached image is image/jpg, image/png, etc
-  validates_attachment_content_type :slide_image, :content_type => /\Aimage\/.*\Z/
+  validates_attachment_content_type :slide_image, content_type: %r{/\Aimage\/.*\Z/}
 
   #------------------------------------------------------------------------------
   # Callbacks
@@ -53,6 +53,41 @@ class SliderItem < ActiveRecord::Base
 
   #------------------------------------------------------------------------------
   # Rails Admin Config
+  rails_admin do
+    list do
+      field :id
+      field :title
+      field :link
+      field :slide_image
+      field :active
+      field :created_at
+    end
+
+    show do
+      field :id
+      field :title
+      field :link
+      field :slide_image
+      field :active
+      field :created_at
+    end
+
+    edit do
+      field :title
+      field :link
+      field :slide_image
+      field :active
+    end
+
+    export do
+      field :id
+      field :title
+      field :link
+      field :slide_image
+      field :active
+      field :created_at
+    end
+  end
 
   #------------------------------------------------------------------------------
   # private

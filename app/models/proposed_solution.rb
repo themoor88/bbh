@@ -72,6 +72,101 @@ class ProposedSolution < ActiveRecord::Base
 
   #------------------------------------------------------------------------------
   # Rails Admin Config
+  rails_admin do
+    list do
+      field :id
+      field :user do
+        label 'Name'
+      end
+      field :campaign do
+        label 'Title'
+      end
+      field :link
+      field :attachment
+      field :technology_description
+      field :technology_application
+      field :patents
+      field :trl, :enum do
+        enum do
+          ProposedSolution.trl_options
+        end
+      end
+      field :licence_available
+      field :institution
+      field :expectations
+      field :created_at
+    end
+
+    show do
+      field :id
+      field :user do
+        label 'Name'
+      end
+      field :campaign do
+        label 'Title'
+      end
+      field :link
+      field :attachment
+      field :technology_description
+      field :technology_application
+      field :patents
+      field :trl, :enum do
+        enum do
+          ProposedSolution.trl_options
+        end
+      end
+      field :licence_available
+      field :institution
+      field :expectations
+      field :created_at
+    end
+
+    edit do
+      field :user do
+        label 'Name'
+      end
+      field :campaign do
+        label 'Title'
+      end
+      field :link
+      field :attachment
+      field :technology_description
+      field :technology_application
+      field :patents
+      field :trl, :enum do
+        enum do
+          ProposedSolution.trl_options
+        end
+      end
+      field :licence_available
+      field :institution
+      field :expectations
+    end
+
+    export do
+      field :id
+      field :user do
+        label 'Name'
+      end
+      field :campaign do
+        label 'Title'
+      end
+      field :link
+      field :attachment
+      field :technology_description
+      field :technology_application
+      field :patents
+      field :trl, :enum do
+        enum do
+          ProposedSolution.trl_options
+        end
+      end
+      field :licence_available
+      field :institution
+      field :expectations
+      field :created_at
+    end
+  end
 
   #------------------------------------------------------------------------------
   # private

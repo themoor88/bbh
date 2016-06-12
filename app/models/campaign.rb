@@ -308,13 +308,7 @@ class Campaign < ActiveRecord::Base
   # rubocop:enable MethodLength
 
   def self.targeted_time_to_market_options
-    [
-      'Less than 6 months',
-      '6 months - 12 months',
-      '12 months to 24 months',
-      '24 months to 36 months',
-      'Other'
-    ]
+    ['Less than 6 months', '6 months - 12 months', '12 months to 24 months', '24 months to 36 months', 'Other']
   end
 
   #------------------------------------------------------------------------------
@@ -334,10 +328,8 @@ class Campaign < ActiveRecord::Base
   #------------------------------------------------------------------------------
   # Rails Admin Config
   rails_admin do
-    configure :state, :enum do
-      enum do
-        State.select_options
-      end
+    object_label_method do
+      :title
     end
 
     configure :sector, :enum do
@@ -352,16 +344,88 @@ class Campaign < ActiveRecord::Base
       end
     end
 
+    configure :targeted_time_to_market, :enum do
+      enum do
+        Campaign.targeted_time_to_market_options
+      end
+    end
+
     configure :expected_trl, :enum do
       enum do
         ProposedSolution.trl_options
       end
     end
 
-    configure :targeted_time_to_market, :enum do
+    configure :state, :enum do
       enum do
-        Campaign.targeted_time_to_market_options
+        State.select_options
       end
+    end
+
+    list do
+      field :id
+      field :user do
+        label 'Name'
+      end
+      field :title
+      field :company_description
+      field :company_needs
+      field :sector
+      field :country
+      field :targeted_time_to_market
+      field :expected_trl
+      field :state
+      field :expires_at
+      field :created_at
+    end
+
+    show do
+      field :id
+      field :user do
+        label 'Name'
+      end
+      field :title
+      field :company_description
+      field :company_needs
+      field :sector
+      field :country
+      field :targeted_time_to_market
+      field :expected_trl
+      field :state
+      field :expires_at
+      field :created_at
+    end
+
+    edit do
+      field :user do
+        label 'Name'
+      end
+      field :title
+      field :company_description
+      field :company_needs
+      field :sector
+      field :country
+      field :targeted_time_to_market
+      field :expected_trl
+      field :state
+      field :expires_at
+    end
+
+    export do
+      field :id
+      field :user do
+        label 'Name'
+      end
+      field :title
+      field :company_description
+      field :company_needs
+      field :sector
+      field :country
+      field :targeted_time_to_market
+      field :expected_trl
+      field :state
+      field :expires_at
+      field :created_at
     end
   end
 

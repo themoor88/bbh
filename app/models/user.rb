@@ -363,23 +363,107 @@ class User < ActiveRecord::Base
   #------------------------------------------------------------------------------
   # Rails Admin Config
   rails_admin do
-    list do
-      field :full_name do
-        label 'Name'
+    object_label_method do
+      :full_name
+    end
+
+    configure :title, :enum do
+      enum do
+        Title.map(&:to_s)
       end
     end
 
-    # configure :title, :enum do
-    #   enum do
-    #     Title.select_options
-    #   end
-    # end
+    configure :role, :enum do
+      enum do
+        Role.map(&:to_s)
+      end
+    end
 
-    # configure :role, :enum do
-    #   enum do
-    #     Role.select_options
-    #   end
-    # end
+    list do
+      field :id
+      field :full_name do
+        label 'Name'
+      end
+      field :role
+      field :active
+      field :email
+      field :title
+      field :position
+      field :company
+      field :telephone
+      field :mobile
+      field :address
+      field :zip_code
+      field :city
+      field :country
+      field :number_of_employees
+      field :company_website
+      field :created_at
+    end
+
+    show do
+      field :id
+      field :full_name do
+        label 'Name'
+      end
+      field :role
+      field :active
+      field :email
+      field :title
+      field :position
+      field :company
+      field :telephone
+      field :mobile
+      field :address
+      field :zip_code
+      field :city
+      field :country
+      field :number_of_employees
+      field :company_website
+      field :created_at
+    end
+
+    edit do
+      field :first_name
+      field :last_name
+      field :role
+      field :active
+      field :email
+      field :password
+      field :title
+      field :position
+      field :company
+      field :telephone
+      field :mobile
+      field :address
+      field :zip_code
+      field :city
+      field :country
+      field :number_of_employees
+      field :company_website
+    end
+
+    export do
+      field :id
+      field :full_name do
+        label 'Name'
+      end
+      field :role
+      field :active
+      field :email
+      field :title
+      field :position
+      field :company
+      field :telephone
+      field :mobile
+      field :address
+      field :zip_code
+      field :city
+      field :country
+      field :number_of_employees
+      field :company_website
+      field :created_at
+    end
   end
 
   #------------------------------------------------------------------------------
