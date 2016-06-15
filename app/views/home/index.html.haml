@@ -9,19 +9,18 @@
       %h2 Innovate. Collaborate. Accelerate.
 
 %section.login-and-info
-  .row
-    .col-sm-6
-      .panel.panel-default
-        .panel-heading.text-center
-          %h2 About the Baehl Business Hub
-        .panel-body
-          %p
-            The Baehl Business Hub is a tool for labs, developers, public institutions and companies to quickly and easily reach each other. It is a virtual accelerator for those looking to sell, buy, or collaborate on new technologies. It automatically brings key players together in this new gathering place for opportunities.
-          %p
-            The Baehl Business Hub allows labs, TTOs, and other innovators to efficiently explore the needs of mid-sized startups worldwide, in order to powerfully bridge the gap between innovative technologies and potential clients, attracting market attention and fostering innovation.
+  .grid-column
+    .panel.panel-default
+      .panel-heading.text-center
+        %h2 About the Baehl Business Hub
+      .panel-body
+        %p
+          The Baehl Business Hub is a tool for labs, developers, public institutions and companies to quickly and easily reach each other. It is a virtual accelerator for those looking to sell, buy, or collaborate on new technologies. It automatically brings key players together in this new gathering place for opportunities.
+        %p
+          The Baehl Business Hub allows labs, TTOs, and other innovators to efficiently explore the needs of mid-sized startups worldwide, in order to powerfully bridge the gap between innovative technologies and potential clients, attracting market attention and fostering innovation.
 
-    .col-sm-6
-      = render 'devise/shared/form'
+  .grid-column
+    = render 'devise/shared/form'
 
 %section.modal-links
   .row
