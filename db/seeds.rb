@@ -1,6 +1,6 @@
 #------------------------------------------------------------------------------
 # Create tech provider user
-User.create!(
+user1 = User.new(
   title: 'Mr.',
   position: 'developer',
   company: 'Cool Beans',
@@ -12,14 +12,16 @@ User.create!(
   company_website: 'http://www.google.ca',
   first_name: 'Chantal',
   last_name: 'Grillot',
-  email: 'wjkagzi@gmail.com',
+  email: 'chantal_provider@example.com',
   password: 'password',
   password_confirmation: 'password',
   role: :tech_provider,
   active: true
 )
+user1.skip_confirmation!
+user1.save!
 
-User.create!(
+user2 = User.new(
   title: 'Dr.',
   position: 'doctor',
   company: 'Awesome Sauce',
@@ -31,16 +33,18 @@ User.create!(
   company_website: 'http://www.google.ca',
   first_name: 'Wajid',
   last_name: 'Kagzi',
-  email: 'wjkagzi+1@gmail.com',
+  email: 'chantal_provider2@example.com',
   password: 'password',
   password_confirmation: 'password',
   role: :tech_provider,
   active: true
 )
+user2.skip_confirmation!
+user2.save!
 
 #------------------------------------------------------------------------------
 # Create tech seeker user
-User.create!(
+user3 = User.new(
   title: 'Dr.',
   position: 'doctor',
   company: 'Awesome Sauce',
@@ -52,14 +56,16 @@ User.create!(
   company_website: 'http://www.google.ca',
   first_name: 'Matthew',
   last_name: 'Cavdar',
-  email: 'wjkagzi+2@gmail.com',
+  email: 'chantal_seeker@example.com',
   password: 'password',
   password_confirmation: 'password',
   role: :tech_seeker,
   active: true
 )
+user3.skip_confirmation!
+user3.save!
 
-User.create!(
+user4 = User.new(
   title: 'Mr.',
   position: 'developer',
   company: 'Cool Beans',
@@ -71,16 +77,19 @@ User.create!(
   company_website: 'http://www.google.ca',
   first_name: 'Iron',
   last_name: 'Man',
-  email: 'wjkagzi+3@gmail.com',
+  email: 'chantal_seeker2@example.com',
   password: 'password',
   password_confirmation: 'password',
   role: :tech_seeker,
   active: true
 )
+user4.skip_confirmation!
+user4.save!
 
 #------------------------------------------------------------------------------
 # Create admin user
 Admin.create! email: 'delescure@me.com', password: 'password', password_confirmation: 'password'
+Admin.create! email: 'chantal@baehl-innovation.com', password: 'password', password_confirmation: 'password'
 
 n_campaigns_per_user = 5
 
