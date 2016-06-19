@@ -18,11 +18,7 @@
 class SliderItem < ActiveRecord::Base
   #------------------------------------------------------------------------------
   # Associations
-  has_attached_file :slide_image, styles: {
-    thumb: '100x100>',
-    square: '200x200#',
-    medium: '300x300>'
-  }
+  has_attached_file :slide_image, styles: { medium: '950x400#' }
 
   #------------------------------------------------------------------------------
   # Enumerations
@@ -33,8 +29,8 @@ class SliderItem < ActiveRecord::Base
 
   #------------------------------------------------------------------------------
   # Validations
-  # Validate the attached image is image/jpg, image/png, etc
-  validates_attachment_content_type :slide_image, content_type: %r{/\Aimage\/.*\Z/}
+  validates_attachment_content_type :slide_image, content_type: /^image\/(jpg|jpeg|png)$/
+  validates :slide_image, attachment_presence: true
 
   #------------------------------------------------------------------------------
   # Callbacks
@@ -75,7 +71,9 @@ class SliderItem < ActiveRecord::Base
     edit do
       field :title
       field :link
-      field :slide_image
+      field :slide_image do
+        help 'Please ensure the photo is rectangular (eg. 950px X 400px).'
+      end
       field :active
     end
 

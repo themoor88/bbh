@@ -23,15 +23,4 @@ class UserMailer < Devise::Mailer
     }
     sendgrid_send options
   end
-
-  def unlock_instructions(record, token, _opts = {})
-    options = {
-      to: record.email,
-      template_id: 'fea1a935-98b9-4f44-81c9-fac1e146a0f5',
-      substitutions: {
-        '-url-': unlock_url(record, unlock_token: token)
-      }
-    }
-    sendgrid_send options
-  end
 end

@@ -9,6 +9,6 @@
           = f.full_error :confirmation_token
           = f.input :email, required: true, autofocus: true
           .text-center
-            = f.button :submit, 'Resend confirmation instructions'
+            = f.button :submit, 'Resend confirmation instructions', class: 'btn btn-primary'
         .text-center
           = render 'devise/shared/links'

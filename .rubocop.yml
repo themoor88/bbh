@@ -42,3 +42,6 @@ Metrics/ModuleLength:
 
 Metrics/ClassLength:
   Enabled: false
+
+Style/RegexpLiteral:
+  Enabled: false
