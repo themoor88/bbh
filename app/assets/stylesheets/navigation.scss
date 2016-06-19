@@ -128,10 +128,16 @@ nav.navbar {
     background-color: $white;
     z-index: 0;
     margin-top: 20px;
+    min-height: 70px;
 
     .home {
       display: flex;
       align-items: center;
+
+      @media #{$sm-down} {
+        width: 100%;
+        justify-content: center;
+      }
 
       .home-link {
         margin: 5px;
@@ -148,5 +154,4 @@ nav.navbar {
       margin: 0;
     }
   }
-
 }
