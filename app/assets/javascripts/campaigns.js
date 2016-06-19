@@ -6,7 +6,7 @@ $(function () {
       nextButton: '.swiper-button-next',
       prevButton: '.swiper-button-prev',
       paginationClickable: true,
-      spaceBetween: 30,
+      spaceBetween: 100,
       centeredSlides: true,
       speed: 1000,
       autoplay: 2500,

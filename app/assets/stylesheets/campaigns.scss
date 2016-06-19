@@ -1,13 +1,26 @@
 body.campaigns {
   &.index {
     @include campaigns-grid-list;
+    nav.navbar.tertiary {
+      @media #{$sm-down} {
+        min-height: 310px;
+      }
+    }
+
     .swiper-container {
       margin-top: 20px;
-      width: 958px;
-      height: 397px;
+      max-width: 950px;
+      height: auto;
       z-index: 0;
 
+      @media #{$md-down} {
+        width: 90%;
+        height: auto;
+      }
+
       .swiper-slide {
+        // width: 950px;
+        // height: auto;
         text-align: center;
         font-size: 18px;
         background: $white;
@@ -15,11 +28,22 @@ body.campaigns {
         justify-content: center;
         align-items: center;
 
+        @media #{$md-down} {
+          width: 90%;
+        }
+
+        &.swiper-slide-active {
+          @media #{$md-down} {
+            width: 90%;
+          }
+        }
+
         .slider-title {
           position: absolute;
           left: 50%;
           top: 70%;
           transform: translate(-50%, -50%);
+          color: $white;
         }
       }
     }
@@ -33,9 +57,22 @@ body.campaigns {
     .search-campaigns {
       display: inline-block;
 
+      @media #{$sm-down} {
+        width: 100%;
+      }
+
       .search-container {
         margin: 19px;
         display: inline-block;
+
+        @media #{$sm-down} {
+          width: 100%;
+          margin: 19px auto;
+
+          .select2-container--bootstrap {
+            margin: 0 auto;
+          }
+        }
 
         .country-search,
         .order-search,

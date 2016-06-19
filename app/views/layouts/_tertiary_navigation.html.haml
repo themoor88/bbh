@@ -11,7 +11,7 @@
         = select_tag :order, options_for_select([['Ending Last', 'DESC'], ['Ending Soonest', 'ASC']]), include_blank: 'Select Order', class: 'select2 order-search', data: { url: search_campaigns_path }
       .search-container
         = select_tag :sector, options_for_select(User.select_options_for_sectors), include_blank: 'Select Sector', class: 'select2 sector-search', data: { url: search_campaigns_path }
-  %p.back-to-listings.pull-right
+  %p.back-to-listings.pull-right.hidden-xs.hidden-sm
     - unless "#{controller_name} #{action_name}" == 'campaigns index'
       = fa_icon 'fast-backward'
       = link_to 'Back to All Campaign Listings', root_path

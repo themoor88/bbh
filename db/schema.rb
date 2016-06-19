@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160612181419) do
+ActiveRecord::Schema.define(version: 20160619152507) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -32,18 +32,22 @@ ActiveRecord::Schema.define(version: 20160612181419) do
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
 
   create_table "campaigns", force: :cascade do |t|
-    t.integer  "user_id",                 limit: 4
-    t.string   "title",                   limit: 255
-    t.text     "company_description",     limit: 65535
-    t.text     "company_needs",           limit: 65535
-    t.string   "sector",                  limit: 255
-    t.string   "country",                 limit: 255
-    t.string   "targeted_time_to_market", limit: 255
-    t.string   "expected_trl",            limit: 255
-    t.string   "state",                   limit: 255
+    t.integer  "user_id",                     limit: 4
+    t.string   "title",                       limit: 255
+    t.datetime "featured_image_updated_at"
+    t.integer  "featured_image_file_size",    limit: 4
+    t.string   "featured_image_content_type", limit: 255
+    t.string   "featured_image_file_name",    limit: 255
+    t.text     "company_description",         limit: 65535
+    t.text     "company_needs",               limit: 65535
+    t.string   "sector",                      limit: 255
+    t.string   "country",                     limit: 255
+    t.string   "targeted_time_to_market",     limit: 255
+    t.string   "expected_trl",                limit: 255
+    t.string   "state",                       limit: 255
     t.datetime "expires_at"
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
   end
 
   add_index "campaigns", ["user_id"], name: "index_campaigns_on_user_id", using: :btree
@@ -62,7 +66,6 @@ ActiveRecord::Schema.define(version: 20160612181419) do
     t.integer  "user_id",                 limit: 4
     t.integer  "campaign_id",             limit: 4
     t.string   "link",                    limit: 255
-    t.string   "attachment",              limit: 255
     t.text     "technology_description",  limit: 65535
     t.text     "technology_application",  limit: 65535
     t.text     "patents",                 limit: 65535
