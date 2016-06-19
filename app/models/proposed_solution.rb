@@ -7,7 +7,6 @@
 #  user_id                 :integer
 #  campaign_id             :integer
 #  link                    :string(255)
-#  attachment              :string(255)
 #  technology_description  :text(65535)
 #  technology_application  :text(65535)
 #  patents                 :text(65535)
@@ -40,8 +39,8 @@ class ProposedSolution < ActiveRecord::Base
 
   #------------------------------------------------------------------------------
   # Validations
-  validates_attachment :attachment, content_type: { content_type: %w(application/pdf application/msword application/vnd.openxmlformats-officedocument.wordprocessingml.document) }
-
+  validates_attachment_content_type :attachment, content_type: %w(application/pdf application/vnd.ms-excel application/vnd.openxmlformats-officedocument.spreadsheetml.sheet application/msword application/vnd.openxmlformats-officedocument.wordprocessingml.document text/plain)
+  validates :user_id, :campaign_id, :link, :technology_description, :technology_application, :patents, :trl, presence: true
   #------------------------------------------------------------------------------
   # Callbacks
   after_create :send_email_to_admin
@@ -172,6 +171,12 @@ class ProposedSolution < ActiveRecord::Base
   private
 
   def send_email_to_admin
-    ApplicationMailer.sendgrid_send(to: Admin.all.map(&:email), template_id: '10998a1e-1892-4c39-9023-74d5fe38503b').deliver
+    ApplicationMailer.sendgrid_send(
+      to: Admin.all.map(&:email),
+      template_id: '10998a1e-1892-4c39-9023-74d5fe38503b',
+      substitutions: {
+        '-attachment-': attachment
+      }
+    ).deliver
   end
 end

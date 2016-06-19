@@ -3,19 +3,23 @@
 #
 # Table name: campaigns
 #
-#  id                      :integer          not null, primary key
-#  user_id                 :integer
-#  title                   :string(255)
-#  company_description     :text(65535)
-#  company_needs           :text(65535)
-#  sector                  :string(255)
-#  country                 :string(255)
-#  targeted_time_to_market :string(255)
-#  expected_trl            :string(255)
-#  state                   :string(255)
-#  expires_at              :datetime
-#  created_at              :datetime         not null
-#  updated_at              :datetime         not null
+#  id                          :integer          not null, primary key
+#  user_id                     :integer
+#  title                       :string(255)
+#  featured_image_updated_at   :datetime
+#  featured_image_file_size    :integer
+#  featured_image_content_type :string(255)
+#  featured_image_file_name    :string(255)
+#  company_description         :text(65535)
+#  company_needs               :text(65535)
+#  sector                      :string(255)
+#  country                     :string(255)
+#  targeted_time_to_market     :string(255)
+#  expected_trl                :string(255)
+#  state                       :string(255)
+#  expires_at                  :datetime
+#  created_at                  :datetime         not null
+#  updated_at                  :datetime         not null
 #
 # Indexes
 #
@@ -30,6 +34,7 @@ class Campaign < ActiveRecord::Base
   belongs_to :user
   has_many :proposed_solutions
   has_many :likes
+  has_attached_file :featured_image, styles: { medium: '350x210!' }
 
   #------------------------------------------------------------------------------
   # Enumerations
@@ -42,7 +47,9 @@ class Campaign < ActiveRecord::Base
 
   #------------------------------------------------------------------------------
   # Validations
-  validates :user_id, presence: true
+  validates :user_id, :expires_at, :title, :company_description, :company_needs, :sector, :country, :targeted_time_to_market, :expected_trl, presence: true
+  validates_attachment_content_type :featured_image, content_type: /^image\/(jpg|jpeg|png)$/
+  validates :featured_image, attachment_presence: true
 
   #------------------------------------------------------------------------------
   # Callbacks
@@ -391,6 +398,7 @@ class Campaign < ActiveRecord::Base
         label 'Name'
       end
       field :title
+      field :featured_image
       field :company_description
       field :company_needs
       field :sector
@@ -412,6 +420,9 @@ class Campaign < ActiveRecord::Base
         label 'Name'
       end
       field :title
+      field :featured_image do
+        help 'Please ensure the photo is rectangular (eg. 350px X 200px).'
+      end
       field :company_description
       field :company_needs
       field :sector
