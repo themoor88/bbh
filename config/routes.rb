@@ -1,12 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
-    registrations: 'users/devise/registrations',
-    sessions: 'users/devise/sessions'
+    registrations: 'users/devise/registrations'
   }
 
-  devise_for :admins, skip: [:registrations], controllers: {
-    sessions: 'admins/devise/sessions'
-  }
+  devise_for :admins, skip: [:registrations]
 
   # needs to be AFTER "devise_for :admins" otherwise the admin routes will be messed up
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'

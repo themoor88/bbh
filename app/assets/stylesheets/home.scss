@@ -5,6 +5,14 @@ body.home {
       background-color: $translucent-black;
       position: relative;
 
+      @media #{$md-down} {
+        height: 190px;
+      }
+
+      @media #{$xs-down} {
+        height: 145px;
+      }
+
       .video-title {
         position: absolute;
         left: 50%;
@@ -13,6 +21,14 @@ body.home {
         font-size: 38px;
         color: $white;
         margin: 0;
+
+        @media #{$sm-down} {
+          font-size: 16px;
+        }
+
+        @media #{$xs-down} {
+          font-size: 14px;
+        }
       }
 
       .video-caption {
@@ -25,7 +41,12 @@ body.home {
         margin: 0;
 
         @media #{$sm-down} {
-          top: 70%;
+          top: 65%;
+          font-size: 12px;
+        }
+
+        @media #{$xs-down} {
+          font-size: 10px;
         }
       }
 

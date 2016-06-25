@@ -17,4 +17,5 @@
 //= require toastr_rails
 //= require bootbox
 //= require swiper.min
+//= require jquery.countdown.min
 //= require_tree .
