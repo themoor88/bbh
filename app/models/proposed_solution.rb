@@ -173,7 +173,7 @@ class ProposedSolution < ActiveRecord::Base
   def send_email_to_admin
     ApplicationMailer.sendgrid_send(
       to: Admin.all.map(&:email),
-      template_id: '10998a1e-1892-4c39-9023-74d5fe38503b',
+      template_id: '850a599b-da08-4c68-82c3-60b1d2ed2ed0',
       substitutions: {
         '-attachment-': attachment
       }

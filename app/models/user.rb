@@ -45,6 +45,7 @@
 
 class User < ActiveRecord::Base
   include ClassyEnum::ActiveRecord
+  delegate :url_helpers, to: 'Rails.application.routes'
 
   #------------------------------------------------------------------------------
   # Devise modules
@@ -503,7 +504,13 @@ class User < ActiveRecord::Base
 
   def send_email_to_user_on_activation
     if active_changed? && active
-      ApplicationMailer.sendgrid_send(to: email, template_id: 'a15e373b-7ff9-4302-9233-9449da3a22f4').deliver
+      ApplicationMailer.sendgrid_send(
+        to: email,
+        template_id: '9033cb37-e42e-4a6f-ab63-5120a75c6f08',
+        substitutions: {
+          '-url-': url_helpers.new_user_session_url
+        }
+      ).deliver
     end
   end
 end

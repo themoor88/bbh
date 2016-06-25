@@ -14,6 +14,7 @@ $(function () {
       autoplayDisableOnInteraction: true
     });
 
+    // Add ajax request for search
     $('.country-search, .order-search, .sector-search').on('change', function() {
       var sendingData = false;
       var url = $(this).data('url');
@@ -46,8 +47,23 @@ $(function () {
         })
         .always(function() {
           sendingData = false;
+          // Add countdown event again
+          $('[data-countdown]').each(function() {
+            var $this = $(this), finalDate = $(this).data('countdown');
+            $this.countdown(finalDate, function(event) {
+              $this.html(event.strftime('%D days %H:%M:%S'));
+            });
+          });
         });
       }
+    });
+
+    // Add countdown for every campaign
+    $('[data-countdown]').each(function() {
+      var $this = $(this), finalDate = $(this).data('countdown');
+      $this.countdown(finalDate, function(event) {
+        $this.html(event.strftime('%D days %H:%M:%S'));
+      });
     });
   }
 });

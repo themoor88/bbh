@@ -28,6 +28,7 @@
 
 class Campaign < ActiveRecord::Base
   include ClassyEnum::ActiveRecord
+  delegate :url_helpers, to: 'Rails.application.routes'
 
   #------------------------------------------------------------------------------
   # Associations
@@ -461,7 +462,13 @@ class Campaign < ActiveRecord::Base
 
   def send_email_to_user_on_active
     if state_changed? && active?
-      ApplicationMailer.sendgrid_send(to: user.email, template_id: 'dbfe5470-66a9-4661-b670-d30aadd2673e').deliver
+      ApplicationMailer.sendgrid_send(
+        to: user.email,
+        template_id: 'ffb0c25d-fce5-451c-938d-7bc9da46e8eb',
+        substitutions: {
+          '-url-': url_helpers.new_user_session_url
+        }
+      ).deliver
     end
   end
 end
