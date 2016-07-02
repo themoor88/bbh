@@ -1,4 +1,8 @@
 body.campaigns {
+  .red-heart {
+    color: $red;
+  }
+
   &.index {
     @include campaigns-grid-list;
     nav.navbar.tertiary {
@@ -19,8 +23,6 @@ body.campaigns {
       }
 
       .swiper-slide {
-        // width: 950px;
-        // height: auto;
         text-align: center;
         font-size: 18px;
         background: $white;
@@ -79,6 +81,18 @@ body.campaigns {
         .sector-search {
           width: 200px;
         }
+      }
+    }
+  }
+
+  &.show {
+    .flex-panel-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      h2 {
+        margin: 0;
       }
     }
   }

@@ -10,7 +10,7 @@ class ProposedSolutionsController < ApplicationController
       number_of_proposed_solutions.times do
         @proposed_solutions << current_user.proposed_solutions.new(campaign_id: @campaign.id)
       end
-    elsif current_user.role == :tech_seeker
+    elsif current_user.role == :tech_seeker || current_user.role == :consultant
       flash[:error] = 'Something went wrong. Please try again.'
       redirect_to campaigns_path
     end
@@ -37,7 +37,7 @@ class ProposedSolutionsController < ApplicationController
         redirect_to new_campaign_proposed_solution_path(@campaign)
       end
 
-    elsif current_user.role == :tech_seeker
+    elsif current_user.role == :tech_seeker || current_user.role == :consultant
       flash[:error] = 'Something went wrong. Please try again.'
       redirect_to campaigns_path
     end

@@ -1,33 +1,38 @@
 - unless collection.present?
   .spinner-container.text-center
     %h2 No campaigns found
-- collection.each do |campaign|
-  = link_to campaign_path(campaign) do
+.campaign-grid
+  - collection.each do |campaign|
     .campaign-item
       .panel.panel-default.campaign-panel
         .panel-heading
           = image_tag(campaign.featured_image.url(:medium), class: 'img-responsive', style: 'margin: 0 auto;')
-        .panel-body
-          .row
-            .col-md-6
-              %p Sector
-            .col-md-6
-              %p= campaign.sector.to_s.titleize
-          .row
-            .col-md-6
-              %p Country
-            .col-md-6
-              %p= campaign.country.to_s.titleize
-          .row
-            .col-md-6
-              %p Company Description
-            .col-md-6
-              %p= campaign.company_description
-          .row
-            %strong.col-md-3.text-left.strong
-              .countdown.text-center
-                = fa_icon 'clock-o', class: 'fa-3x'
-                .expires-at{ data: { countdown: campaign.expires_at } }
+        = link_to campaign_path(campaign), class: 'link-to-campaign' do
+          .panel-body
+            .row
+              .col-md-6
+                %p
+                  %strong Sector
+              .col-md-6
+                %p= campaign.sector.to_s.titleize
+            .row
+              .col-md-6
+                %p
+                  %strong Country
+              .col-md-6
+                %p= campaign.country.to_s.titleize
+            .row
+              .col-md-6
+                %p
+                  %strong Company Description
+              .col-md-6
+                %p= Faker::Lorem.paragraph
+                -# %p= campaign.company_description
+            .row
+              %strong.col-md-3.text-left.strong
+                .countdown.text-center
+                  = fa_icon 'clock-o', class: 'fa-3x'
+                  .expires-at{ data: { countdown: campaign.expires_at } }
         .panel-footer
           .like-unlike-container
             = link_to '#', class: 'add-to-favorites', style: (current_user.likes.where(campaign_id: campaign.id).present? ? 'display:none;' : '').to_s, data: { campaign_id: campaign.id, url: add_to_favorites_path } do
@@ -35,5 +40,5 @@
               %p{ style: 'display: inline-block;' } Add To Favorites
 
             = link_to '#', class: 'remove-from-favorites', style: (current_user.likes.where(campaign_id: campaign.id).present? ? '' : 'display:none;').to_s, data: { campaign_id: campaign.id, url: remove_from_favorites_path } do
-              = fa_icon 'heart'
+              = fa_icon 'heart', class: 'red-heart'
               %p{ style: 'display: inline-block;' } Remove From Favorites
