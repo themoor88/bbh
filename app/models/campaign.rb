@@ -18,6 +18,9 @@
 #  targeted_time_to_market     :string(255)
 #  expected_trl                :string(255)
 #  state                       :string(255)
+#  cost                        :string(255)
+#  applications_reviewed       :integer
+#  next_meeting                :datetime
 #  expires_at                  :datetime
 #  created_at                  :datetime         not null
 #  updated_at                  :datetime         not null

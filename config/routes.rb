@@ -10,6 +10,9 @@ Rails.application.routes.draw do
 
   authenticate :user do
     resources :campaigns, only: [:index, :show] do
+      member do
+        get '/performance' => 'campaigns#performance', as: 'performance'
+      end
       resources :proposed_solutions, only: [:new, :create]
       collection do
         get '/search' => 'search#find_campaigns', as: 'search'

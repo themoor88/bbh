@@ -18,4 +18,5 @@
 //= require bootbox
 //= require swiper.min
 //= require jquery.countdown.min
+//= require ahoy
 //= require_tree .

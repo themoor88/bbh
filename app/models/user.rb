@@ -56,6 +56,7 @@ class User < ActiveRecord::Base
   has_many :campaigns
   has_many :proposed_solutions
   has_many :likes
+  has_many :visits
 
   #------------------------------------------------------------------------------
   # Enumerations
