@@ -1,4 +1,8 @@
 body.home {
+  .content {
+    margin-top: 0;
+  }
+
   &.index {
     .video-header {
       height: 400px;

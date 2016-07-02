@@ -388,6 +388,9 @@ class Campaign < ActiveRecord::Base
       field :targeted_time_to_market
       field :expected_trl
       field :state
+      field :cost
+      field :applications_reviewed
+      field :next_meeting
       field :expires_at
       field :number_of_likes do
         def value
@@ -411,6 +414,9 @@ class Campaign < ActiveRecord::Base
       field :targeted_time_to_market
       field :expected_trl
       field :state
+      field :cost
+      field :applications_reviewed
+      field :next_meeting
       field :expires_at
       field :number_of_likes do
         def value
@@ -435,6 +441,9 @@ class Campaign < ActiveRecord::Base
       field :targeted_time_to_market
       field :expected_trl
       field :state
+      field :cost
+      field :applications_reviewed
+      field :next_meeting
       field :expires_at
     end
 
@@ -451,6 +460,9 @@ class Campaign < ActiveRecord::Base
       field :targeted_time_to_market
       field :expected_trl
       field :state
+      field :cost
+      field :applications_reviewed
+      field :next_meeting
       field :expires_at
       field :number_of_likes do
         def value
