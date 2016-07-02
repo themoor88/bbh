@@ -2,7 +2,7 @@
   .row
     = render 'info_box', info_title: 'Total Views', info_number: @campaign_views_count, icon: 'envelope-o'
     = render 'info_box', info_title: 'Meeting Requests', info_number: '500', icon: 'users'
-    = render 'info_box', info_title: 'Views/Requests This Week', info_number: '$500', icon: 'clock-o'
+    = render 'info_box', info_title: 'Views/Requests This Week', info_number: @campaign_views_count, icon: 'clock-o'
     = render 'info_box', info_title: 'Favorites', info_number: @favorites_count, icon: 'heart'
     = render 'info_box', info_title: 'Applications Submitted', info_number: @proposed_solutions_count, icon: 'files-o'
     = render 'info_box', info_title: 'Applications Reviewed', info_number: @campaign.applications_reviewed, icon: 'refresh'
