@@ -1,0 +1,11 @@
+.container
+  .row
+    = render 'info_box', info_title: 'Total Views', info_number: @campaign_views_count, icon: 'envelope-o'
+    = render 'info_box', info_title: 'Meeting Requests', info_number: '500', icon: 'users'
+    = render 'info_box', info_title: 'Views/Requests This Week', info_number: '$500', icon: 'clock-o'
+    = render 'info_box', info_title: 'Favorites', info_number: @favorites_count, icon: 'heart'
+    = render 'info_box', info_title: 'Applications Submitted', info_number: @proposed_solutions_count, icon: 'files-o'
+    = render 'info_box', info_title: 'Applications Reviewed', info_number: @campaign.applications_reviewed, icon: 'refresh'
+    = render 'info_box', info_title: 'Cost of Campaign', info_number: @campaign.cost, icon: 'usd'
+    = render 'info_box', info_title: 'Campaign End Date', info_number: @campaign&.expires_at&.strftime('%b %e, %l:%M %p'), icon: 'calendar'
+    = render 'info_box', info_title: 'Next Meeting', info_number: @campaign&.next_meeting&.strftime('%b %e, %l:%M %p'), icon: 'calendar-check-o'

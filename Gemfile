@@ -16,6 +16,8 @@ gem 'sendgrid'
 gem 'simple_form'
 
 gem 'aasm'
+gem 'activeuuid', '>= 0.5.0'
+gem 'ahoy_matey'
 gem 'aws-sdk', '< 2.0'
 gem 'autoprefixer-rails'
 gem 'bootbox-rails'

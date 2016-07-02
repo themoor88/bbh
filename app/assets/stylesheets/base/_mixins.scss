@@ -9,8 +9,17 @@
       flex-basis: 50%;
       display: flex;
 
+      .company-description {
+        margin-bottom: 90px;
+      }
+
       .countdown {
-        margin-top: 10px;
+        position: absolute;
+        bottom: 70px;
+        left: 10px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
       }
 
       i {
@@ -36,6 +45,7 @@
     margin: 30px;
     display: flex;
     flex-direction: column;
+    position: relative;
 
     .link-to-campaign {
       flex: 1 0 auto;

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 class CampaignsController < ApplicationController
+  after_action :track_action, only: [:show]
+
   # GET /campaigns
   def index
     @slider_items = SliderItem.active
@@ -24,4 +26,17 @@ class CampaignsController < ApplicationController
     redirect_to campaigns_path
   end
   # rubocop:enable Metrics/AbcSize
+
+  def performance
+    @campaign = current_user.campaigns.not_deleted.find(params[:id])
+    @favorites_count = @campaign.likes.count
+    @proposed_solutions_count = @campaign.proposed_solutions.count
+    @campaign_views_count = Ahoy::Event.all.map { |event| event.properties['id'] }.count(@campaign.id.to_s)
+  end
+
+  protected
+
+  def track_action
+    ahoy.track "Processed #{controller_name}##{action_name}", request.filtered_parameters
+  end
 end

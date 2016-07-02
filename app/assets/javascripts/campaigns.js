@@ -34,6 +34,7 @@ $(function () {
           dataType: 'SCRIPT',
 
           beforeSend: function() {
+            $('.spinner-container').hide();
             $('.campaign-grid').html("<div class='spinner-container text-center'><i class='fa fa-spinner fa-pulse fa-fw fa-5x'></i></div>");
           }
         })
