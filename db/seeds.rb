@@ -91,11 +91,11 @@ user4.save!
 Admin.create! email: 'delescure@me.com', password: 'password', password_confirmation: 'password'
 Admin.create! email: 'chantal@baehl-innovation.com', password: 'password', password_confirmation: 'password'
 
-n_campaigns_per_user = 5
+# n_campaigns_per_user = 5
 
-n_campaigns_per_user.times do
-  Campaign.create! title: 'Title', user: User.fourth, sector: :cosmetic, country: 'Canada', expires_at: Time.zone.now + rand(0..100).ceil.days, state: 'active'
-end
+# n_campaigns_per_user.times do
+#   Campaign.create! title: 'Title', user: User.fourth, sector: :cosmetic, country: 'Canada', expires_at: Time.zone.now + rand(0..100).ceil.days, state: 'active'
+# end
 
 # n_campaigns_per_user.times do
 #   SliderItem.create! title: Faker::App.name, active: true
