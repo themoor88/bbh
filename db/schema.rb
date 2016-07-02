@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160619152507) do
+ActiveRecord::Schema.define(version: 20160628090830) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20160619152507) do
     t.string   "featured_image_file_name",    limit: 255
     t.text     "company_description",         limit: 65535
     t.text     "company_needs",               limit: 65535
+    t.text     "company_challenges",          limit: 65535
     t.string   "sector",                      limit: 255
     t.string   "country",                     limit: 255
     t.string   "targeted_time_to_market",     limit: 255

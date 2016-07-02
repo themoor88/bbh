@@ -2,12 +2,12 @@
   .campaign-grid {
     display: flex;
     flex-wrap: wrap;
-    align-items: baseline;
     max-width: 1500px;
     margin: 0 auto;
 
     .campaign-item {
       flex-basis: 50%;
+      display: flex;
 
       .countdown {
         margin-top: 10px;
@@ -34,20 +34,11 @@
 
   .campaign-panel {
     margin: 30px;
+    display: flex;
+    flex-direction: column;
 
-    .panel-heading {
-      max-height: 220px;
-    }
-
-    .panel-body {
-      position: relative;
-
-      .single-campaign-link {
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        margin: 5px;
-      }
+    .link-to-campaign {
+      flex: 1 0 auto;
     }
   }
 }

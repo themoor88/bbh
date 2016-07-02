@@ -1,86 +1,87 @@
-.row
-  .col-md-12
-    .panel.panel-default
-      .panel-heading.text-center
-        %h2 My Profile
-      .panel-body
-        = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-          = f.error_notification
-          .row
-            .col-md-6
-              .row
-                .col-xs-6
-                  %p Email:
-                .col-xs-6
-                  = f.input :email, required: true, autofocus: true, label: false
-                  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-                    %p
-                      Currently waiting confirmation for: #{resource.unconfirmed_email}
-              .row
-                .col-xs-6
-                  %p Password:
-                .col-xs-6
-                  = f.input :current_password, hint: 'we need your current password to confirm your changes', required: true, label: false
-              .row
-                .col-xs-6
-                  %p New Password:
-                .col-xs-6
-                  = f.input :password, autocomplete: 'off', hint: 'leave it blank if you don\'t want to change it', required: false, label: false
-              .row
-                .col-xs-6
-                  %p New Password Confirmation:
-                .col-xs-6
-                  = f.input :password_confirmation, required: false, label: false
-            .col-md-6
-              .row
-                .col-xs-6
-                  %p First Name:
-                .col-xs-6
-                  = f.input :first_name, label: false
-              .row
-                .col-xs-6
-                  %p Last Name:
-                .col-xs-6
-                  = f.input :last_name, label: false
-              .row
-                .col-xs-6
-                  %p Position:
-                .col-xs-6
-                  = f.input :position, label: false
-              .row
-                .col-xs-6
-                  %p Company:
-                .col-xs-6
-                  = f.input :company, label: false
-              .row
-                .col-xs-6
-                  %p Business Telephone:
-                .col-xs-6
-                  = f.input :telephone, label: false
-              .row
-                .col-xs-6
-                  %p Mobile Phone (optional):
-                .col-xs-6
-                  = f.input :mobile, label: false
-              .row
-                .col-xs-6
-                  %p Street Address:
-                .col-xs-6
-                  = f.input :address, label: false
-              .row
-                .col-xs-6
-                  %p City:
-                .col-xs-6
-                  = f.input :city, label: false
-              .row
-                .col-xs-6
-                  %p Postal/Zip (optional):
-                .col-xs-6
-                  = f.input :zip_code, label: false
-              .row
-                .col-xs-6
-                  %p Country:
-                .col-xs-6
-                  = f.input :country, collection: User.country_options.map { |hash| [hash[:id], hash[:text]] }, label: false, include_blank: 'Select One', input_html: { class: 'select2-country' }
-          .text-center
-            = f.button :submit, 'Update', class: 'btn btn-primary'
+.container
+  .row
+    .col-md-12
+      .panel.panel-default
+        .panel-heading.text-center
+          %h2 My Profile
+        .panel-body
+          = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+            = f.error_notification
+            .row
+              .col-md-6
+                .row
+                  .col-xs-6
+                    %p Email:
+                  .col-xs-6
+                    = f.input :email, required: true, autofocus: true, label: false
+                    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+                      %p
+                        Currently waiting confirmation for: #{resource.unconfirmed_email}
+                .row
+                  .col-xs-6
+                    %p Password:
+                  .col-xs-6
+                    = f.input :current_password, hint: 'we need your current password to confirm your changes', required: true, label: false
+                .row
+                  .col-xs-6
+                    %p New Password:
+                  .col-xs-6
+                    = f.input :password, autocomplete: 'off', hint: 'leave it blank if you don\'t want to change it', required: false, label: false
+                .row
+                  .col-xs-6
+                    %p New Password Confirmation:
+                  .col-xs-6
+                    = f.input :password_confirmation, required: false, label: false
+              .col-md-6
+                .row
+                  .col-xs-6
+                    %p First Name:
+                  .col-xs-6
+                    = f.input :first_name, label: false
+                .row
+                  .col-xs-6
+                    %p Last Name:
+                  .col-xs-6
+                    = f.input :last_name, label: false
+                .row
+                  .col-xs-6
+                    %p Position:
+                  .col-xs-6
+                    = f.input :position, label: false
+                .row
+                  .col-xs-6
+                    %p Company:
+                  .col-xs-6
+                    = f.input :company, label: false
+                .row
+                  .col-xs-6
+                    %p Business Telephone:
+                  .col-xs-6
+                    = f.input :telephone, label: false
+                .row
+                  .col-xs-6
+                    %p Mobile Phone (optional):
+                  .col-xs-6
+                    = f.input :mobile, label: false
+                .row
+                  .col-xs-6
+                    %p Street Address:
+                  .col-xs-6
+                    = f.input :address, label: false
+                .row
+                  .col-xs-6
+                    %p City:
+                  .col-xs-6
+                    = f.input :city, label: false
+                .row
+                  .col-xs-6
+                    %p Postal/Zip (optional):
+                  .col-xs-6
+                    = f.input :zip_code, label: false
+                .row
+                  .col-xs-6
+                    %p Country:
+                  .col-xs-6
+                    = f.input :country, collection: User.country_options.map { |hash| [hash[:id], hash[:text]] }, label: false, include_blank: 'Select One', input_html: { class: 'select2-country' }
+            .text-center
+              = f.button :submit, 'Update', class: 'btn btn-primary'

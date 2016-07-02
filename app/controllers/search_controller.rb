@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 class SearchController < ApplicationController
-  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
   def find_campaigns
     if current_user.role == :tech_provider
       @campaigns = Campaign.active
-    elsif current_user.role == :tech_seeker
+    elsif current_user.role == :tech_seeker || current_user.role == :consultant
       @campaigns = current_user.campaigns.not_deleted
     end
 
@@ -20,5 +20,5 @@ class SearchController < ApplicationController
       @campaigns = @campaigns.where(sector: params[:sector])
     end
   end
-  # rubocop:enable Metrics/AbcSize
+  # rubocop:enable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
 end

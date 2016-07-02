@@ -1,55 +1,52 @@
-.row
-  .col-md-offset-3.col-md-6
-    .panel.panel-default
-      .panel-heading
-        .row
-          .col-md-3
-            %h2
-              = @campaign.title
-          .col-md-3
-          .col-md-2
-          .col-md-4
-            .countdown.text-center
-              - if @campaign.expired?
-                %p Please Note: This campaign has expired.
-              - elsif @campaign.pending?
-                %p Please Note: This campaign is pending.
-              - elsif @campaign.active?
-                = fa_icon 'clock-o', class: 'fa-3x'
-                .expires-at{ data: { countdown: @campaign.expires_at } }
+.container
+  .row
+    .col-md-offset-1.col-md-10
+      .panel.panel-default
+        .panel-heading.flex-panel-heading
+          %h2 Oral Care - Dry Mouth Symptom
+          .countdown.text-center
+            - if @campaign.expired?
+              %p Please Note: This campaign has expired.
+            - elsif @campaign.pending?
+              %p Please Note: This campaign is pending.
+            - elsif @campaign.active?
+              = fa_icon 'clock-o', class: 'fa-3x'
+              .expires-at{ data: { countdown: @campaign.expires_at } }
 
-      .panel-body
-        = image_tag(@campaign.featured_image.url(:medium), class: 'img-responsive', style: 'margin: 0 auto;')
-        %h2 <u>Our Company</u>
-        %p= @campaign.company_description
-        %h2 <u>Our Needs</u>
-        %p= @campaign.company_needs
-        .opportunity-specifications
-          %h2 <u>Opportunity Specifications</u>
-        .row
-          .col-md-4
-            %p Sector:
-            %p Country:
-            %p Targeted Time To Market:
-            %p{ style: 'display: inline-block' } Expected TRL:
-            = link_to '#', style: 'display: inline-block' do
-              %sup= fa_icon 'info-circle', class: 'fa-2x trl-modal'
+        .panel-body
+          = image_tag(@campaign.featured_image.url(:medium), class: 'img-responsive', style: 'margin: 0 auto;')
+          %h2 Our Company
+          %p= @campaign.company_description
+          %h2 Our Needs
+          %p= @campaign.company_needs
+          %h2 Our Challenges
+          %p= @campaign.company_challenges
+          .opportunity-specifications
+            %h2 Opportunity Specifications
+          .row
+            .col-md-4
+              %p Sector:
+              %p Country:
+              %p Targeted Time To Market:
+              %p{ style: 'display: inline-block' } Expected TRL:
+              = link_to '#', style: 'display: inline-block' do
+                %sup= fa_icon 'info-circle', class: 'fa-2x trl-modal'
 
-          .col-md-4
-            %p= @campaign.sector.to_s.titleize
-            %p= @campaign.country
-            %p= @campaign.targeted_time_to_market
-            %p= @campaign.expected_trl
-        %br
-        %span.like-unlike-container
-          = link_to '#', class: 'add-to-favorites', style: (current_user.likes.where(campaign_id: @campaign.id).present? ? 'display:none;' : '').to_s, data: { campaign_id: @campaign.id, url: add_to_favorites_path } do
-            = fa_icon 'heart'
-            %p{ style: 'display: inline-block;' } Add To Favorites
+            .col-md-4
+              %p= @campaign.sector.to_s.titleize
+              %p= @campaign.country
+              %p= @campaign.targeted_time_to_market
+              %p= @campaign.expected_trl
+          %br
+          %span.like-unlike-container
+            = link_to '#', class: 'add-to-favorites', style: (current_user.likes.where(campaign_id: @campaign.id).present? ? 'display:none;' : '').to_s, data: { campaign_id: @campaign.id, url: add_to_favorites_path } do
+              = fa_icon 'heart'
+              %p{ style: 'display: inline-block;' } Add To Favorites
 
-          = link_to '#', class: 'remove-from-favorites', style: (current_user.likes.where(campaign_id: @campaign.id).present? ? '' : 'display:none;').to_s, data: { campaign_id: @campaign.id, url: remove_from_favorites_path } do
-            = fa_icon 'heart'
-            %p{ style: 'display: inline-block;' } Remove From Favorites
+            = link_to '#', class: 'remove-from-favorites', style: (current_user.likes.where(campaign_id: @campaign.id).present? ? '' : 'display:none;').to_s, data: { campaign_id: @campaign.id, url: remove_from_favorites_path } do
+              = fa_icon 'heart', class: 'red-heart'
+              %p{ style: 'display: inline-block;' } Remove From Favorites
 
-        - if current_user.role == :tech_provider && @campaign.active? && @proposed_solutions.blank?
-          .text-center
-            = link_to 'Apply Now', new_campaign_proposed_solution_path(@campaign), class: 'btn btn-primary'
+          - if current_user.role == :tech_provider && @campaign.active? && @proposed_solutions.blank?
+            .text-center
+              = link_to 'Apply Now', new_campaign_proposed_solution_path(@campaign), class: 'btn btn-primary'

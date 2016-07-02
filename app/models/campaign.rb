@@ -12,6 +12,7 @@
 #  featured_image_file_name    :string(255)
 #  company_description         :text(65535)
 #  company_needs               :text(65535)
+#  company_challenges          :text(65535)
 #  sector                      :string(255)
 #  country                     :string(255)
 #  targeted_time_to_market     :string(255)
@@ -35,7 +36,7 @@ class Campaign < ActiveRecord::Base
   belongs_to :user
   has_many :proposed_solutions
   has_many :likes
-  has_attached_file :featured_image, styles: { medium: '350x210!' }
+  has_attached_file :featured_image, styles: { medium: '600x350!' }
 
   #------------------------------------------------------------------------------
   # Enumerations
@@ -422,7 +423,7 @@ class Campaign < ActiveRecord::Base
       end
       field :title
       field :featured_image do
-        help 'Please ensure the photo is rectangular (eg. 350px X 200px).'
+        help 'Please ensure the photo is rectangular (eg. 600px X 350px).'
       end
       field :company_description
       field :company_needs

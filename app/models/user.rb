@@ -374,15 +374,21 @@ class User < ActiveRecord::Base
       :full_name
     end
 
-    configure :title, :enum do
+    configure :role, :enum do
       enum do
-        Title.map(&:to_s)
+        Role.select_options
       end
     end
 
-    configure :role, :enum do
+    configure :title, :enum do
       enum do
-        Role.map(&:to_s)
+        Title.select_options
+      end
+    end
+
+    configure :number_of_employees, :enum do
+      enum do
+        User.select_options_for_number_of_employees
       end
     end
 
