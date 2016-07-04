@@ -1,4 +1,4 @@
-Baehl Business Hub
+BBH
 ================
 
 This application was developed with love with Rails. It is an app for connecting two business owners together.
