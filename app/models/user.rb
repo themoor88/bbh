@@ -72,6 +72,7 @@ class User < ActiveRecord::Base
 
   #------------------------------------------------------------------------------
   # Callbacks
+  after_create :send_email_to_admin
   after_update :send_email_to_user_on_activation
 
   #------------------------------------------------------------------------------
@@ -508,6 +509,17 @@ class User < ActiveRecord::Base
 
   #------------------------------------------------------------------------------
   private
+
+  def send_email_to_admin
+    ApplicationMailer.sendgrid_send(
+      to: 'chantal@baehl-innovation.com',
+      template_id: '7ee51e09-8829-495a-a517-6dc3aad1182a',
+      substitutions: {
+        '-url-': url_helpers.new_admin_session_url,
+        '-userRole-': role.to_s.tr('_', ' ').titleize
+      }
+    ).deliver
+  end
 
   def send_email_to_user_on_activation
     if active_changed? && active

@@ -5,11 +5,12 @@
   - collection.each do |campaign|
     .campaign-item
       .panel.panel-default.campaign-panel
-        .panel-heading
-          = link_to campaign_path(campaign) do
-            = image_tag(campaign.featured_image.url(:medium), class: 'img-responsive', style: 'margin: 0 auto;')
+        = link_to campaign_path(campaign) do
+          .panel-heading.text-center
+            %h2= campaign.title
         = link_to campaign_path(campaign), class: 'link-to-campaign' do
           .panel-body
+            = image_tag(campaign.featured_image.url(:medium), class: 'img-responsive', style: 'margin: 0 auto;')
             .row
               .col-md-6
                 %p
@@ -30,7 +31,6 @@
                 %p= Faker::Lorem.paragraph
                 -# %p= campaign.company_description
             .countdown.text-center
-              = fa_icon 'clock-o', class: 'fa-3x'
               %strong.expires-at{ data: { countdown: campaign.expires_at } }
         .panel-footer
           .like-unlike-container

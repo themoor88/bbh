@@ -27,7 +27,7 @@
                 .col-xs-offset-2.col-xs-4
                   %p Attachment:
                 .col-xs-4
-                  = p.input :attachment, required: true, label: false
+                  = p.input :attachment, required: true, label: false, input_html: { accept: '.pdf, .doc, .xls, .txt' }
               .row
                 .col-xs-offset-2.col-xs-4
                   %p What is your technology?
