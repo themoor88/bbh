@@ -39,7 +39,9 @@ class ProposedSolution < ActiveRecord::Base
 
   #------------------------------------------------------------------------------
   # Validations
-  validates_attachment_content_type :attachment, content_type: %w(application/pdf application/vnd.ms-excel application/vnd.openxmlformats-officedocument.spreadsheetml.sheet application/msword application/vnd.openxmlformats-officedocument.wordprocessingml.document text/plain)
+  validates_attachment_content_type :attachment, content_type: %w(application/pdf application/vnd.ms-excel application/vnd.openxmlformats-officedocument.spreadsheetml.sheet application/msword application/vnd.openxmlformats-officedocument.wordprocessingml.document text/plain),
+                                    message: 'File must be .pdf, .doc, .xls or .txt'
+
   validates :user_id, :campaign_id, :link, :technology_description, :technology_application, :patents, :trl, presence: true
   #------------------------------------------------------------------------------
   # Callbacks
@@ -172,7 +174,7 @@ class ProposedSolution < ActiveRecord::Base
 
   def send_email_to_admin
     ApplicationMailer.sendgrid_send(
-      to: Admin.all.map(&:email),
+      to: 'chantal@baehl-innovation.com',
       template_id: '850a599b-da08-4c68-82c3-60b1d2ed2ed0',
       substitutions: {
         '-attachment-': attachment

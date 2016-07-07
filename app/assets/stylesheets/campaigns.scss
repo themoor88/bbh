@@ -3,6 +3,10 @@ body.campaigns {
     color: $red;
   }
 
+  .expires-at {
+    font-size: 16px;
+  }
+
   &.index {
     @include campaigns-grid-list;
     nav.navbar.tertiary {
