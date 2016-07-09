@@ -484,7 +484,7 @@ class Campaign < ActiveRecord::Base
         substitutions: {
           '-url-': url_helpers.new_user_session_url
         }
-      ).deliver
+      ).deliver_now
     end
   end
 end

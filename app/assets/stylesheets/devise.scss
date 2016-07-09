@@ -2,7 +2,8 @@ body {
   &.users-devise-registrations,
   &.users-devise-sessions,
   &.devise-passwords,
-  &.devise-confirmations {
+  &.devise-confirmations,
+  &.devise-sessions {
     &.new,
     &.create {
       .navbar-links {
