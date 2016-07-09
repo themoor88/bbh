@@ -20,22 +20,22 @@
                   %h2 Proposed Solution
               .row.proposed-solution-form
                 .col-xs-offset-2.col-xs-4
-                  %p Link:
+                  %p Link (required):
                 .col-xs-4
                   = p.input :link, required: true, label: false
               .row
                 .col-xs-offset-2.col-xs-4
-                  %p Attachment:
+                  %p Attachment (optional):
                 .col-xs-4
-                  = p.input :attachment, required: true, label: false, input_html: { accept: '.pdf, .doc, .xls, .txt' }
+                  = p.input :attachment, required: true, label: false, input_html: { accept: '.pdf, .doc, .docx, .ppt, .pptx, .jpg, .xls, .xlsx' }
               .row
                 .col-xs-offset-2.col-xs-4
-                  %p What is your technology?
+                  %p What is your technology? (required)
                 .col-xs-4
                   = p.input :technology_description, required: true, label: false
               .row
                 .col-xs-offset-2.col-xs-4
-                  %p What is it's main application
+                  %p What is it's main application (required)
                 .col-xs-4
                   = p.input :technology_application, required: true, label: false
               .row
@@ -45,7 +45,7 @@
                   = p.input :patents, label: false
               .row
                 .col-xs-offset-2.col-xs-4
-                  %p{ style: 'display: inline-block' } TRL:
+                  %p{ style: 'display: inline-block' } TRL: (required)
                   = link_to '#', style: 'display: inline-block' do
                     %sup= fa_icon 'info-circle', class: 'fa-2x trl-modal'
                 .col-xs-4
