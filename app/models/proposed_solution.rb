@@ -39,13 +39,13 @@ class ProposedSolution < ActiveRecord::Base
 
   #------------------------------------------------------------------------------
   # Validations
-  validates_attachment_content_type :attachment, content_type: %w(application/pdf application/vnd.ms-excel application/vnd.openxmlformats-officedocument.spreadsheetml.sheet application/msword application/vnd.openxmlformats-officedocument.wordprocessingml.document text/plain),
-                                    message: 'File must be .pdf, .doc, .xls or .txt'
+  validates_attachment :attachment, content_type: { content_type: %w(image/jpeg application/pdf application/vnd.ms-excel application/vnd.openxmlformats-officedocument.spreadsheetml.sheet application/vnd.ms-powerpoint application/vnd.openxmlformats-officedocument.presentationml.presentation application/msword application/vnd.openxmlformats-officedocument.wordprocessingml.document) },
+                        message: 'File must be .pdf, .doc, .docx, .ppt, .pptx, .jpg, .xls, .xlsx'
 
-  validates :user_id, :campaign_id, :link, :technology_description, :technology_application, :patents, :trl, presence: true
+  validates :user_id, :campaign_id, :link, :technology_description, :technology_application, :trl, presence: true
   #------------------------------------------------------------------------------
   # Callbacks
-  after_create :send_email_to_admin
+  after_commit :send_email_to_admin
 
   #------------------------------------------------------------------------------
   # Enumerations
@@ -179,6 +179,6 @@ class ProposedSolution < ActiveRecord::Base
       substitutions: {
         '-attachment-': attachment
       }
-    ).deliver
+    ).deliver_now
   end
 end

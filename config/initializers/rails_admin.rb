@@ -22,7 +22,12 @@ RailsAdmin.config do |config|
   ## == PaperTrail ==
   # config.audit_with :paper_trail, 'User', 'PaperTrail::Version' # PaperTrail >= 3.0.0
 
+  #------------------------------------------------------------------------------
+  # Base Configurations
   ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
+
+  # Exclude some models from the Admin section
+  config.excluded_models = ['Visit']
 
   config.actions do
     dashboard                     # mandatory

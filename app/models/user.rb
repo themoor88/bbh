@@ -73,7 +73,7 @@ class User < ActiveRecord::Base
   #------------------------------------------------------------------------------
   # Callbacks
   after_create :send_email_to_admin
-  after_update :send_email_to_user_on_activation
+  after_update :send_email_to_user_on_activation, :send_email_to_user_old_email, :send_email_to_admin_on_email_change
 
   #------------------------------------------------------------------------------
   # Enumerations
@@ -518,7 +518,7 @@ class User < ActiveRecord::Base
         '-url-': url_helpers.new_admin_session_url,
         '-userRole-': role.to_s.tr('_', ' ').titleize
       }
-    ).deliver
+    ).deliver_now
   end
 
   def send_email_to_user_on_activation
@@ -529,7 +529,28 @@ class User < ActiveRecord::Base
         substitutions: {
           '-url-': url_helpers.new_user_session_url
         }
-      ).deliver
+      ).deliver_now
+    end
+  end
+
+  def send_email_to_user_old_email
+    if unconfirmed_email_changed? && !email_changed?
+      ApplicationMailer.sendgrid_send(
+        to: email,
+        template_id: 'c7311ec1-0a66-49c4-9a20-349bd344951a',
+      ).deliver_now
+    end
+  end
+
+  def send_email_to_admin_on_email_change
+    if email_changed?
+      ApplicationMailer.sendgrid_send(
+        to: 'chantal@baehl-innovation.com',
+        template_id: '9a57ac9f-657a-45fb-aa2f-68baad888e50',
+        substitutions: {
+          '-url-': url_helpers.new_admin_session_url
+        }
+      ).deliver_now
     end
   end
 end

@@ -3,9 +3,16 @@ class UserMailer < Devise::Mailer
   include Devise::Controllers::UrlHelpers
 
   def confirmation_instructions(record, token, _opts = {})
+    if record.confirmed_at.present?
+      # Template for someone who has already confirmed their email
+      template_id = 'b5b27fdc-c187-4e2f-8334-c24c50291a54'
+    else
+      template_id = '97083f46-fb36-4554-9d29-ab4330d9b932'
+    end
+
     options = {
       to: record.email,
-      template_id: '97083f46-fb36-4554-9d29-ab4330d9b932',
+      template_id: template_id,
       substitutions: {
         '-url-': confirmation_url(record, confirmation_token: token)
       }
