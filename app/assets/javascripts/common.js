@@ -1,6 +1,6 @@
 $(function() {
   // Hide flash messages
-  $('.alert.success').delay(1500).slideUp(750);
+  $('.alert').delay(6000).slideUp(750);
 
   // Common dropdown for select2
   $('.select2').select2({

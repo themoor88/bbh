@@ -8,8 +8,8 @@ $(function () {
       paginationClickable: true,
       spaceBetween: 100,
       centeredSlides: true,
-      speed: 1000,
-      autoplay: 2500,
+      speed: 2000,
+      autoplay: 5000,
       loop: true,
       autoplayDisableOnInteraction: true
     });
