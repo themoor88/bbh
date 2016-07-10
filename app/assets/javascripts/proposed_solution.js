@@ -3,7 +3,7 @@ $(function() {
     $('.select2-ps').select2({
       theme: 'bootstrap',
       minimumResultsForSearch: Infinity,
-      width: '5%'
+      width: '50px'
     });
 
     $('.number-of-proposed-solutions').on('change', function() {

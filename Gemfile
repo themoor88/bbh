@@ -32,7 +32,6 @@ gem 'sendgrid-ruby'
 gem 'toastr_rails'
 gem 'wannabe_bool'
 gem 'whenever', :require => false
-gem 'faker'
 
 group :development do
   gem 'web-console', '~> 2.0'
@@ -41,6 +40,7 @@ group :development do
   gem 'awesome_print'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'faker'
   gem 'quiet_assets'
   gem 'html2haml'
   gem 'rails_layout'
