@@ -1,6 +1,10 @@
 body.proposed-solutions {
   &.new {
     .panel-body {
+      p.error {
+        color: $red;
+      }
+
       p.number-of {
         display: inline-block;
       }

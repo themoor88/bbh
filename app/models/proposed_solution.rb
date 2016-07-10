@@ -40,7 +40,7 @@ class ProposedSolution < ActiveRecord::Base
   #------------------------------------------------------------------------------
   # Validations
   validates_attachment :attachment, content_type: { content_type: %w(image/jpeg application/pdf application/vnd.ms-excel application/vnd.openxmlformats-officedocument.spreadsheetml.sheet application/vnd.ms-powerpoint application/vnd.openxmlformats-officedocument.presentationml.presentation application/msword application/vnd.openxmlformats-officedocument.wordprocessingml.document) },
-                        message: 'File must be .pdf, .doc, .docx, .ppt, .pptx, .jpg, .xls, .xlsx'
+                                    message: 'File must be .pdf, .doc, .docx, .ppt, .pptx, .jpg, .xls, .xlsx'
 
   validates :user_id, :campaign_id, :link, :technology_description, :technology_application, :trl, presence: true
   #------------------------------------------------------------------------------
@@ -177,7 +177,7 @@ class ProposedSolution < ActiveRecord::Base
       to: 'chantal@baehl-innovation.com',
       template_id: '850a599b-da08-4c68-82c3-60b1d2ed2ed0',
       substitutions: {
-        '-attachment-': attachment
+        '-attachment-': attachment.present? ? attachment : ''
       }
     ).deliver_now
   end

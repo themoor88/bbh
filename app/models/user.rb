@@ -537,7 +537,7 @@ class User < ActiveRecord::Base
     if unconfirmed_email_changed? && !email_changed?
       ApplicationMailer.sendgrid_send(
         to: email,
-        template_id: 'c7311ec1-0a66-49c4-9a20-349bd344951a',
+        template_id: 'c7311ec1-0a66-49c4-9a20-349bd344951a'
       ).deliver_now
     end
   end
