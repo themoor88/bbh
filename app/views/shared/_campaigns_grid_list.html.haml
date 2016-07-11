@@ -28,8 +28,7 @@
                 %p
                   %strong Company Description
               .col-md-6
-                %p= Faker::Lorem.paragraph
-                -# %p= campaign.company_description
+                %p= campaign.company_description
             .countdown.text-center
               %strong.expires-at{ data: { countdown: campaign.expires_at } }
         .panel-footer
