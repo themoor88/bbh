@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   devise_for :admins, skip: [:registrations]
 
   # needs to be AFTER "devise_for :admins" otherwise the admin routes will be messed up
-  mount RailsAdmin::Engine => '/admins', as: 'rails_admin'
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   authenticate :user do
     resources :campaigns, only: [:index, :show] do

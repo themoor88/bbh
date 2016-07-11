@@ -383,6 +383,7 @@ class Campaign < ActiveRecord::Base
       field :title
       field :company_description
       field :company_needs
+      field :company_challenges
       field :sector
       field :country
       field :targeted_time_to_market
@@ -409,6 +410,7 @@ class Campaign < ActiveRecord::Base
       field :featured_image
       field :company_description
       field :company_needs
+      field :company_challenges
       field :sector
       field :country
       field :targeted_time_to_market
@@ -436,6 +438,7 @@ class Campaign < ActiveRecord::Base
       end
       field :company_description
       field :company_needs
+      field :company_challenges
       field :sector
       field :country
       field :targeted_time_to_market
@@ -455,6 +458,7 @@ class Campaign < ActiveRecord::Base
       field :title
       field :company_description
       field :company_needs
+      field :company_challenges
       field :sector
       field :country
       field :targeted_time_to_market
