@@ -20,6 +20,8 @@
 #  state                       :string(255)
 #  cost                        :string(255)
 #  applications_reviewed       :integer
+#  meeting_requests            :integer
+#  percent_match               :string(255)
 #  next_meeting                :datetime
 #  expires_at                  :datetime
 #  created_at                  :datetime         not null
@@ -391,6 +393,8 @@ class Campaign < ActiveRecord::Base
       field :state
       field :cost
       field :applications_reviewed
+      field :meeting_requests
+      field :percent_match
       field :next_meeting
       field :expires_at
       field :number_of_likes do
@@ -418,6 +422,8 @@ class Campaign < ActiveRecord::Base
       field :state
       field :cost
       field :applications_reviewed
+      field :meeting_requests
+      field :percent_match
       field :next_meeting
       field :expires_at
       field :number_of_likes do
@@ -446,6 +452,8 @@ class Campaign < ActiveRecord::Base
       field :state
       field :cost
       field :applications_reviewed
+      field :meeting_requests
+      field :percent_match
       field :next_meeting
       field :expires_at
     end
@@ -466,6 +474,8 @@ class Campaign < ActiveRecord::Base
       field :state
       field :cost
       field :applications_reviewed
+      field :meeting_requests
+      field :percent_match
       field :next_meeting
       field :expires_at
       field :number_of_likes do

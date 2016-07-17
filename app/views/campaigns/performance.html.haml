@@ -1,11 +1,14 @@
 .container
   .row
+    .col-md-12.text-center
+      %h1 Campaign Performance - #{@campaign.title}
+  .row
     = render 'info_box', info_title: 'Total Views', info_number: @campaign_views_count, icon: 'envelope-o'
-    = render 'info_box', info_title: 'Meeting Requests', info_number: '500', icon: 'users'
-    = render 'info_box', info_title: 'Views/Requests This Week', info_number: @campaign_views_count, icon: 'clock-o'
+    = render 'info_box', info_title: 'Meeting Requests', info_number: @campaign.meeting_requests.present? ? @campaign.meeting_requests : 0 , icon: 'users'
+    = render 'info_box', info_title: '% Match', info_number: @campaign.percent_match.present? ? @campaign.percent_match : 0 , icon: 'percent'
     = render 'info_box', info_title: 'Favorites', info_number: @favorites_count, icon: 'heart'
     = render 'info_box', info_title: 'Applications Submitted', info_number: @proposed_solutions_count, icon: 'files-o'
-    = render 'info_box', info_title: 'Applications Reviewed', info_number: @campaign.applications_reviewed, icon: 'refresh'
+    = render 'info_box', info_title: 'Applications Reviewed', info_number: @campaign.applications_reviewed.present? ? @campaign.applications_reviewed : 0, icon: 'refresh'
     = render 'info_box', info_title: 'Cost of Campaign', info_number: @campaign.cost, icon: 'usd'
     = render 'info_box', info_title: 'Campaign End Date', info_number: @campaign&.expires_at&.strftime('%b %e, %l:%M %p'), icon: 'calendar'
     = render 'info_box', info_title: 'Next Meeting', info_number: @campaign&.next_meeting&.strftime('%b %e, %l:%M %p'), icon: 'calendar-check-o'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160702181404) do
+ActiveRecord::Schema.define(version: 20160717131144) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -60,6 +60,8 @@ ActiveRecord::Schema.define(version: 20160702181404) do
     t.string   "state",                       limit: 255
     t.string   "cost",                        limit: 255
     t.integer  "applications_reviewed",       limit: 4
+    t.integer  "meeting_requests",            limit: 4
+    t.string   "percent_match",               limit: 255
     t.datetime "next_meeting"
     t.datetime "expires_at"
     t.datetime "created_at",                                null: false
