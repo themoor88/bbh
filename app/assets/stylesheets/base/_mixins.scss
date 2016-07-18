@@ -9,17 +9,50 @@
       flex-basis: 50%;
       display: flex;
 
-      .company-description {
-        margin-bottom: 90px;
+      p {
+        @media #{$sm-down} {
+          font-size: 11px;
+        }
+      }
+
+      .campaign-panel {
+        margin: 30px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+
+        .panel-body {
+          padding: 8px;
+          cursor: pointer;
+        }
+      }
+
+      .campaign-title {
+        @media #{$sm-down} {
+          font-size: 16px;
+        }
+      }
+
+      .campaign-image {
+        position: relative;
+        height: 0;
+        padding-bottom: 50%;
+      }
+
+      .like-unlike-container {
+        position: absolute;
+        top: 10px;
+        left: 10px;
       }
 
       .countdown {
         position: absolute;
-        bottom: 70px;
-        left: 10px;
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
+        color: $white;
+        background: $black;
+        opacity: 0.7;
+        right: 0;
+        bottom: 0;
+        padding: 0 10px 0 10px;
       }
 
       i {
@@ -38,17 +71,6 @@
       @media #{$xs-down} {
         flex-basis: 100%;
       }
-    }
-  }
-
-  .campaign-panel {
-    margin: 30px;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-
-    .link-to-campaign {
-      flex: 1 0 auto;
     }
   }
 }
