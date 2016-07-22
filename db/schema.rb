@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160717131144) do
+ActiveRecord::Schema.define(version: 20160722032257) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -59,9 +59,7 @@ ActiveRecord::Schema.define(version: 20160717131144) do
     t.string   "expected_trl",                limit: 255
     t.string   "state",                       limit: 255
     t.string   "cost",                        limit: 255
-    t.integer  "applications_reviewed",       limit: 4
     t.integer  "meeting_requests",            limit: 4
-    t.string   "percent_match",               limit: 255
     t.datetime "next_meeting"
     t.datetime "expires_at"
     t.datetime "created_at",                                null: false
@@ -91,6 +89,8 @@ ActiveRecord::Schema.define(version: 20160717131144) do
     t.boolean  "licence_available"
     t.string   "institution",             limit: 255
     t.text     "expectations",            limit: 65535
+    t.integer  "percent_match",           limit: 4
+    t.boolean  "reviewed"
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
     t.string   "attachment_file_name",    limit: 255

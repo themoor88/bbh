@@ -14,6 +14,8 @@
 #  licence_available       :boolean
 #  institution             :string(255)
 #  expectations            :text(65535)
+#  percent_match           :integer
+#  reviewed                :boolean
 #  created_at              :datetime         not null
 #  updated_at              :datetime         not null
 #  attachment_file_name    :string(255)
@@ -28,6 +30,8 @@
 #
 
 class ProposedSolution < ActiveRecord::Base
+  delegate :url_helpers, to: 'Rails.application.routes'
+
   #------------------------------------------------------------------------------
   # Associations
   belongs_to :user
@@ -36,13 +40,14 @@ class ProposedSolution < ActiveRecord::Base
 
   #------------------------------------------------------------------------------
   # Scopes
+  scope :reviewed, -> { where(reviewed: true) }
 
   #------------------------------------------------------------------------------
   # Validations
   validates_attachment :attachment, content_type: { content_type: %w(image/jpeg image/png application/pdf application/vnd.ms-excel application/vnd.openxmlformats-officedocument.spreadsheetml.sheet application/vnd.ms-powerpoint application/vnd.openxmlformats-officedocument.presentationml.presentation application/msword application/vnd.openxmlformats-officedocument.wordprocessingml.document) },
                                     message: 'File must be .pdf, .doc, .docx, .ppt, .pptx, .jpg, .png, .xls, .xlsx'
 
-  validates :user_id, :campaign_id, :link, :technology_description, :technology_application, :trl, presence: true
+  validates :user_id, :campaign_id, :technology_description, :technology_application, :trl, presence: true
   #------------------------------------------------------------------------------
   # Callbacks
   after_commit :send_email_to_admin
@@ -95,6 +100,8 @@ class ProposedSolution < ActiveRecord::Base
       field :licence_available
       field :institution
       field :expectations
+      field :percent_match
+      field :reviewed
       field :created_at
     end
 
@@ -119,6 +126,8 @@ class ProposedSolution < ActiveRecord::Base
       field :licence_available
       field :institution
       field :expectations
+      field :percent_match
+      field :reviewed
       field :created_at
     end
 
@@ -142,6 +151,8 @@ class ProposedSolution < ActiveRecord::Base
       field :licence_available
       field :institution
       field :expectations
+      field :percent_match
+      field :reviewed
     end
 
     export do
@@ -165,6 +176,8 @@ class ProposedSolution < ActiveRecord::Base
       field :licence_available
       field :institution
       field :expectations
+      field :percent_match
+      field :reviewed
       field :created_at
     end
   end
@@ -177,7 +190,9 @@ class ProposedSolution < ActiveRecord::Base
       to: 'chantal@baehl-innovation.com',
       template_id: '850a599b-da08-4c68-82c3-60b1d2ed2ed0',
       substitutions: {
-        '-attachment-': attachment.present? ? attachment : ''
+        '-link-': attachment.present? ? "Here is the link associated with the proposed solution: #{link}" : ' ',
+        '-attachment-': attachment.present? ? "Here is the attachment associated with the proposed solution: #{attachment}" : ' ',
+        '-url-': url_helpers.new_admin_session_url
       }
     ).deliver_now
   end
