@@ -5,7 +5,7 @@ class ProposedSolutionsController < ApplicationController
   def new
     if current_user.role == :tech_provider
       number_of_proposed_solutions = params[:number_of_proposed_solutions].present? ? params[:number_of_proposed_solutions].to_i : 1
-      @campaign = Campaign.active.find_by(params[:campaign_id])
+      @campaign = Campaign.active.find_by(id: params[:campaign_id])
       @proposed_solutions = []
       number_of_proposed_solutions.times do
         @proposed_solutions << current_user.proposed_solutions.new(campaign_id: @campaign.id)
@@ -21,7 +21,7 @@ class ProposedSolutionsController < ApplicationController
   # POST /proposed_solutions
   def create
     if current_user.role == :tech_provider
-      @campaign = Campaign.active.find_by(params[:campaign_id])
+      @campaign = Campaign.active.find_by(id: params[:campaign_id])
 
       begin
         ActiveRecord::Base.transaction do
