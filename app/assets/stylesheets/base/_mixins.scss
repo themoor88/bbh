@@ -2,7 +2,7 @@
   .campaign-grid {
     display: flex;
     flex-wrap: wrap;
-    max-width: 1500px;
+    max-width: 950px;
     margin: 0 auto;
 
     .campaign-item {
@@ -15,8 +15,21 @@
         }
       }
 
+      @media #{$sm-up} {
+        &:nth-child(2n + 1) {
+          .campaign-panel {
+            margin-right: 16px;
+          }
+        }
+
+        &:nth-child(2n + 2) {
+          .campaign-panel {
+            margin-left: 16px;
+          }
+        }
+      }
+
       .campaign-panel {
-        margin: 30px;
         display: flex;
         flex-direction: column;
         position: relative;
