@@ -14,6 +14,8 @@
 #  licence_available       :boolean
 #  institution             :string(255)
 #  expectations            :text(65535)
+#  percent_match           :integer
+#  reviewed                :boolean
 #  created_at              :datetime         not null
 #  updated_at              :datetime         not null
 #  attachment_file_name    :string(255)
@@ -36,6 +38,7 @@ class ProposedSolution < ActiveRecord::Base
 
   #------------------------------------------------------------------------------
   # Scopes
+  scope :reviewed, -> { where(reviewed: true) }
 
   #------------------------------------------------------------------------------
   # Validations
@@ -95,6 +98,8 @@ class ProposedSolution < ActiveRecord::Base
       field :licence_available
       field :institution
       field :expectations
+      field :percent_match
+      field :reviewed
       field :created_at
     end
 
@@ -119,6 +124,8 @@ class ProposedSolution < ActiveRecord::Base
       field :licence_available
       field :institution
       field :expectations
+      field :percent_match
+      field :reviewed
       field :created_at
     end
 
@@ -142,6 +149,8 @@ class ProposedSolution < ActiveRecord::Base
       field :licence_available
       field :institution
       field :expectations
+      field :percent_match
+      field :reviewed
     end
 
     export do
@@ -165,6 +174,8 @@ class ProposedSolution < ActiveRecord::Base
       field :licence_available
       field :institution
       field :expectations
+      field :percent_match
+      field :reviewed
       field :created_at
     end
   end
