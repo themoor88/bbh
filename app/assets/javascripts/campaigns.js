@@ -68,8 +68,10 @@ $(function () {
     });
 
 
-    $('.campaign-panel .panel-body').on('click', function() {
-      window.location.href = '/campaigns/' + $(this).data('campaign-id');
+    $('.campaign-panel .panel-body').on('click', function(e) {
+      if (!$(e.target).is('i')) {
+        window.location.href = '/campaigns/' + $(this).data('campaign-id');
+      }
     });
   }
 });
