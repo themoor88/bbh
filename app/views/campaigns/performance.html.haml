@@ -24,30 +24,31 @@
           = render 'info_box', info_title: 'Applications Submitted', info_number: @proposed_solutions.count, icon: 'files-o'
         .col-md-4.col-sm-6.col-xs-12
           = render 'info_box', info_title: 'Applications Reviewed', info_number: @reviewed_proposed_solutions.present? ? @reviewed_proposed_solutions : 0, icon: 'refresh'
-      .row
-        .col-md-offset-2.col-md-8.col-sm-12
-          %table.table.table-bordered
-            %tbody.ps-table-body
-              %tr.ps-table-headings
-                %th{ style: 'width: 10px' } #
-                %th Company Name
-                %th Application Percent Match
+      - if @proposed_solutions.present?
+        .row
+          .col-md-offset-2.col-md-8.col-sm-12
+            %table.table.table-bordered
+              %tbody.ps-table-body
+                %tr.ps-table-headings
+                  %th{ style: 'width: 10px' } #
+                  %th Company Name
+                  %th Application Percent Match
 
-              - @proposed_solutions.each_with_index do |proposed_solution, index|
-                %tr
-                  %td= index + 1
-                  %td= proposed_solution.user.company
-                  %td
-                    - proposed_solution.percent_match.present? ? percent_match = proposed_solution.percent_match : 0
-                    - case percent_match
-                    - when 0.to_f.next_float..50
-                      - class_name = 'danger'
-                    - when 50.to_f.next_float..60
-                      - class_name = 'warning'
-                    - when 60.to_f.next_float..70
-                      - class_name = 'info'
-                    - when 70.to_f.next_float..100
-                      - class_name = 'success'
-                    .progress
-                      .progress-bar.progress-bar-striped{ 'aria-valuemax': '100', 'aria-valuemin': '0', 'aria-valuenow': percent_match, role: 'progressbar', style: "width: #{percent_match.to_s}%", class: "progress-bar-#{class_name}" }
-                        %span #{proposed_solution.percent_match}%
+                - @proposed_solutions.each_with_index do |proposed_solution, index|
+                  %tr
+                    %td= index + 1
+                    %td= proposed_solution.user.company
+                    %td
+                      - proposed_solution.percent_match.present? ? percent_match = proposed_solution.percent_match : 0
+                      - case percent_match
+                      - when 0.to_f.next_float..50
+                        - class_name = 'danger'
+                      - when 50.to_f.next_float..60
+                        - class_name = 'warning'
+                      - when 60.to_f.next_float..70
+                        - class_name = 'info'
+                      - when 70.to_f.next_float..100
+                        - class_name = 'success'
+                      .progress
+                        .progress-bar.progress-bar-striped{ 'aria-valuemax': '100', 'aria-valuemin': '0', 'aria-valuenow': percent_match, role: 'progressbar', style: "width: #{percent_match.to_s}%", class: "progress-bar-#{class_name}" }
+                          %span #{proposed_solution.percent_match}%
