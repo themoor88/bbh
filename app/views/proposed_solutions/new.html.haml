@@ -54,7 +54,7 @@
                 .col-xs-offset-2.col-xs-4
                   %p Licence available (optional):
                 .col-xs-4
-                  = p.input :licence_available, label: false
+                  = p.input :licence_available, label: false, include_blank: 'Select one', collection: ['Yes', 'No'], input_html: { class: 'select2' }
               .row
                 .col-xs-offset-2.col-xs-4
                   %p What institution/start-up is developing the technology? (optional)
@@ -65,6 +65,6 @@
                   %p Your Expectations (optional)
                 .col-xs-4
                   = p.input :expectations, label: false, input_html: { rows: 10 }
-          .row
+              .row
             .col-md-12.text-center
               = f.button :submit, 'Apply Now', class: 'btn btn-primary proposed-solution-button'
