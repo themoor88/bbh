@@ -11,7 +11,7 @@
 #  technology_application  :text(65535)
 #  patents                 :text(65535)
 #  trl                     :string(255)
-#  licence_available       :boolean
+#  licence_available       :string(255)
 #  institution             :string(255)
 #  expectations            :text(65535)
 #  percent_match           :integer
@@ -48,6 +48,7 @@ class ProposedSolution < ActiveRecord::Base
                                     message: 'File must be .pdf, .doc, .docx, .ppt, .pptx, .jpg, .png, .xls, .xlsx'
 
   validates :user_id, :campaign_id, :technology_description, :technology_application, :trl, presence: true
+
   #------------------------------------------------------------------------------
   # Callbacks
   after_commit :send_email_to_admin

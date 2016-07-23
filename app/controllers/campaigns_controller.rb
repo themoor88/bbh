@@ -31,7 +31,7 @@ class CampaignsController < ApplicationController
     @campaign = current_user.campaigns.not_deleted.find(params[:id])
     @favorites_count = @campaign.likes.count
     @proposed_solutions = @campaign.proposed_solutions
-    @reviewed_proposed_solutions = @proposed_solutions.reviewed
+    @reviewed_proposed_solutions = @proposed_solutions.reviewed.count
     @campaign_views_count = Ahoy::Event.all.map { |event| event.properties['id'] }.count(@campaign.id.to_s)
   end
 

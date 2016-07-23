@@ -47,7 +47,7 @@
               %p{ style: 'display: inline-block;' } Remove From Favorites
 
           .text-center
-            - if current_user.role == :tech_provider && @campaign.active? && @proposed_solutions.blank?
+            - if current_user.role == :tech_provider && @campaign.active?
               = link_to 'Apply Now', new_campaign_proposed_solution_path(@campaign), class: 'btn btn-primary'
             - elsif current_user.role == :tech_seeker || current_user.role == :consultant
               = link_to 'View Campaign Performance', performance_campaign_path, class: 'btn btn-primary'

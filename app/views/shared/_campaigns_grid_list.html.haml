@@ -3,29 +3,35 @@
     %h2 No campaigns found
 .campaign-grid
   - collection.each do |campaign|
-    .campaign-item
-      .panel.panel-default.campaign-panel
-        .panel-body{ data: { 'campaign-id': campaign.id } }
-          .campaign-image{ style: campaign.featured_image.url(:medium).present? ? 'background: url("' + campaign.featured_image.url(:medium) + '") no-repeat center; background-size: cover;' : '' }
-            .like-unlike-container
-              = link_to '#', class: 'add-to-favorites', style: (current_user.likes.where(campaign_id: campaign.id).present? ? 'display:none;' : '').to_s, data: { campaign_id: campaign.id, url: add_to_favorites_path } do
-                = fa_icon 'heart-o', class: 'fa-2x heart-outline'
+    - if campaign.present?
+      .campaign-item
+        .panel.panel-default.campaign-panel
+          .panel-body{ data: { 'campaign-id': campaign&.id } }
+            .campaign-image{ style: campaign&.featured_image&.url(:medium).present? ? 'background: url("' + campaign&.featured_image&.url(:medium) + '") no-repeat center; background-size: cover;' : '' }
+              .like-unlike-container
+                = link_to '#', class: 'add-to-favorites', style: (current_user.likes.where(campaign_id: campaign&.id).present? ? 'display:none;' : '').to_s, data: { campaign_id: campaign&.id, url: add_to_favorites_path } do
+                  = fa_icon 'heart-o', class: 'fa-2x heart-outline'
 
-              = link_to '#', class: 'remove-from-favorites', style: (current_user.likes.where(campaign_id: campaign.id).present? ? '' : 'display:none;').to_s, data: { campaign_id: campaign.id, url: remove_from_favorites_path } do
-                = fa_icon 'heart', class: 'fa-2x red-heart'
+                = link_to '#', class: 'remove-from-favorites', style: (current_user.likes.where(campaign_id: campaign&.id).present? ? '' : 'display:none;').to_s, data: { campaign_id: campaign&.id, url: remove_from_favorites_path } do
+                  = fa_icon 'heart', class: 'fa-2x red-heart'
 
-            .countdown
-              %strong Ends in
-              %strong.expires-at{ data: { countdown: campaign.expires_at } }
+              .countdown
+                - if campaign.expired?
+                  %p Please Note: This campaign has expired.
+                - elsif campaign.pending?
+                  %p Please Note: This campaign is pending.
+                - elsif campaign.active?
+                  %strong Ends in
+                  %strong.expires-at{ data: { countdown: campaign&.expires_at } }
 
-          .row
-            .col-md-12.text-center
-              %h2.campaign-title= campaign.title
-          .row
-            .col-md-6
-              %p <strong>Sector</strong>: #{campaign.sector.to_s.titleize}
-            .col-md-6
-              %p <strong>Country</strong>: #{campaign.country.to_s.titleize}
-          .row.company-description
-            .col-md-12
-              %p= truncate(campaign.company_description, length: 200, omission: ' ... ') { link_to raw('<u>Read More</u>'), campaign_path(campaign) }
+            .row
+              .col-md-12.text-center
+                %h2.campaign-title= campaign&.title
+            .row
+              .col-md-6
+                %p <strong>Sector</strong>: #{campaign&.sector.to_s.titleize}
+              .col-md-6
+                %p <strong>Country</strong>: #{campaign&.country.to_s.titleize}
+            .row.company-description
+              .col-md-12
+                %p= truncate(campaign&.company_description, length: 200, omission: ' ... ') { link_to raw('<u>Read More</u>'), campaign_path(campaign) }

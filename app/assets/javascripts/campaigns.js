@@ -39,9 +39,7 @@ $(function () {
           }
         })
         .done(function(data) {
-          if (data.success) {
-          } else {
-          }
+
         })
         .fail(function(jqXHR, textStatus, errorThrown) {
           ajaxToastrError(jqXHR);
@@ -63,7 +61,7 @@ $(function () {
     $('[data-countdown]').each(function() {
       var $this = $(this), finalDate = $(this).data('countdown');
       $this.countdown(finalDate, function(event) {
-        $this.html(event.strftime('%ddays %Hhrs %Mmin'));
+        $this.html(event.strftime('%ddays %Hhrs %Mmin %Sseconds'));
       });
     });
 

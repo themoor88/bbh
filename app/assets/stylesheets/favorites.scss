@@ -1,6 +1,18 @@
 body.favorites {
   &.index {
     @include campaigns-grid-list;
+    .red-heart {
+      color: $red;
+    }
+
+    .heart-outline {
+      color: $white;
+    }
+
+    .expires-at {
+      font-size: 14px;
+    }
+
     .spinner-container {
       width: 100%;
       margin-top: 40px;
