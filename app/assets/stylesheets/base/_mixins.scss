@@ -37,6 +37,13 @@
         .panel-body {
           padding: 8px;
           cursor: pointer;
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+        }
+
+        .campaign-title-row {
+          flex: 1 0 auto;
         }
       }
 

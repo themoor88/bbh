@@ -51,7 +51,7 @@ class ProposedSolution < ActiveRecord::Base
 
   #------------------------------------------------------------------------------
   # Callbacks
-  after_commit :send_email_to_admin
+  after_create :send_email_to_admin
 
   #------------------------------------------------------------------------------
   # Enumerations
