@@ -24,14 +24,15 @@
                   %strong Ends in
                   %strong.expires-at{ data: { countdown: campaign&.expires_at } }
 
-            .row
+            .row.campaign-title-row
               .col-md-12.text-center
                 %h2.campaign-title= campaign&.title
-            .row
-              .col-md-6
-                %p <strong>Sector</strong>: #{campaign&.sector.to_s.titleize}
-              .col-md-6
-                %p <strong>Country</strong>: #{campaign&.country.to_s.titleize}
-            .row.company-description
-              .col-md-12
-                %p= truncate(campaign&.company_description, length: 200, omission: ' ... ') { link_to raw('<u>Read More</u>'), campaign_path(campaign) }
+            .campaign-information
+              .row
+                .col-md-6
+                  %p <strong>Sector</strong>: #{campaign&.sector.to_s.titleize}
+                .col-md-6
+                  %p <strong>Country</strong>: #{campaign&.country.to_s.titleize}
+              .row.company-description
+                .col-md-12
+                  %p= truncate(campaign&.company_description, length: 200, omission: ' ... ') { link_to raw('<u>Read More</u>'), campaign_path(campaign) }
