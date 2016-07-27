@@ -1,23 +1,38 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "Email address can't be blank"
+              taken: "Email address has already been taken"
+            password:
+              blank: "Password can't be blank"
+            password_confirmation:
+              blank: "Password confirmation can't be blank"
+            title:
+              blank: "Title can't be blank"
+            first_name:
+              blank: "First name can't be blank"
+            last_name:
+              blank: "Last name can't be blank"
+            role:
+              blank: "Role can't be blank"
+              inclusion: "This selection is not inlcuded in the list"
+            position:
+              blank: "Position can't be blank"
+            company:
+              blank: "Company can't be blank"
+            telephone:
+              blank: "Business telephone can't be blank"
+            address:
+              blank: "Street address can't be blank"
+            city:
+              blank: "City can't be blank"
+            country:
+              blank: "Country can't be blank"
+            number_of_employees:
+              blank: "Number of employees can't be blank"
+            company_website:
+              blank: "Company website can't be blank"
