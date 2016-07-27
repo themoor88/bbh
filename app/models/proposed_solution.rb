@@ -82,6 +82,7 @@ class ProposedSolution < ActiveRecord::Base
   rails_admin do
     list do
       field :id
+      field :reviewed
       field :user do
         label 'Name'
       end
@@ -102,12 +103,12 @@ class ProposedSolution < ActiveRecord::Base
       field :institution
       field :expectations
       field :percent_match
-      field :reviewed
       field :created_at
     end
 
     show do
       field :id
+      field :reviewed
       field :user do
         label 'Name'
       end
@@ -128,11 +129,11 @@ class ProposedSolution < ActiveRecord::Base
       field :institution
       field :expectations
       field :percent_match
-      field :reviewed
       field :created_at
     end
 
     edit do
+      field :reviewed
       field :user do
         label 'Name'
       end
@@ -153,11 +154,11 @@ class ProposedSolution < ActiveRecord::Base
       field :institution
       field :expectations
       field :percent_match
-      field :reviewed
     end
 
     export do
       field :id
+      field :reviewed
       field :user do
         label 'Name'
       end
@@ -178,7 +179,6 @@ class ProposedSolution < ActiveRecord::Base
       field :institution
       field :expectations
       field :percent_match
-      field :reviewed
       field :created_at
     end
   end
