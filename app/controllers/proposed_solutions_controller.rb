@@ -47,6 +47,6 @@ class ProposedSolutionsController < ApplicationController
   private
 
   def proposed_solution_params(params)
-    params.permit(:campaign_id, :link, :attachment, :technology_description, :technology_application, :patents, :trl, :licence_available, :institution, :expectations)
+    params.permit(:campaign_id, :link, :attachment_1, :attachment_2, :attachment_3, :technology_description, :technology_application, :patents, :trl, :licence_available, :institution, :expectations)
   end
 end

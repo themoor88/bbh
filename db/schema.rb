@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160723151028) do
+ActiveRecord::Schema.define(version: 20160730141705) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -79,24 +79,32 @@ ActiveRecord::Schema.define(version: 20160723151028) do
   add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
 
   create_table "proposed_solutions", force: :cascade do |t|
-    t.integer  "user_id",                 limit: 4
-    t.integer  "campaign_id",             limit: 4
-    t.string   "link",                    limit: 255
-    t.text     "technology_description",  limit: 65535
-    t.text     "technology_application",  limit: 65535
-    t.text     "patents",                 limit: 65535
-    t.string   "trl",                     limit: 255
-    t.string   "licence_available",       limit: 255
-    t.string   "institution",             limit: 255
-    t.text     "expectations",            limit: 65535
-    t.integer  "percent_match",           limit: 4
+    t.integer  "user_id",                   limit: 4
+    t.integer  "campaign_id",               limit: 4
+    t.string   "link",                      limit: 255
+    t.text     "technology_description",    limit: 65535
+    t.text     "technology_application",    limit: 65535
+    t.text     "patents",                   limit: 65535
+    t.string   "trl",                       limit: 255
+    t.string   "licence_available",         limit: 255
+    t.string   "institution",               limit: 255
+    t.text     "expectations",              limit: 65535
+    t.integer  "percent_match",             limit: 4
     t.boolean  "reviewed"
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
-    t.string   "attachment_file_name",    limit: 255
-    t.string   "attachment_content_type", limit: 255
-    t.integer  "attachment_file_size",    limit: 4
-    t.datetime "attachment_updated_at"
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.string   "attachment_1_file_name",    limit: 255
+    t.string   "attachment_1_content_type", limit: 255
+    t.integer  "attachment_1_file_size",    limit: 4
+    t.datetime "attachment_1_updated_at"
+    t.string   "attachment_2_file_name",    limit: 255
+    t.string   "attachment_2_content_type", limit: 255
+    t.integer  "attachment_2_file_size",    limit: 4
+    t.datetime "attachment_2_updated_at"
+    t.string   "attachment_3_file_name",    limit: 255
+    t.string   "attachment_3_content_type", limit: 255
+    t.integer  "attachment_3_file_size",    limit: 4
+    t.datetime "attachment_3_updated_at"
   end
 
   add_index "proposed_solutions", ["campaign_id"], name: "index_proposed_solutions_on_campaign_id", using: :btree
