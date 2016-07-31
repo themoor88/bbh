@@ -9,6 +9,17 @@ body.proposed-solutions {
         display: inline-block;
       }
 
+      p.info-label {
+        font-size: 12px;
+        line-height: 2;
+      }
+
+      // scss-lint:disable SelectorFormat
+      .proposed_solutions_attachment {
+        margin-bottom: 5px;
+      }
+      // scss-lint:enable SelectorFormat
+
       .select2-container--bootstrap {
         display: inline-block;
       }

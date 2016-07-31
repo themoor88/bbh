@@ -339,26 +339,6 @@ class User < ActiveRecord::Base
     ['1-10', '11-50', '51-100', '100-500', '500-1000', '1000-5000', '5000-10 000', '10 000-50 000', '50 000+']
   end
 
-  def self.select_options_for_sectors
-    [
-      'Medical Devices',
-      'Cosmetic',
-      'eHealth',
-      'Pharmaceuticals',
-      'BioPharmaceuticals',
-      'Agri-Food',
-      'Aerospace',
-      'Automotive',
-      'BioProducts',
-      'Chemicals',
-      'Digital & Tech',
-      'Machinery & Equipment',
-      'Energy & Resources',
-      'Telecom',
-      'Other'
-    ]
-  end
-
   #------------------------------------------------------------------------------
   # Instance methods
   def active_for_authentication?

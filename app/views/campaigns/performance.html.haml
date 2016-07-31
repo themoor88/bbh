@@ -32,7 +32,7 @@
               %tbody.ps-table-body
                 %tr.ps-table-headings
                   %th{ style: 'width: 10px' } #
-                  %th Company Name
+                  %th Solution Provider
                   %th Application Percent Match
 
                 - @proposed_solutions.each_with_index do |proposed_solution, index|
@@ -51,5 +51,5 @@
                       - when 70.to_f.next_float..100
                         - class_name = 'success'
                       .progress
-                        .progress-bar.progress-bar-striped{ 'aria-valuemax': '100', 'aria-valuemin': '0', 'aria-valuenow': percent_match, role: 'progressbar', style: "width: #{percent_match.to_s}%", class: "progress-bar-#{class_name}" }
+                        .progress-bar.progress-bar-striped{ 'aria-valuemax': '100', 'aria-valuemin': '0', 'aria-valuenow': percent_match, role: 'progressbar', style: "width: #{percent_match}%", class: "progress-bar-#{class_name}" }
                           %span #{proposed_solution.percent_match}%

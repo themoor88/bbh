@@ -1,4 +1,20 @@
 en:
+  sector:
+    devices: 'Medical Devices'
+    cosmetic: 'Cosmetic'
+    ehealth: 'eHealth'
+    pharmaceuticals: 'Pharmaceuticals'
+    biopharmaceuticals: 'BioPharmaceuticals'
+    agrifood: 'Agri-Food'
+    aerospace: 'Aerospace'
+    automotive: 'Automotive'
+    bioproducts: 'BioProducts'
+    chemicals: 'Chemicals'
+    digital_tech: 'Digital & Tech'
+    machinery_equipment: 'Machinery & Equipment'
+    energy: 'Energy & Resources'
+    telecom: 'Telecom'
+    other: 'Other'
   activerecord:
     errors:
       models:

@@ -25,14 +25,32 @@
                   = p.input :link, required: true, label: false
               .row
                 .col-xs-offset-2.col-xs-4
-                  %p Attachment (optional):
+                  %p Attachment #1 (optional):
                 .col-xs-4
-                  = p.input :attachment, label: false, input_html: { accept: '.png, .pdf, .doc, .docx, .ppt, .pptx, .jpg, .xls, .xlsx' }
+                  = p.input :attachment_1, label: false, input_html: { accept: '.png, .pdf, .doc, .docx, .ppt, .pptx, .jpg, .xls, .xlsx' }
+                  %p.info-label
+                    %em Eg. Invention background, preliminary results, non-confidential info sheet, press release, or other relevant documents.
+              .row
+                .col-xs-offset-2.col-xs-4
+                  %p Attachment #2 (optional):
+                .col-xs-4
+                  = p.input :attachment_2, label: false, input_html: { accept: '.png, .pdf, .doc, .docx, .ppt, .pptx, .jpg, .xls, .xlsx' }
+                  %p.info-label
+                    %em Eg. Invention background, preliminary results, non-confidential info sheet, press release, or other relevant documents.
+              .row
+                .col-xs-offset-2.col-xs-4
+                  %p Attachment #3 (optional):
+                .col-xs-4
+                  = p.input :attachment_3, label: false, input_html: { accept: '.png, .pdf, .doc, .docx, .ppt, .pptx, .jpg, .xls, .xlsx' }
+                  %p.info-label
+                    %em Eg. Invention background, preliminary results, non-confidential info sheet, press release, or other relevant documents.
               .row
                 .col-xs-offset-2.col-xs-4
                   %p What is your technology? (required)
+                  %p.info-label
+                    %em Include information on whether your technology is disruptive or incremental.
                 .col-xs-4
-                  = p.input :technology_description, required: true, label: false
+                  = p.input :technology_description, required: true, label: false, input_html: { rows: 5 }
               .row
                 .col-xs-offset-2.col-xs-4
                   %p What is it's main application (required)

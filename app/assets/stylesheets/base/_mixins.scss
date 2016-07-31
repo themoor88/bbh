@@ -41,8 +41,14 @@
       }
 
       .campaign-title {
+        @media #{$sm-up} {
+          font-size: 20px;
+          height: 48px;
+        }
+
         @media #{$sm-down} {
           font-size: 16px;
+          height: 38px;
         }
       }
 
