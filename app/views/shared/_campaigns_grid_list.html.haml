@@ -30,9 +30,9 @@
             .campaign-information
               .row
                 .col-md-6
-                  %p <strong>Sector</strong>: #{campaign&.sector.to_s.titleize}
+                  %p <strong>Sector</strong>: #{campaign&.sector.values.map(&:text).join(', ')}
                 .col-md-6
                   %p <strong>Country</strong>: #{campaign&.country.to_s.titleize}
               .row.company-description
                 .col-md-12
-                  %p= truncate(campaign&.company_description, length: 200, omission: ' ... ') { link_to raw('<u>Read More</u>'), campaign_path(campaign) }
+                  %p= truncate(campaign&.company_description, length: 200, omission: ' ... ', escape: false) { link_to raw('<u>Read More</u>'), campaign_path(campaign) }

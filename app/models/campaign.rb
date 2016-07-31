@@ -32,7 +32,9 @@
 
 class Campaign < ActiveRecord::Base
   include ClassyEnum::ActiveRecord
+  extend Enumerize
   delegate :url_helpers, to: 'Rails.application.routes'
+  serialize :sector, Array
 
   #------------------------------------------------------------------------------
   # Associations
@@ -44,6 +46,7 @@ class Campaign < ActiveRecord::Base
   #------------------------------------------------------------------------------
   # Enumerations
   classy_enum_attr :state, allow_blank: false, allow_nil: false, default: :pending
+  enumerize :sector, in: [:devices, :cosmetic, :ehealth, :pharmaceuticals, :biopharmaceuticals, :agrifood, :aerospace, :automotive, :bioproducts, :chemicals, :digital_tech, :machinery_equipment, :energy, :telecom, :other], multiple: true, i18n_scope: 'sector'
 
   #------------------------------------------------------------------------------
   # Scopes
@@ -343,12 +346,6 @@ class Campaign < ActiveRecord::Base
   rails_admin do
     object_label_method do
       :title
-    end
-
-    configure :sector, :enum do
-      enum do
-        User.select_options_for_sectors
-      end
     end
 
     configure :country, :enum do

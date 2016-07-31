@@ -55,11 +55,11 @@ class ProposedSolution < ActiveRecord::Base
   #------------------------------------------------------------------------------
   # Validations
   validates_attachment :attachment_1, content_type: { content_type: %w(image/jpeg image/png application/pdf application/vnd.ms-excel application/vnd.openxmlformats-officedocument.spreadsheetml.sheet application/vnd.ms-powerpoint application/vnd.openxmlformats-officedocument.presentationml.presentation application/msword application/vnd.openxmlformats-officedocument.wordprocessingml.document) },
-                        message: 'File must be .pdf, .doc, .docx, .ppt, .pptx, .jpg, .png, .xls, .xlsx'
+                                      message: 'File must be .pdf, .doc, .docx, .ppt, .pptx, .jpg, .png, .xls, .xlsx'
   validates_attachment :attachment_2, content_type: { content_type: %w(image/jpeg image/png application/pdf application/vnd.ms-excel application/vnd.openxmlformats-officedocument.spreadsheetml.sheet application/vnd.ms-powerpoint application/vnd.openxmlformats-officedocument.presentationml.presentation application/msword application/vnd.openxmlformats-officedocument.wordprocessingml.document) },
-                        message: 'File must be .pdf, .doc, .docx, .ppt, .pptx, .jpg, .png, .xls, .xlsx'
+                                      message: 'File must be .pdf, .doc, .docx, .ppt, .pptx, .jpg, .png, .xls, .xlsx'
   validates_attachment :attachment_3, content_type: { content_type: %w(image/jpeg image/png application/pdf application/vnd.ms-excel application/vnd.openxmlformats-officedocument.spreadsheetml.sheet application/vnd.ms-powerpoint application/vnd.openxmlformats-officedocument.presentationml.presentation application/msword application/vnd.openxmlformats-officedocument.wordprocessingml.document) },
-                        message: 'File must be .pdf, .doc, .docx, .ppt, .pptx, .jpg, .png, .xls, .xlsx'
+                                      message: 'File must be .pdf, .doc, .docx, .ppt, .pptx, .jpg, .png, .xls, .xlsx'
 
   validates :user_id, :campaign_id, :technology_description, :technology_application, :trl, presence: true
 

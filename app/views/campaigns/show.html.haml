@@ -15,26 +15,34 @@
         .panel-body
           = image_tag(@campaign.featured_image.url(:medium), class: 'img-responsive', style: 'margin: 0 auto;')
           %h2 Our Company
-          %p= @campaign.company_description
+          = raw @campaign.company_description
           %h2 Our Needs
-          %p= @campaign.company_needs
+          = raw @campaign.company_needs
           %h2 Our Challenges
-          %p= @campaign.company_challenges
+          = raw @campaign.company_challenges
           .opportunity-specifications
             %h2 Opportunity Specifications
           .row
             .col-md-4
               %p Sector:
+            .col-md-4
+              %p= @campaign.sector.values.map(&:text).join(', ')
+          .row
+            .col-md-4
               %p Company Headquarters:
+            .col-md-4
+              %p= @campaign.country
+          .row
+            .col-md-4
               %p Targeted Time To Market:
+            .col-md-4
+              %p= @campaign.targeted_time_to_market
+          .row
+            .col-md-4
               %p{ style: 'display: inline-block' } Expected TRL:
               = link_to '#', style: 'display: inline-block' do
                 %sup= fa_icon 'info-circle', class: 'fa-2x trl-modal'
-
             .col-md-4
-              %p= @campaign.sector.to_s.titleize
-              %p= @campaign.country
-              %p= @campaign.targeted_time_to_market
               %p= @campaign.expected_trl
           %br
           %span.like-unlike-container
