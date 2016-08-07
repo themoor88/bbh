@@ -61,7 +61,7 @@ class Campaign < ActiveRecord::Base
 
   #------------------------------------------------------------------------------
   # Callbacks
-  after_update :send_email_to_user_on_active
+  after_update :send_email_to_user_on_active, :send_email_to_user_with_interests
 
   #------------------------------------------------------------------------------
   # Enumerations
@@ -486,6 +486,21 @@ class Campaign < ActiveRecord::Base
           '-url-': url_helpers.new_user_session_url
         }
       ).deliver_now
+    end
+  end
+
+  def send_email_to_user_with_interests
+    if state_changed? && active?
+      users = User.select{ |user| !(user.interests.values & self.sector.values).empty? && (user != self.user) && (user.role != :tech_seeker) && (user.role != :consultant) }
+      users.each do |user|
+        ApplicationMailer.sendgrid_send(
+          to: user.email,
+          template_id: '40c40426-51d7-424b-84a5-c1131a7951ba',
+          substitutions: {
+            '-url-': url_helpers.campaign_url(self.id)
+          }
+        ).deliver_now
+      end
     end
   end
 end
