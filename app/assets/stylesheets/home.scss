@@ -88,21 +88,15 @@ body.home {
         .grid-column {
           margin: 0 20px;
           flex-basis: 50%;
-          min-height: 100%;
+          display: flex;
 
           @media #{$sm-down} {
             margin: 20px;
             flex-basis: 100%;
           }
-
-          .row,
-          [class*='col-'] {
-            height: 100%;
-          }
         }
 
         .panel.panel-default {
-          min-height: 100%;
           width: 100%;
         }
       }

@@ -1,15 +1,13 @@
-.row
-  .col-md-12
-    .panel.panel-default
-      .panel-heading.text-center
-        %h2 Already a Member?
-      .panel-body
-        = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-          = f.error_notification
-          = f.input :email
-          = f.input :password, autocomplete: 'off'
-          = f.input :remember_me, as: :boolean, input_html: { checked: 'checked' } if devise_mapping.rememberable?
-          .text-center
-            = button_tag 'Log In', type: :submit, class: 'btn btn-primary'
-        .text-center
-          = render 'devise/shared/links'
+.panel.panel-default
+  .panel-heading.text-center
+    %h2 Already a Member?
+  .panel-body
+    = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      = f.error_notification
+      = f.input :email
+      = f.input :password, autocomplete: 'off'
+      = f.input :remember_me, as: :boolean, input_html: { checked: 'checked' } if devise_mapping.rememberable?
+      .text-center
+        = button_tag 'Log In', type: :submit, class: 'btn btn-primary'
+    .text-center
+      = render 'devise/shared/links'

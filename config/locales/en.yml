@@ -25,6 +25,8 @@ en:
               taken: "Email address has already been taken"
             password:
               blank: "Password can't be blank"
+            current_password:
+              blank: "Password can't be blank"
             password_confirmation:
               blank: "Password confirmation can't be blank"
             title:

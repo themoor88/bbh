@@ -20,29 +20,29 @@
           = raw @campaign.company_needs
           %h2 Our Challenges
           = raw @campaign.company_challenges
-          .opportunity-specifications
-            %h2 Opportunity Specifications
+          .opportunity-detail
+            %h2 Opportunity Details
           .row
             .col-md-4
               %p Sector:
-            .col-md-4
+            .col-md-8
               %p= @campaign.sector.values.map(&:text).join(', ')
           .row
             .col-md-4
               %p Company Headquarters:
-            .col-md-4
+            .col-md-8
               %p= @campaign.country
           .row
             .col-md-4
               %p Targeted Time To Market:
-            .col-md-4
+            .col-md-8
               %p= @campaign.targeted_time_to_market
           .row
             .col-md-4
               %p{ style: 'display: inline-block' } Expected TRL:
               = link_to '#', style: 'display: inline-block' do
                 %sup= fa_icon 'info-circle', class: 'fa-2x trl-modal'
-            .col-md-4
+            .col-md-8
               %p= @campaign.expected_trl
           %br
           %span.like-unlike-container

@@ -29,9 +29,10 @@
                 %h2.campaign-title= campaign&.title
             .campaign-information
               .row
-                .col-md-6
+                .col-md-12
                   %p <strong>Sector</strong>: #{campaign&.sector.values.map(&:text).join(', ')}
-                .col-md-6
+              .row
+                .col-md-12
                   %p <strong>Country</strong>: #{campaign&.country.to_s.titleize}
               .row.company-description
                 .col-md-12

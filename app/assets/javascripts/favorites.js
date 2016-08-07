@@ -4,7 +4,7 @@ $(function () {
     $('[data-countdown]').each(function() {
       var $this = $(this), finalDate = $(this).data('countdown');
       $this.countdown(finalDate, function(event) {
-        $this.html(event.strftime('%ddays %Hhrs %Mmin %Sseconds'));
+        $this.html(event.strftime('%Ddays %Hhrs %Mmins %Sseconds'));
       });
     });
 
