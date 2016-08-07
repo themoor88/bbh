@@ -489,18 +489,20 @@ class Campaign < ActiveRecord::Base
     end
   end
 
+  # rubocop:disable Metrics/AbcSize
   def send_email_to_user_with_interests
     if state_changed? && active?
-      users = User.select{ |user| !(user.interests.values & self.sector.values).empty? && (user != self.user) && (user.role != :tech_seeker) && (user.role != :consultant) }
+      users = User.select { |user| !(user.interests.values & sector.values).empty? && (user != self.user) && (user.role != :tech_seeker) && (user.role != :consultant) }
       users.each do |user|
         ApplicationMailer.sendgrid_send(
           to: user.email,
           template_id: '40c40426-51d7-424b-84a5-c1131a7951ba',
           substitutions: {
-            '-url-': url_helpers.campaign_url(self.id)
+            '-url-': url_helpers.campaign_url(id)
           }
         ).deliver_now
       end
     end
   end
+  # rubocop:enable Metrics/AbcSize
 end

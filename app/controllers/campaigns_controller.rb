@@ -12,8 +12,8 @@ class CampaignsController < ApplicationController
     end
   end
 
-  # rubocop:disable Metrics/AbcSize
   # GET /campaigns/1
+  # rubocop:disable Metrics/AbcSize
   def show
     if current_user.role == :tech_provider
       @campaign = Campaign.not_deleted.find(params[:id])
@@ -25,15 +25,22 @@ class CampaignsController < ApplicationController
     flash[:error] = 'Something went wrong. This campaign might have been deleted by the administrator.'
     redirect_to campaigns_path
   end
-  # rubocop:enable Metrics/AbcSize
 
   def performance
     @campaign = current_user.campaigns.not_deleted.find(params[:id])
-    @favorites_count = @campaign.likes.count
-    @proposed_solutions = @campaign.proposed_solutions
-    @reviewed_proposed_solutions = @proposed_solutions.reviewed.count
-    @campaign_views_count = Ahoy::Event.all.map { |event| event.properties['id'] }.count(@campaign.id.to_s)
+    if current_user.role == :tech_seeker || current_user.role == :consultant
+      @favorites_count = @campaign.likes.count
+      @proposed_solutions = @campaign.proposed_solutions
+      @reviewed_proposed_solutions = @proposed_solutions.reviewed.count
+      @campaign_views_count = Ahoy::Event.all.map { |event| event.properties['id'] }.count(@campaign.id.to_s)
+    else
+      redirect_to campaigns_path && return
+    end
+  rescue ActiveRecord::RecordNotFound
+    flash[:error] = 'Something went wrong. Please try another url'
+    redirect_to campaigns_path
   end
+  # rubocop:enable Metrics/AbcSize
 
   protected
 
