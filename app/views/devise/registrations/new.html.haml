@@ -23,6 +23,11 @@
               = f.input :last_name, label: false
           .row
             .col-xs-offset-2.col-xs-4
+              %p Interests:
+            .col-xs-4
+              = f.input :interests, label: false, input_html: { class: 'select2-interests' }
+          .row
+            .col-xs-offset-2.col-xs-4
               %p Position:
             .col-xs-4
               = f.input :position, label: false

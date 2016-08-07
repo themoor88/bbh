@@ -22,6 +22,7 @@ en:
           attributes:
             email:
               blank: "Email address can't be blank"
+              invalid: "Email is invalid"
               taken: "Email address has already been taken"
             password:
               blank: "Password can't be blank"

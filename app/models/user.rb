@@ -10,6 +10,7 @@
 #  title                  :string(255)
 #  first_name             :string(255)
 #  last_name              :string(255)
+#  interests              :string(255)
 #  position               :string(255)
 #  company                :string(255)
 #  telephone              :string(255)
@@ -45,7 +46,9 @@
 
 class User < ActiveRecord::Base
   include ClassyEnum::ActiveRecord
+  extend Enumerize
   delegate :url_helpers, to: 'Rails.application.routes'
+  serialize :interests, Array
 
   #------------------------------------------------------------------------------
   # Devise modules
@@ -62,6 +65,7 @@ class User < ActiveRecord::Base
   # Enumerations
   classy_enum_attr :title, allow_nil: true, allow_blank: true
   classy_enum_attr :role, allow_nil: false, allow_blank: false
+  enumerize :interests, in: [:devices, :cosmetic, :ehealth, :pharmaceuticals, :biopharmaceuticals, :agrifood, :aerospace, :automotive, :bioproducts, :chemicals, :digital_tech, :machinery_equipment, :energy, :telecom, :other], multiple: true, i18n_scope: 'sector'
 
   #------------------------------------------------------------------------------
   # Scopes

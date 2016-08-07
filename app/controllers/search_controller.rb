@@ -17,7 +17,7 @@ class SearchController < ApplicationController
     end
 
     if params[:sector].present?
-      @campaigns = @campaigns.select{ |campaign| campaign.sector.values.include? params[:sector] }
+      @campaigns = @campaigns.select { |campaign| campaign.sector.values.include? params[:sector] }
     end
   end
   # rubocop:enable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
