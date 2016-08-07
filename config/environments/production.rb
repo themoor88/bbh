@@ -81,7 +81,7 @@ Rails.application.configure do
   #   password: Figaro.env.sendgrid_password
   # }
   # # ActionMailer Config
-  config.action_mailer.default_url_options = { host: 'http://baehl-business-hub-demo.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'http://www.baehlbusinesshub.com' }
   Rails.application.routes.default_url_options[:host] = 'http://www.baehlbusinesshub.com'
   # config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
@@ -103,4 +103,10 @@ Rails.application.configure do
       s3_region: Figaro.env.aws_region
     }
   }
+
+  config.middleware.insert_before(Rack::Lock, Rack::Rewrite) do
+    r301 %r{.*}, 'http://www.baehlbusinesshub.com$&', :if => Proc.new {|rack_env|
+      rack_env['SERVER_NAME'] == 'baehlbusinesshub.com' || rack_env['SERVER_NAME'].include?('herokuapp') || rack_env['SERVER_NAME'] == 'baehlbusinesshub.fr'
+    }
+  end
 end
