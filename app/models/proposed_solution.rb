@@ -104,7 +104,9 @@ class ProposedSolution < ActiveRecord::Base
         label 'Title'
       end
       field :link
-      field :attachment
+      field :attachment_1
+      field :attachment_2
+      field :attachment_3
       field :technology_description
       field :technology_application
       field :patents
@@ -130,7 +132,9 @@ class ProposedSolution < ActiveRecord::Base
         label 'Title'
       end
       field :link
-      field :attachment
+      field :attachment_1
+      field :attachment_2
+      field :attachment_3
       field :technology_description
       field :technology_application
       field :patents
@@ -155,7 +159,9 @@ class ProposedSolution < ActiveRecord::Base
         label 'Title'
       end
       field :link
-      field :attachment
+      field :attachment_1
+      field :attachment_2
+      field :attachment_3
       field :technology_description
       field :technology_application
       field :patents
@@ -180,7 +186,9 @@ class ProposedSolution < ActiveRecord::Base
         label 'Title'
       end
       field :link
-      field :attachment
+      field :attachment_1
+      field :attachment_2
+      field :attachment_3
       field :technology_description
       field :technology_application
       field :patents

@@ -25,33 +25,90 @@ en:
               invalid: "Email is invalid"
               taken: "Email address has already been taken"
             password:
+              invalid: "Password is invalid"
               blank: "Password can't be blank"
+              confirmation: 'Password confirmation does not match'
+              too_short: 'Password is too short'
             current_password:
+              invalid: "Password is invalid"
               blank: "Password can't be blank"
+              confirmation: 'Password does not match our records'
             password_confirmation:
+              invalid: "Password is invalid"
               blank: "Password confirmation can't be blank"
+              confirmation: 'Password confirmation does not match'
             title:
+              invalid: "Title is invalid"
               blank: "Title can't be blank"
             first_name:
+              invalid: "First name is invalid"
               blank: "First name can't be blank"
             last_name:
+              invalid: "Last name is invalid"
               blank: "Last name can't be blank"
             role:
+              invalid: "Role is invalid"
               blank: "Role can't be blank"
               inclusion: "This selection is not inlcuded in the list"
             position:
+              invalid: "Position is invalid"
               blank: "Position can't be blank"
             company:
+              invalid: "Company is invalid"
               blank: "Company can't be blank"
             telephone:
+              invalid: "Business telephone is invalid"
               blank: "Business telephone can't be blank"
             address:
+              invalid: "Street address is invalid"
               blank: "Street address can't be blank"
             city:
+              invalid: "City is invalid"
               blank: "City can't be blank"
             country:
+              invalid: "Country is invalid"
               blank: "Country can't be blank"
             number_of_employees:
+              invalid: "Number of employees is invalid"
               blank: "Number of employees can't be blank"
             company_website:
+              invalid: "Company website is invalid"
               blank: "Company website can't be blank"
+        proposed_solution:
+          attributes:
+            link:
+              blank: "Link can't be blank"
+              valid: "Link is not valid"
+            technology_description:
+              blank: "Technology description can't be blank"
+              valid: "Technology description is not valid"
+            technology_application:
+              blank: "Technology application can't be blank"
+              valid: "Technology application is not valid"
+            patents:
+              blank: "Patents can't be blank"
+              valid: "Patents is not valid"
+            trl:
+              blank: "Trl can't be blank"
+              valid: "Trl is not valid"
+            licence_available:
+              blank: "Licence available can't be blank"
+              valid: "Licence available is not valid"
+            institution:
+              blank: "Institution can't be blank"
+              valid: "Institution is not valid"
+            expectations:
+              blank: "Expectations can't be blank"
+              valid: "Expectations is not valid"
+            percent_match:
+              blank: "Percent match can't be blank"
+              valid: "Percent match is not valid"
+            attachment_1:
+              blank: "Attachment 1 can't be blank"
+              valid: "Attachment 1 is not valid"
+            attachment_2:
+              blank: "Attachment 2 can't be blank"
+              valid: "Attachment 2 is not valid"
+            attachment_3:
+              blank: "Attachment 3 can't be blank"
+              valid: "Attachment 3 is not valid"
