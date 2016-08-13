@@ -391,6 +391,7 @@ class User < ActiveRecord::Base
       field :active
       field :email
       field :title
+      field :interests
       field :position
       field :company
       field :telephone
@@ -417,6 +418,7 @@ class User < ActiveRecord::Base
       field :active
       field :email
       field :title
+      field :interests
       field :position
       field :company
       field :telephone
@@ -445,6 +447,7 @@ class User < ActiveRecord::Base
       field :password
       field :password_confirmation
       field :title
+      field :interests
       field :position
       field :company
       field :telephone
@@ -471,6 +474,7 @@ class User < ActiveRecord::Base
       field :active
       field :email
       field :title
+      field :interests
       field :position
       field :company
       field :telephone
