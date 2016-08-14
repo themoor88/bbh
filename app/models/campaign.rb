@@ -61,6 +61,7 @@ class Campaign < ActiveRecord::Base
 
   #------------------------------------------------------------------------------
   # Callbacks
+  after_create :send_email_to_user_on_active, :send_email_to_user_with_interests
   after_update :send_email_to_user_on_active, :send_email_to_user_with_interests
 
   #------------------------------------------------------------------------------
