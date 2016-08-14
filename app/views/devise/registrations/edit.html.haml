@@ -43,11 +43,14 @@
                     %p Last Name:
                   .col-xs-6
                     = f.input :last_name, label: false
-                .row
-                  .col-xs-6
-                    %p Interests:
-                  .col-xs-6
-                    = f.input :interests, label: false, input_html: { class: 'select2-interests' }
+                - if current_user.role == :tech_provider
+                  .row
+                    .col-xs-6
+                      %p Interests:
+                      %p.info-label
+                        %em (As a tech provider, you will receive email alerts when campaigns with your relevant interests become active)
+                    .col-xs-6
+                      = f.input :interests, label: false, input_html: { class: 'select-multiple' }
                 .row
                   .col-xs-6
                     %p Position:

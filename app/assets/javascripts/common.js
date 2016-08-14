@@ -16,13 +16,6 @@ $(function() {
     data: isoCountries
   });
 
-  // Drop down for country select
-  $('.select2-interests').select2({
-    theme: 'bootstrap',
-    width: 'resolve',
-    tags: true
-  });
-
   var isoCountries = [
     { id: 'Afghanistan', text: 'Afghanistan'},
     { id: 'Aland Islands', text: 'Aland Islands'},
