@@ -33,7 +33,6 @@ gem 'select2-rails'
 gem 'sendgrid-ruby'
 gem 'toastr_rails'
 gem 'wannabe_bool'
-gem 'whenever', :require => false
 
 group :development do
   gem 'web-console', '~> 2.0'

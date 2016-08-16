@@ -30,13 +30,3 @@ test:
   username: <%= Figaro.env.database_username %>
   password: <%= Figaro.env.database_password %>
   host: localhost
-
-production:
-  adapter: mysql2
-  encoding: utf8
-  reconnect: false
-  database: baehl_business_hub_production
-  pool: 5
-  username: root
-  password: sarahalidoost
-  host: localhost
