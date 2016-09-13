@@ -8,5 +8,5 @@ end
 class Role::TechSeeker < Role
 end
 
-class Role::Consultant < Role
-end
+# class Role::Consultant < Role
+# end
