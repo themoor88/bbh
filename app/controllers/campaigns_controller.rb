@@ -7,7 +7,7 @@ class CampaignsController < ApplicationController
     @slider_items = SliderItem.active
     if current_user.role == :tech_provider
       @campaigns = Campaign.active
-    elsif current_user.role == :tech_seeker || current_user.role == :consultant
+    elsif current_user.role == :tech_seeker
       @campaigns = current_user.campaigns.not_deleted
     end
   end
@@ -18,7 +18,7 @@ class CampaignsController < ApplicationController
     if current_user.role == :tech_provider
       @campaign = Campaign.not_deleted.find(params[:id])
       @proposed_solutions = current_user.proposed_solutions.where(campaign_id: @campaign.id)
-    elsif current_user.role == :tech_seeker || current_user.role == :consultant
+    elsif current_user.role == :tech_seeker
       @campaign = current_user.campaigns.not_deleted.find(params[:id])
     end
   rescue ActiveRecord::RecordNotFound
@@ -28,7 +28,7 @@ class CampaignsController < ApplicationController
 
   def performance
     @campaign = current_user.campaigns.not_deleted.find(params[:id])
-    if current_user.role == :tech_seeker || current_user.role == :consultant
+    if current_user.role == :tech_seeker
       @favorites_count = @campaign.likes.count
       @proposed_solutions = @campaign.proposed_solutions
       @reviewed_proposed_solutions = @proposed_solutions.reviewed.count
