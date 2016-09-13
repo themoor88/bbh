@@ -57,5 +57,5 @@
           .text-center
             - if current_user.role == :tech_provider && @campaign.active?
               = link_to 'Apply Now', new_campaign_proposed_solution_path(@campaign), class: 'btn btn-primary'
-            - elsif current_user.role == :tech_seeker || current_user.role == :consultant
+            - elsif current_user.role == :tech_seeker
               = link_to 'View Campaign Performance', performance_campaign_path, class: 'btn btn-primary'

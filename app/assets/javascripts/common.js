@@ -292,7 +292,7 @@ $(function() {
       "<p><strong>TRL 1: Basic research</strong>. Principles postulated and observed but no experimental proof available.</p>" +
       "<p><strong>TRL 2: Technology formulation</strong>. Concept and application have been formulated.</p>" +
       "<p><strong>TRL 3: Applied research</strong>. First laboratory tests completed; proof of concept.</p>" +
-      "<p><strong>TRL 4: Smal scale prototype</strong> built in a laboratory environment ('ugly' prototype).</p>" +
+      "<p><strong>TRL 4: Small scale prototype</strong> built in a laboratory environment ('ugly' prototype).</p>" +
       "<p><strong>TRL 5: Large scale prototype</strong> tested in intended environment.</p>" +
       "<p><strong>TRL 6: Prototype system</strong> tested in intended environment close to expected performance.</p>" +
       "<p><strong>TRL 7: Demonstration system</strong> operating in operational environment at pre-commercial scale.</p>" +
