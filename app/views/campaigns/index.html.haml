@@ -10,4 +10,8 @@
   .swiper-button-next
   .swiper-button-prev
 
-= render 'shared/campaigns_grid_list', collection: @campaigns
+- if @campaigns.present?
+  = render 'shared/campaigns_grid_list', collection: @campaigns
+- else
+  .container.text-center
+    %h2 There’s nothing here yet! Are you interested in launching a campaign towards our community of Tech Providers? One of our consultants will be contacting you shortly to see how we can help. Alternatively, you can contact us at: info@baehl-innovation.com or +33 1 44 10 41 43  We look forward to speaking with you soon.
