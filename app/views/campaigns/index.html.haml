@@ -13,7 +13,7 @@
 - if @campaigns.present?
   = render 'shared/campaigns_grid_list', collection: @campaigns
 - else
- - if current_user.role == :tech_seeker
+  - if current_user.role == :tech_seeker
     .container.text-center
       %h2 You have no current campaigns.
       %p.no-campaigns-message Are you interested in launching a campaign towards our community of Tech Providers? One of our consultants will be contacting you shortly to see how we can help.
