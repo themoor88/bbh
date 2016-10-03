@@ -46,7 +46,7 @@ class Campaign < ActiveRecord::Base
   #------------------------------------------------------------------------------
   # Enumerations
   classy_enum_attr :state, allow_blank: false, allow_nil: false, default: :pending
-  enumerize :sector, in: [:devices, :cosmetic, :ehealth, :pharmaceuticals, :biopharmaceuticals, :agrifood, :aerospace, :automotive, :bioproducts, :chemicals, :digital_tech, :machinery_equipment, :energy, :telecom, :other], multiple: true, i18n_scope: 'sector'
+  enumerize :sector, in: [:devices, :cosmetic, :ehealth, :pharmaceuticals, :biopharmaceuticals, :agrifood, :aerospace, :automotive, :bioproducts, :chemicals, :digital_tech, :machinery_equipment, :energy, :telecom, :nutraceuticals, :other], multiple: true, i18n_scope: 'sector'
 
   #------------------------------------------------------------------------------
   # Scopes

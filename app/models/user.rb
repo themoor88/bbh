@@ -65,7 +65,7 @@ class User < ActiveRecord::Base
   # Enumerations
   classy_enum_attr :title, allow_nil: true, allow_blank: true
   classy_enum_attr :role, allow_nil: false, allow_blank: false
-  enumerize :interests, in: [:devices, :cosmetic, :ehealth, :pharmaceuticals, :biopharmaceuticals, :agrifood, :aerospace, :automotive, :bioproducts, :chemicals, :digital_tech, :machinery_equipment, :energy, :telecom, :other], multiple: true, i18n_scope: 'sector'
+  enumerize :interests, in: [:devices, :cosmetic, :ehealth, :pharmaceuticals, :biopharmaceuticals, :agrifood, :aerospace, :automotive, :bioproducts, :chemicals, :digital_tech, :machinery_equipment, :energy, :telecom, :nutraceuticals, :other], multiple: true, i18n_scope: 'sector'
 
   #------------------------------------------------------------------------------
   # Scopes
