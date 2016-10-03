@@ -14,6 +14,7 @@ en:
     machinery_equipment: 'Machinery & Equipment'
     energy: 'Energy & Resources'
     telecom: 'Telecom'
+    nutraceuticals: 'Nutraceuticals'
     other: 'Other'
   activerecord:
     errors:
