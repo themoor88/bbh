@@ -407,6 +407,9 @@ class User < ActiveRecord::Base
       field :sign_in_count
       field :current_sign_in_at
       field :last_sign_in_at
+      field :confirmed_at
+      field :confirmation_sent_at
+      field :unconfirmed_email
       field :created_at
       field :updated_at
     end
@@ -434,6 +437,9 @@ class User < ActiveRecord::Base
       field :sign_in_count
       field :current_sign_in_at
       field :last_sign_in_at
+      field :confirmed_at
+      field :confirmation_sent_at
+      field :unconfirmed_email
       field :created_at
       field :updated_at
     end
@@ -463,6 +469,9 @@ class User < ActiveRecord::Base
       field :sign_in_count
       field :current_sign_in_at
       field :last_sign_in_at
+      field :confirmed_at
+      field :confirmation_sent_at
+      field :unconfirmed_email
       field :created_at
       field :updated_at
     end
@@ -490,6 +499,9 @@ class User < ActiveRecord::Base
       field :sign_in_count
       field :current_sign_in_at
       field :last_sign_in_at
+      field :confirmed_at
+      field :confirmation_sent_at
+      field :unconfirmed_email
       field :created_at
       field :updated_at
     end
