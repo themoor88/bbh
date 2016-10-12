@@ -396,6 +396,11 @@ class Campaign < ActiveRecord::Base
           bindings[:object].likes.count
         end
       end
+      field :number_of_views do
+        def value
+          Ahoy::Event.all.map { |event| event.properties['id'] }.count(bindings[:object].id.to_s)
+        end
+      end
       field :created_at
     end
 
@@ -421,6 +426,11 @@ class Campaign < ActiveRecord::Base
       field :number_of_likes do
         def value
           bindings[:object].likes.count
+        end
+      end
+      field :number_of_views do
+        def value
+          Ahoy::Event.all.map { |event| event.properties['id'] }.count(bindings[:object].id.to_s)
         end
       end
       field :created_at
@@ -469,6 +479,11 @@ class Campaign < ActiveRecord::Base
       field :number_of_likes do
         def value
           bindings[:object].likes.count
+        end
+      end
+      field :number_of_views do
+        def value
+          Ahoy::Event.all.map { |event| event.properties['id'] }.count(bindings[:object].id.to_s)
         end
       end
       field :created_at
