@@ -4,6 +4,8 @@
   .panel-body
     = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       = f.error_notification
+      - if devise_mapping.registerable?
+        = link_to 'Not yet a member? Sign up now!', new_registration_path(resource_name), class: 'pull-right'
       = f.input :email
       = f.input :password, autocomplete: 'off'
       = f.input :remember_me, as: :boolean, input_html: { checked: 'checked' } if devise_mapping.rememberable?
