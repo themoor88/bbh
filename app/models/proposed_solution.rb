@@ -213,6 +213,8 @@ class ProposedSolution < ActiveRecord::Base
       to: 'chantal@baehl-innovation.com',
       template_id: '850a599b-da08-4c68-82c3-60b1d2ed2ed0',
       substitutions: {
+        '-firstName-': user.first_name,
+        '-lastName-': user.last_name,
         '-link-': link.present? ? "Here is the link associated with the proposed solution: #{link}" : ' ',
         '-attachment1-': attachment_1.present? ? "Here is an attachment associated with the proposed solution: #{attachment_1}" : ' ',
         '-attachment2-': attachment_2.present? ? "Here is an attachment associated with the proposed solution: #{attachment_2}" : ' ',

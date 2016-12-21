@@ -515,6 +515,8 @@ class User < ActiveRecord::Base
       to: 'chantal@baehl-innovation.com',
       template_id: '7ee51e09-8829-495a-a517-6dc3aad1182a',
       substitutions: {
+        '-firstName-': first_name,
+        '-lastName-': last_name,
         '-url-': url_helpers.new_admin_session_url,
         '-userRole-': role.to_s.tr('_', ' ').titleize
       }
@@ -534,7 +536,7 @@ class User < ActiveRecord::Base
   end
 
   def send_email_to_user_old_email
-    if unconfirmed_email_changed? && !email_changed?
+    if unconfirmed_email_changed? && !email_changed? && !active_changed? && active
       ApplicationMailer.sendgrid_send(
         to: email,
         template_id: 'c7311ec1-0a66-49c4-9a20-349bd344951a'
@@ -548,6 +550,8 @@ class User < ActiveRecord::Base
         to: 'chantal@baehl-innovation.com',
         template_id: '9a57ac9f-657a-45fb-aa2f-68baad888e50',
         substitutions: {
+          '-firstName-': first_name,
+          '-lastName-': last_name,
           '-url-': url_helpers.new_admin_session_url
         }
       ).deliver_now
