@@ -103,9 +103,9 @@ Rails.application.configure do
     }
   }
 
-  config.middleware.insert_before(Rack::Runtime, Rack::Rewrite) do
-    r301 %r{.*}, 'http://www.baehlbusinesshub.com$&', if: Proc.new { |rack_env|
-      rack_env['SERVER_NAME'].include?('baehl-business-hub-demo.herokuapp') || rack_env['SERVER_NAME'] == 'baehlbusinesshub.fr'
-    }
-  end
+  # config.middleware.insert_before(Rack::Runtime, Rack::Rewrite) do
+  #   r301 %r{.*}, 'http://www.baehlbusinesshub.com$&', if: Proc.new { |rack_env|
+  #     rack_env['SERVER_NAME'].include?('baehl-business-hub-demo.herokuapp') || rack_env['SERVER_NAME'] == 'baehlbusinesshub.fr'
+  #   }
+  # end
 end
