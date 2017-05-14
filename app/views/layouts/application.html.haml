@@ -8,6 +8,7 @@
     = stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Open+Sans'
     = stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Raleway:800'
     = javascript_include_tag 'application'
+    = favicon_link_tag 'favicon-logo.png', type: 'image/png'
     = csrf_meta_tags
   %body{ class:  "#{controller_path.tr('_', '-').tr('/', '-')} #{action_name.tr('_', '-')}" }
     .wrapper
