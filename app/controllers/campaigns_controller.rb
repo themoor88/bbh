@@ -6,7 +6,7 @@ class CampaignsController < ApplicationController
   def index
     @slider_items = SliderItem.active
     if current_user.role == :tech_provider
-      @campaigns = Campaign.active
+      @campaigns = Campaign.active.order(expires_at: :desc)
     elsif current_user.role == :tech_seeker
       @campaigns = current_user.campaigns.not_deleted
     end
