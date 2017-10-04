@@ -55,7 +55,7 @@ class Campaign < ActiveRecord::Base
 
   #------------------------------------------------------------------------------
   # Validations
-  validates :user_id, :expires_at, :title, :company_description, :company_needs, :sector, :country, :targeted_time_to_market, :expected_trl, presence: true
+  validates :user_id, :expires_at, :title, :company_description, :company_needs, :sector, :targeted_time_to_market, :expected_trl, presence: true
   validates_attachment_content_type :featured_image, content_type: /^image\/(jpg|jpeg|png)$/
   validates :featured_image, attachment_presence: true
 
@@ -75,6 +75,7 @@ class Campaign < ActiveRecord::Base
   # rubocop:disable MethodLength
   def self.country_options
     [
+      { id: 'Europe', text: 'Europe' },
       { id: 'Afghanistan', text: 'Afghanistan' },
       { id: 'Aland Islands', text: 'Aland Islands' },
       { id: 'Albania', text: 'Albania' },
