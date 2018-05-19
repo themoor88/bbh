@@ -13,6 +13,8 @@ RailsAdmin.config do |config|
   end
   config.current_user_method(&:current_admin)
 
+  config.browser_validations = false
+
   ## == Cancan ==
   # config.authorize_with :cancan
 
